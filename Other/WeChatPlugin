@@ -7,10 +7,11 @@ framework_name="WeChatPlugin"
 app_content_path="${wechat_path}/Contents"
 app_executable_path="${app_content_path}/MacOS/${app_name}"
 app_executable_backup_path="${app_executable_path}_backup"
-framework_path="${app_content_path}/Frameworks/${framework_name}.framework"
+ori_frameowrk_path="${shell_path}/Products/Debug/${framework_name}.framework"
+des_framework_path="${app_content_path}/Frameworks/${framework_name}.framework"
 
 _install() {
-    cp -R -H "${shell_path}/Products/Debug/${framework_name}.framework" ${framework_path}
+    cp -R -H "${ori_frameowrk_path}" ${des_framework_path}
     ${shell_path}/insert_dylib --all-yes "@rpath/${framework_name}.framework/Versions/A/${framework_name}" "$app_executable_backup_path" "$app_executable_path"
     ${shell_path}/UpdateRemoteControlCommandsPlist.py
 }
@@ -65,17 +66,30 @@ help() {
     echo "    help:         帮助"
 }
 
+# 版本匹配
+APP_VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "${app_content_path}/Info.plist")
+PLUGIN_VERSION=$(/usr/libexec/PlistBuddy -c "Print CFBundleShortVersionString" "${ori_frameowrk_path}/Resources/Info.plist")
+if [ "${APP_VERSION}" != "${PLUGIN_VERSION}" ]; then
+    read -t 150 -p "检测微信小助手版本(${PLUGIN_VERSION})和微信版本(${APP_VERSION})不匹配，是否继续安装？[y/n]:" result
+    if [[ "$result" == 'y' ]]; then
+        echo "如果发现奔溃等问题，请使用 WeChatPlugin uninstall 卸载"
+    else
+        exit 0
+    fi
+fi
+
+
 if [ ! -d "$wechat_path" ]; then
     wechat_path="/Applications/微信.app"
     if [ ! -d "$wechat_path" ]; then
-        echo -e "\n\n应用程序文件夹中未发现微信，请检查微信是否有重命名或者移动路径位置"
+        echo "应用程序文件夹中未发现微信，请检查微信是否有重命名或者移动路径位置"
         exit -1
     fi
 fi
 
 # 对 WeChat 赋予权限
 if [ ! -w "$wechat_path" ]; then
-    echo -e "\n\n为了将小助手写入微信, 请输入密码 ： "
+    echo "为了将小助手写入微信, 请输入密码 ： "
     sudo chown -R $(whoami) "$wechat_path"
 fi
 
@@ -99,7 +113,7 @@ while [ $# -gt 0 ];do
             ;;
         ?)
             help
-            exit 1
+            exit -1
             ;;
     esac
 done
