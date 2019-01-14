@@ -18,7 +18,7 @@ framework_name="WeChatPlugin"
 app_bundle_path="${wechat_path}/Contents/MacOS"
 app_executable_path="${app_bundle_path}/${app_name}"
 app_executable_backup_path="${app_executable_path}_backup"
-framework_path="${app_bundle_path}/${framework_name}.framework"
+framework_path="${wechat_path}/Contents/Frameworks/${framework_name}.framework"
 
 
 # 对 WeChat 赋予权限
@@ -39,7 +39,7 @@ read -t 150 -p "已安装微信小助手，是否覆盖？[y/n]:" result
 fi
 
 if [[ "$result" == 'y' ]]; then
-    cp -r "${shell_path}/Products/Debug/${framework_name}.framework" ${app_bundle_path}
-    ${shell_path}/insert_dylib --all-yes "${framework_path}/${framework_name}" "$app_executable_backup_path" "$app_executable_path"
+    cp -R -H "${shell_path}/Products/Debug/${framework_name}.framework" ${framework_path}
+    ${shell_path}/insert_dylib --all-yes "@rpath/${framework_name}.framework/Versions/A/${framework_name}" "$app_executable_backup_path" "$app_executable_path"
     ${shell_path}/UpdateRemoteControlCommandsPlist.py
 fi
