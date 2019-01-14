@@ -22,27 +22,22 @@
 
 + (void)hookWeChat {
     //      微信撤回消息
-    SEL revokeMsgMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFToNameFavChatZZ:) : @selector(onRevokeMsg:);
-    tk_hookMethod(objc_getClass("MessageService"), revokeMsgMethod, [self class], @selector(hook_onRevokeMsg:));
+    tk_hookMethod(objc_getClass("MessageService"), @selector(FFToNameFavChatZZ:), [self class], @selector(hook_onRevokeMsg:));
     //      微信消息同步
-    SEL syncBatchAddMsgsMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFImgToOnFavInfoInfoVCZZ:isFirstSync:) : @selector(OnSyncBatchAddMsgs:isFirstSync:);
-    tk_hookMethod(objc_getClass("MessageService"), syncBatchAddMsgsMethod, [self class], @selector(hook_OnSyncBatchAddMsgs:isFirstSync:));
+    tk_hookMethod(objc_getClass("MessageService"), @selector(FFImgToOnFavInfoInfoVCZZ:isFirstSync:), [self class], @selector(hook_OnSyncBatchAddMsgs:isFirstSync:));
     //      微信多开
-    SEL hasWechatInstanceMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFSvrChatInfoMsgWithImgZZ) : @selector(HasWechatInstance);
-    tk_hookClassMethod(objc_getClass("CUtility"), hasWechatInstanceMethod, [self class], @selector(hook_HasWechatInstance));
+    tk_hookClassMethod(objc_getClass("CUtility"), @selector(FFSvrChatInfoMsgWithImgZZ), [self class], @selector(hook_HasWechatInstance));
     //      免认证登录
     tk_hookMethod(objc_getClass("MMLoginOneClickViewController"), @selector(onLoginButtonClicked:), [self class], @selector(hook_onLoginButtonClicked:));
-    SEL sendLogoutCGIWithCompletionMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFVCRecvDataAddDataToMsgChatMgrRecvZZ:) : @selector(sendLogoutCGIWithCompletion:);
-    tk_hookMethod(objc_getClass("LogoutCGI"), sendLogoutCGIWithCompletionMethod, [self class], @selector(hook_sendLogoutCGIWithCompletion:));
     
-    SEL manualLogoutMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFAddSvrMsgImgVCZZ) : @selector(ManualLogout);
-    tk_hookMethod(objc_getClass("AccountService"), manualLogoutMethod, [self class], @selector(hook_ManualLogout));
+    tk_hookMethod(objc_getClass("LogoutCGI"), @selector(FFVCRecvDataAddDataToMsgChatMgrRecvZZ:), [self class], @selector(hook_sendLogoutCGIWithCompletion:));
+    
+    tk_hookMethod(objc_getClass("AccountService"), @selector(FFAddSvrMsgImgVCZZ), [self class], @selector(hook_ManualLogout));
     
     //      自动登录
     tk_hookMethod(objc_getClass("MMLoginOneClickViewController"), @selector(viewWillAppear), [self class], @selector(hook_viewWillAppear));
     //      置底
-    SEL sortSessionsMethod = LargerOrEqualVersion(@"2.3.22") ? @selector(FFDataSvrMgrSvrFavZZ) : @selector(sortSessions);
-    tk_hookMethod(objc_getClass("MMSessionMgr"), sortSessionsMethod, [self class], @selector(hook_sortSessions));
+    tk_hookMethod(objc_getClass("MMSessionMgr"), @selector(FFDataSvrMgrSvrFavZZ), [self class], @selector(hook_sortSessions));
     //      窗口置顶
     tk_hookMethod(objc_getClass("NSWindow"), @selector(makeKeyAndOrderFront:), [self class], @selector(hook_makeKeyAndOrderFront:));
     //      快捷回复
