@@ -11,6 +11,14 @@
 2. 打开项目编译
 3. `Edit Scheme->Executable`选择当前目录下的`WeChat.app`文件
 
+# 使用
+
+```bash
+./Other/WeChatPlugin install
+./Other/WeChatPlugin uninstall
+./Other/WeChatPlugin update
+```
+
 
 ![微信小助手.png](./Other/ScreenShots/wechatplugin.png)
 
