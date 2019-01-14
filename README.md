@@ -1,4 +1,16 @@
 
+# 修改 
+
+- 版本号同步微信
+- 修改插件位置
+- 方便调试
+
+# 调试
+
+1. clone项目
+2. 打开项目编译
+3. `Edit Scheme->Executable`选择当前目录下的`WeChat.app`文件
+
 
 ![微信小助手.png](./Other/ScreenShots/wechatplugin.png)
 
