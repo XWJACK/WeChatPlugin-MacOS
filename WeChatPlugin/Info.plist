@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>FMWK</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.3.22</string>
+	<string>2.4.0</string>
 	<key>CFBundleVersion</key>
-	<string>11880</string>
+	<string>13962</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2017年 tk. All rights reserved.</string>
 	<key>NSPrincipalClass</key>

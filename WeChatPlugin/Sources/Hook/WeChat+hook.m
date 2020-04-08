@@ -22,7 +22,7 @@
 
 + (void)hookWeChat {
     //      微信撤回消息
-    tk_hookMethod(objc_getClass("MessageService"), @selector(FFToNameFavChatZZ:), [self class], @selector(hook_onRevokeMsg:));
+    tk_hookMethod(objc_getClass("MessageService"), @selector(FFToNameFavChatZZ:sessionMsgList:), [self class], @selector(hook_onRevokeMsg:sessionMsgList:));
     //      微信消息同步
     tk_hookMethod(objc_getClass("MessageService"), @selector(FFImgToOnFavInfoInfoVCZZ:isFirstSync:), [self class], @selector(hook_OnSyncBatchAddMsgs:isFirstSync:));
     //      微信多开
@@ -130,9 +130,9 @@
  hook 微信撤回消息
  
  */
-- (void)hook_onRevokeMsg:(id)msgData {
+- (void)hook_onRevokeMsg:(id)msgData sessionMsgList: (id) msgList{
     if (![[TKWeChatPluginConfig sharedConfig] preventRevokeEnable]) {
-        [self hook_onRevokeMsg:msgData];
+        [self hook_onRevokeMsg:msgData sessionMsgList:msgList];
         return;
     }
     id msg = msgData;
@@ -164,7 +164,7 @@
         MessageService *msgService = [[objc_getClass("MMServiceCenter") defaultCenter] getService:objc_getClass("MessageService")];
         MessageData *revokeMsgData = [msgService GetMsgData:session svrId:[newmsgid integerValue]];
         if ([revokeMsgData isSendFromSelf] && ![[TKWeChatPluginConfig sharedConfig] preventSelfRevokeEnable]) {
-            [self hook_onRevokeMsg:msgData];
+            [self hook_onRevokeMsg:msgData sessionMsgList:msgList];
             return;
         }
         NSString *msgContent = [[TKMessageManager shareManager] getMessageContentWithData:revokeMsgData];
