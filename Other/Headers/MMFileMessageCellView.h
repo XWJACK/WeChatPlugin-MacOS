@@ -59,6 +59,7 @@
 - (void)contextMenuForward;
 - (void)contextMenuExport;
 - (void)contextMenuOpen;
+- (id)getReferMenuItem;
 - (id)getOpenMenuItem;
 - (id)getOperationMenuItem;
 - (void)writeIntoPasteboard:(id)arg1 orItem:(id)arg2 provideDataForType:(id)arg3;

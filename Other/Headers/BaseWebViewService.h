@@ -14,8 +14,9 @@
 {
 }
 
-- (void)cleanWebkitCache;
 - (void)manualCleanWebkitCache;
+- (void)autoCleanWebkitCache;
+- (long long)currentNetworkStatus;
 - (BOOL)isNetworkAvailable;
 - (void)setupNetstatusChange;
 - (void)onServiceClearData;

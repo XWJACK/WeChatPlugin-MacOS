@@ -8,7 +8,7 @@
 
 #import "IMessageExt-Protocol.h"
 
-@class CAShapeLayer, MMCTTextView, MMTextView, MMView, NSString;
+@class CAShapeLayer, MMBorderView, MMCTTextView, MMTextView, MMView, NSString;
 
 @interface MMChatLogMessageCellView : MMMessageCellView <IMessageExt>
 {
@@ -16,7 +16,7 @@
     MMView *_containerView;
     MMCTTextView *_titleLabel;
     MMCTTextView *_descriptionTextView;
-    MMView *_divider;
+    MMBorderView *_divider;
     MMTextView *_bottomTextView;
     CAShapeLayer *_strokeLayer;
 }
@@ -27,10 +27,12 @@
 + (double)cellHeightWithMessage:(id)arg1 constrainedToWidth:(double)arg2;
 + (id)_formattedChatLogContentWithMsg:(id)arg1;
 + (id)_genSenderAndContentString:(id)arg1 isLastOne:(BOOL)arg2;
++ (id)_formattedChatLogBottomWithStr:(id)arg1;
++ (id)_formattedChatLogTitleWithMsg:(id)arg1;
 @property(retain, nonatomic) CAShapeLayer *strokeLayer; // @synthesize strokeLayer=_strokeLayer;
 @property(nonatomic) BOOL isRetry; // @synthesize isRetry=_isRetry;
 @property(retain, nonatomic) MMTextView *bottomTextView; // @synthesize bottomTextView=_bottomTextView;
-@property(retain, nonatomic) MMView *divider; // @synthesize divider=_divider;
+@property(retain, nonatomic) MMBorderView *divider; // @synthesize divider=_divider;
 @property(retain, nonatomic) MMCTTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
 @property(retain, nonatomic) MMCTTextView *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property(retain, nonatomic) MMView *containerView; // @synthesize containerView=_containerView;
@@ -40,7 +42,6 @@
 - (void)resendMessage;
 - (void)setChoosable:(BOOL)arg1;
 - (BOOL)allowChoose;
-- (struct CGRect)contentFrame;
 - (struct CGRect)bubbleFrame;
 - (void)writeIntoPasteboard:(id)arg1 orItem:(id)arg2 provideDataForType:(id)arg3;
 - (void)updateMessageLayer;

@@ -9,6 +9,7 @@
 @protocol IGroupMgrExt
 
 @optional
+- (void)OnQuitGroup:(NSString *)arg1;
 - (void)OnModifyGroupMemberContact:(NSArray *)arg1;
 - (void)OnChangeMemberShowDisplayName:(NSString *)arg1;
 - (void)OnDelGroupMember:(NSString *)arg1 withResult:(unsigned int)arg2 memberList:(NSArray *)arg3;

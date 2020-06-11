@@ -8,7 +8,7 @@
 
 #import "MMService-Protocol.h"
 
-@class GetContactLogic, NSLock, NSMutableDictionary, NSObject, NSString, WCContactDB;
+@class ContactCheckInitLogic, GetContactLogic, NSLock, NSMutableDictionary, NSObject, NSString, WCContactDB;
 @protocol OS_dispatch_queue;
 
 @interface ContactStorage : MMService <MMService>
@@ -24,14 +24,17 @@
     unsigned int _lastCheckTime;
     NSObject<OS_dispatch_queue> *_getContactOnStartANewChatQueue;
     NSMutableDictionary *_dataDict;
+    ContactCheckInitLogic *_checkLogic;
 }
 
 + (void)DeleteContactDatabase;
+@property(retain, nonatomic) ContactCheckInitLogic *checkLogic; // @synthesize checkLogic=_checkLogic;
 @property(nonatomic) unsigned int lastCheckTime; // @synthesize lastCheckTime=_lastCheckTime;
 @property(retain, nonatomic) NSMutableDictionary *dataDict; // @synthesize dataDict=_dataDict;
 @property(nonatomic) BOOL hasGetContactForAllFavContactsDone; // @synthesize hasGetContactForAllFavContactsDone=_hasGetContactForAllFavContactsDone;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *getContactOnStartANewChatQueue; // @synthesize getContactOnStartANewChatQueue=_getContactOnStartANewChatQueue;
 - (void).cxx_destruct;
+- (void)repairInvalidContacts:(id)arg1;
 - (void)CheckContactIfNeeded;
 - (void)saveCheckCache;
 - (void)loadCheckCache;

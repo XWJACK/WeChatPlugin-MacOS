@@ -12,6 +12,7 @@
 
 - (void)setChoosable:(BOOL)arg1;
 - (BOOL)allowChoose;
+- (BOOL)allowRefer;
 - (BOOL)allowOperate;
 - (BOOL)allowOpen;
 - (BOOL)allowMultipleSelect;

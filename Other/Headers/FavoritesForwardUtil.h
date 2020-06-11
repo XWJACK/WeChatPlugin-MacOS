@@ -32,6 +32,7 @@
 + (id)getMessageWrapTitleFromMsgList:(id)arg1;
 + (id)ConvertMsgList2MsgWrap:(id)arg1 useToForward:(BOOL)arg2;
 + (BOOL)favoritesItemIsForwardable:(id)arg1;
++ (id)forwardFavoriteItemDataField:(id)arg1 toUser:(id)arg2;
 + (id)forwardFavoriteItem:(id)arg1 toUser:(id)arg2;
 + (id)convertToMsgType:(id)arg1;
 

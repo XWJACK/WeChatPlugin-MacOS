@@ -10,6 +10,7 @@
 
 @interface MMSessionPickerChoosenRowView : NSTableRowView
 {
+    BOOL _disabled;
     WCContactData *_contact;
     MMAvatarImageView *_avatarView;
     NSTextField *_sessionNameField;
@@ -23,6 +24,7 @@
 @property(retain, nonatomic) NSButton *removeButton; // @synthesize removeButton=_removeButton;
 @property(retain, nonatomic) NSTextField *sessionNameField; // @synthesize sessionNameField=_sessionNameField;
 @property(retain, nonatomic) MMAvatarImageView *avatarView; // @synthesize avatarView=_avatarView;
+@property(nonatomic) BOOL disabled; // @synthesize disabled=_disabled;
 @property(retain, nonatomic) WCContactData *contact; // @synthesize contact=_contact;
 - (void).cxx_destruct;
 - (void)setupWithContact:(id)arg1;

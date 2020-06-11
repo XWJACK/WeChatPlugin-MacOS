@@ -14,7 +14,7 @@
 #import "NSSharingServiceDelegate-Protocol.h"
 #import "NSWindowDelegate-Protocol.h"
 
-@class MMDragEventView, MMPreviewEventView, MMPreviewTitleButton, MMPreviewWindow, MMQLPreviewItem, MMQLPreviewView, NSArray, NSButton, NSImageView, NSPageController, NSProgressIndicator, NSString, NSTextField, NSView, NSVisualEffectView;
+@class MMDragEventView, MMPreviewEventView, MMPreviewTitleButton, MMPreviewWindow, MMQLPreviewFileView, MMQLPreviewItem, NSArray, NSButton, NSImageView, NSPageController, NSProgressIndicator, NSString, NSTextField, NSView, NSVisualEffectView;
 
 @interface MMBasePreviewPanelWindowController : NSWindowController <AccountServiceExt, NSWindowDelegate, MMPreviewWindowDelegate, NSSharingServiceDelegate, IMessageExt, MMFavoritesMgrExt, NSPageControllerDelegate>
 {
@@ -44,12 +44,12 @@
     MMPreviewTitleButton *_rotateButton;
     NSButton *_mmCloseButton;
     NSButton *_mmFullScreenButton;
-    MMQLPreviewView *_filePreviewView;
+    MMQLPreviewFileView *_filePreviewView;
     MMDragEventView *_dragView;
 }
 
 @property(retain, nonatomic) MMDragEventView *dragView; // @synthesize dragView=_dragView;
-@property(retain, nonatomic) MMQLPreviewView *filePreviewView; // @synthesize filePreviewView=_filePreviewView;
+@property(retain, nonatomic) MMQLPreviewFileView *filePreviewView; // @synthesize filePreviewView=_filePreviewView;
 @property(nonatomic) BOOL isKeyDownNavigation; // @synthesize isKeyDownNavigation=_isKeyDownNavigation;
 @property(nonatomic) BOOL isFullScreen; // @synthesize isFullScreen=_isFullScreen;
 @property(retain, nonatomic) NSButton *mmFullScreenButton; // @synthesize mmFullScreenButton=_mmFullScreenButton;
@@ -77,7 +77,7 @@
 @property(nonatomic) BOOL allowMultipleItems; // @synthesize allowMultipleItems=_allowMultipleItems;
 - (void).cxx_destruct;
 - (void)favoritesMgrDidRemoveItem:(id)arg1;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (void)shortCutMenuActionCopy;
 - (void)shortCutMenuActionExport;
 - (void)shortCutCloseActionWithEscape;

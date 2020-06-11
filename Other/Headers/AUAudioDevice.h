@@ -68,6 +68,9 @@
 @property(retain, nonatomic) MMTimer *mMeterTimer; // @synthesize mMeterTimer;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (int)getPlayChannels;
+- (BOOL)isUsingWirelessDevice;
+- (BOOL)isUsingLineDevice;
 - (void)onWCAudioSessionOverride;
 - (void)onWCAudioSessionCategoryChange:(unsigned long long)arg1;
 - (void)onWCAudioSessionOldDeviceUnavailable;

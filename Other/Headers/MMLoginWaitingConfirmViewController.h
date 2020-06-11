@@ -33,6 +33,7 @@
 - (void)setDescriptionString:(id)arg1;
 - (void)setTitleLabelString:(id)arg1;
 - (void)updateAvatarImageByUserName;
+- (void)clearLastAvatar;
 - (void)updateAvatarImageByUrl;
 - (void)setupUnlinkButton;
 - (void)setupDescriptionLabel;

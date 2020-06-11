@@ -12,10 +12,11 @@
 #import "MMNetServiceDelegate-Protocol.h"
 #import "MMNetServiceExt-Protocol.h"
 #import "NSMenuDelegate-Protocol.h"
+#import "WeChatInstance-Protocol.h"
 
 @class DiskMonitor, IoMonitor, LeftViewController, LogoutCGI, MMChatsViewController, MMComposeTextView, MMDockItem, MMMainWindowController, MMServiceCenter, MMStatusItem, MMTimer, MMViewController, NSImageView, NSMenu, NSMenuItem, NSString, ShareExtConfirmWindowController, TaskHeartBeat, VisualizationMonitor, WCDBMonitorMgr;
 
-@interface WeChat : NSObject <DebugMessageSourceViewDelegate, NSMenuDelegate, AccountServiceExt, MMNetServiceDelegate, MMNetServiceExt, IContactMgrExt>
+@interface WeChat : NSObject <DebugMessageSourceViewDelegate, NSMenuDelegate, AccountServiceExt, MMNetServiceDelegate, MMNetServiceExt, IContactMgrExt, WeChatInstance>
 {
     BOOL _isLoggedIn;
     BOOL _isLocked;
@@ -55,9 +56,7 @@
     MMTimer *_timer;
 }
 
-+ (id)appDelegate;
 + (id)sharedInstance;
-+ (void)initialize;
 @property(retain, nonatomic) MMTimer *timer; // @synthesize timer=_timer;
 @property(nonatomic) int progress; // @synthesize progress=_progress;
 @property(retain, nonatomic) NSImageView *flagView; // @synthesize flagView=_flagView;
@@ -102,7 +101,6 @@
 - (void)showMainWindow;
 - (void)updateMainWindowTitle;
 - (void)setupFeedbackIfNeeded;
-- (void)mainThreadMonitorStart;
 - (int)CurrentQQUin;
 - (int)CurrentWeixinUin;
 - (id)CurrentUserName;
@@ -118,6 +116,8 @@
 - (void)onAuthFaildWithWrongPasswordOrUsername;
 - (void)onAuthAlphaVersion:(id)arg1;
 - (void)onAuthKeyInfoInvalid:(id)arg1;
+- (void)delayReportSettingsData;
+- (void)delayReportDBData;
 - (void)onAuthUpdateCert;
 - (void)delayCheckInvalidContact;
 - (void)delayUpdateSessionGroupChat;
@@ -219,7 +219,6 @@
 - (void)_showFavoritesDebug:(id)arg1;
 - (void)_showIDKeyWindow:(id)arg1;
 - (void)_showBenchmarkTool:(id)arg1;
-- (void)_showLagMonitorDebug:(id)arg1;
 - (void)_showReleaseNotesBlog:(id)arg1;
 - (void)_openCacheFolder:(id)arg1;
 - (void)_openCurrentDocument:(id)arg1;
@@ -233,6 +232,7 @@
 - (long long)applicationState;
 - (void)previousTab:(id)arg1;
 - (void)nextTab:(id)arg1;
+- (void)showFileManager:(id)arg1;
 - (void)showFavoritesTab:(id)arg1;
 - (void)showContactsTab:(id)arg1;
 - (void)showChatsTab:(id)arg1;
@@ -260,7 +260,6 @@
 - (void)sendGetAppBrandContact;
 - (void)downloadWeAppIcon:(id)arg1;
 - (void)showWeAppApplicationIcon;
-- (BOOL)isTaskProgress;
 - (void)onAllowMultiProcessValueChange:(id)arg1;
 - (void)showWeAppSandBox:(id)arg1;
 - (void)showWeAppDBData:(id)arg1;

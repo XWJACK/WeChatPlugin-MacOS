@@ -30,6 +30,7 @@
 + (unsigned int)progressWithFinishedBytes:(unsigned int)arg1 totalBytes:(unsigned int)arg2;
 + (id)fileSizeWithBytes:(unsigned int)arg1;
 + (id)sharedInstance;
++ (id)fileOperateQueue;
 - (id)iconForDefaultBrowser;
 - (id)workspaceIconForFileType:(id)arg1;
 - (id)iconForFileTypeDefault:(id)arg1;

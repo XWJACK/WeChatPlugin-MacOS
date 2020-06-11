@@ -11,18 +11,24 @@
 @interface MMCDNTask : NSObject
 {
     unsigned int _localID;
-    unsigned int _fileType;
+    int _fileType;
     MessageData *_message;
     FavoritesItemDataField *_favItemData;
     NSString *_chatName;
     FavoritesItemDataField *_recordMsgData;
     NSString *_clientMediaID;
     NSString *_destinationPath;
+    NSString *_downloadTmpPath;
     NSString *_authKey;
+    NSString *_urlString;
+    NSString *_fileMD5;
 }
 
+@property(retain, nonatomic) NSString *fileMD5; // @synthesize fileMD5=_fileMD5;
+@property(retain, nonatomic) NSString *urlString; // @synthesize urlString=_urlString;
 @property(retain, nonatomic) NSString *authKey; // @synthesize authKey=_authKey;
-@property(nonatomic) unsigned int fileType; // @synthesize fileType=_fileType;
+@property(nonatomic) int fileType; // @synthesize fileType=_fileType;
+@property(retain, nonatomic) NSString *downloadTmpPath; // @synthesize downloadTmpPath=_downloadTmpPath;
 @property(retain, nonatomic) NSString *destinationPath; // @synthesize destinationPath=_destinationPath;
 @property(retain, nonatomic) NSString *clientMediaID; // @synthesize clientMediaID=_clientMediaID;
 @property(retain, nonatomic) FavoritesItemDataField *recordMsgData; // @synthesize recordMsgData=_recordMsgData;

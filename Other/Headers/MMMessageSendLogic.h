@@ -26,13 +26,13 @@
 @property(nonatomic) __weak id <MMMutiplySelectAnimationDelegate> mutiplySelectAnimationDelegate; // @synthesize mutiplySelectAnimationDelegate=_mutiplySelectAnimationDelegate;
 @property(retain, nonatomic) WCContactData *currnetChatContact; // @synthesize currnetChatContact=_currnetChatContact;
 - (void).cxx_destruct;
+- (BOOL)sendAppReferMessage:(id)arg1 withText:(id)arg2 mentionedUsers:(id)arg3;
 - (BOOL)sendAttachmentObject:(id)arg1 toContact:(id)arg2;
 - (void)AddFavoritesWithMultipleMsgList:(id)arg1;
 - (void)ForwardWithMultipleMsgList:(id)arg1 toContacts:(id)arg2;
 - (void)SendOneByOneWithMultipleSelectMsgList:(id)arg1 toCtontacts:(id)arg2;
 - (void)ForwardMessage:(id)arg1 toContacts:(id)arg2;
 - (void)SendWithMultipleSelectMsgList:(id)arg1 toContacts:(id)arg2;
-- (unsigned int)videoDuration:(id)arg1;
 - (void)sendVideoMessageWithFileUrl:(id)arg1;
 - (void)sendImageMessageWithImageData:(id)arg1 imageInfo:(id)arg2;
 - (void)sendImageMessageWithImage:(id)arg1;

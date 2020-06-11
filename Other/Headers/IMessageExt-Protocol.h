@@ -46,7 +46,7 @@
 - (void)onAddRevokePromptMsg:(NSString *)arg1 msgData:(MessageData *)arg2;
 - (void)onMsgDeletedForSession:(NSString *)arg1;
 - (void)onDelAllMsg:(NSString *)arg1;
-- (void)onDelMsg:(NSString *)arg1 msgData:(MessageData *)arg2;
+- (void)onDelMsg:(NSString *)arg1 msgData:(MessageData *)arg2 isRevoke:(BOOL)arg3;
 - (void)onModMsg:(NSString *)arg1 msgData:(MessageData *)arg2;
 - (void)onAddVoipMsgMsgWithChatName:(NSString *)arg1 msgData:(MessageData *)arg2;
 - (void)onAddYoMsgWithChatName:(NSString *)arg1 msgData:(MessageData *)arg2;

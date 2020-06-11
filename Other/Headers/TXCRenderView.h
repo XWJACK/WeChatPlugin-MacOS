@@ -76,6 +76,7 @@
 - (void)_surfaceNeedsUpdate:(id)arg1;
 - (void)sendNotifyEvent:(int)arg1;
 - (void)snapshotFromVFrame:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)snapshotFromView:(CDUnknownBlockType)arg1;
 - (void)snapshot:(CDUnknownBlockType)arg1;
 - (void)focusAtPoint:(struct CGPoint)arg1;
 - (void)resetStats;
@@ -99,14 +100,15 @@
 - (void)setupDisplayLink;
 - (int)drawFrameAtTime:(const CDStruct_e50ab651 *)arg1;
 - (void)setupContext:(id)arg1;
+- (id)createContextWithSharedContext:(id)arg1;
 - (void)viewDidChangeBackingProperties;
 - (void)setup;
-- (void)viewDidMoveToWindow;
 - (void)lockFocus;
 - (void)layout;
 - (void)awakeFromNib;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1 shareContext:(id)arg2;
+- (id)initRemoteViewWithFrame:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

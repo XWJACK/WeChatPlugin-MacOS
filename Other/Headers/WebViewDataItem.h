@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class FavoritesItem, FavoritesItemDataField, MessageData, NSDictionary, NSString, ReaderWrap, WCContactData;
+@class FavoritesItem, FavoritesItemDataField, MessageData, NSMutableDictionary, NSString, ReaderWrap, WCContactData;
 
 @interface WebViewDataItem : NSObject
 {
@@ -17,11 +17,11 @@
     FavoritesItem *_favoritesItem;
     WCContactData *_brandContact;
     FavoritesItemDataField *_dataField;
-    NSDictionary *_extraData;
+    NSMutableDictionary *_extraData;
 }
 
 @property(nonatomic) BOOL isForceWebView; // @synthesize isForceWebView=_isForceWebView;
-@property(retain, nonatomic) NSDictionary *extraData; // @synthesize extraData=_extraData;
+@property(retain, nonatomic) NSMutableDictionary *extraData; // @synthesize extraData=_extraData;
 @property(retain, nonatomic) FavoritesItemDataField *dataField; // @synthesize dataField=_dataField;
 @property(retain, nonatomic) WCContactData *brandContact; // @synthesize brandContact=_brandContact;
 @property(retain, nonatomic) FavoritesItem *favoritesItem; // @synthesize favoritesItem=_favoritesItem;

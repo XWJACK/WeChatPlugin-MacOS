@@ -54,6 +54,7 @@
     TXCRenderView *_renderView;
 }
 
++ (void)setPlayoutVolume:(long long)arg1;
 + (unsigned int)getCorePlayVolumeLevel;
 + (void)enableCorePlayVolumeLevelCal:(BOOL)arg1;
 + (void)setAudioCorePlayDelegate:(id)arg1 callbackSampleNum:(unsigned int)arg2;
@@ -104,7 +105,9 @@
 - (void)setBlockInterval:(unsigned int)arg1;
 - (void)pushNAL:(id)arg1;
 - (long long)pushAudio:(id)arg1;
+- (void)snapshotFromView:(CDUnknownBlockType)arg1;
 - (void)snapshot:(CDUnknownBlockType)arg1;
+- (void)setVideoMuted:(BOOL)arg1;
 - (void)stopVideo;
 - (void)startVideo;
 - (void)stop;

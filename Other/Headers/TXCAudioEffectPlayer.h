@@ -21,6 +21,8 @@
 - (void).cxx_destruct;
 - (void)mixAudioInternal:(char *)arg1 withSrc:(char *)arg2 withLength:(unsigned int)arg3;
 - (void)mixAudio:(char *)arg1 length:(unsigned int)arg2;
+- (void)resumeAudioEffect:(int)arg1;
+- (void)pauseAudioEffect:(int)arg1;
 - (void)setAllAudioEffectsVolume:(double)arg1;
 - (void)setAudioEffectVolume:(int)arg1 volume:(double)arg2;
 - (void)stopAudioEffect:(int)arg1;

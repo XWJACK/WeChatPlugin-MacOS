@@ -10,6 +10,7 @@
 {
 }
 
++ (BOOL)isABTestShouldOpenBlank;
 + (BOOL)isABTestUseNativeOauth;
 + (long long)webkitCacheAge;
 + (BOOL)shouldUseWxjs;

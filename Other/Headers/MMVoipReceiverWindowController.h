@@ -47,8 +47,10 @@
 - (void)closeWindowAnimated:(BOOL)arg1;
 - (void)showWindowAnimated:(BOOL)arg1;
 - (void)addEffectiveViewAboveRenderView;
+- (void)acceptVoIPInviteIfNeeded;
 - (void)layoutWithVoiceMode;
 - (void)layoutWithVideoMode:(BOOL)arg1;
+- (struct CGSize)windowWillResize:(id)arg1 toSize:(struct CGSize)arg2;
 - (void)loadContent;
 - (id)init;
 

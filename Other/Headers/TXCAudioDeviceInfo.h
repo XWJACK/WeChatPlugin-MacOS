@@ -23,6 +23,10 @@
 @property(copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property(nonatomic) unsigned int connId; // @synthesize connId=_connId;
 - (void).cxx_destruct;
+- (id)toString;
+- (id)uint32ToString:(unsigned int)arg1;
+- (void)copy:(id)arg1;
+- (id)init;
 
 @end
 

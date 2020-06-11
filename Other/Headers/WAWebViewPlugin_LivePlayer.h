@@ -30,6 +30,9 @@
 - (void)enableFullScreen:(BOOL)arg1 playerId:(unsigned int)arg2;
 - (void)onPlayNetStatus:(id)arg1 playerId:(unsigned int)arg2;
 - (void)onPlayEvent:(int)arg1 evtMsg:(id)arg2 playerId:(unsigned int)arg3 param:(id)arg4;
+- (void)onAudioVolumeEvaluation:(unsigned int)arg1 volume:(int)arg2;
+- (void)makeWebViewBackgroundTransparent;
+- (id)getLivePlayerWithPlayerId:(unsigned int)arg1;
 - (BOOL)removeLivePlayer:(unsigned int)arg1;
 - (void)snapshotLivePlayer:(unsigned int)arg1 finish:(CDUnknownBlockType)arg2;
 - (void)operateLivePlayer:(unsigned int)arg1 type:(id)arg2 data:(id)arg3;

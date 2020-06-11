@@ -32,6 +32,7 @@
 @property(retain, nonatomic) MMView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) CContact *contactCardData; // @synthesize contactCardData=_contactCardData;
 - (void).cxx_destruct;
+- (id)getReferMenuItem;
 - (void)webImageManager:(id)arg1 didFinishWithImage:(id)arg2;
 - (void)setChoosable:(BOOL)arg1;
 - (BOOL)allowChoose;

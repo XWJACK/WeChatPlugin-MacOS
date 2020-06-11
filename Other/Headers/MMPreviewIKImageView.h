@@ -13,10 +13,10 @@
     CDUnknownBlockType _previewMouseUpEventBlock;
     CDUnknownBlockType _previewMagnifyEventBlock;
     CDUnknownBlockType _previewTouchesMovedEventBlock;
-    CDUnknownBlockType _zoomFactorActionBlock;
+    CDUnknownBlockType _zoomFactorDidChangedBlock;
 }
 
-@property(copy, nonatomic) CDUnknownBlockType zoomFactorActionBlock; // @synthesize zoomFactorActionBlock=_zoomFactorActionBlock;
+@property(copy, nonatomic) CDUnknownBlockType zoomFactorDidChangedBlock; // @synthesize zoomFactorDidChangedBlock=_zoomFactorDidChangedBlock;
 @property(copy, nonatomic) CDUnknownBlockType previewTouchesMovedEventBlock; // @synthesize previewTouchesMovedEventBlock=_previewTouchesMovedEventBlock;
 @property(copy, nonatomic) CDUnknownBlockType previewMagnifyEventBlock; // @synthesize previewMagnifyEventBlock=_previewMagnifyEventBlock;
 @property(copy, nonatomic) CDUnknownBlockType previewMouseUpEventBlock; // @synthesize previewMouseUpEventBlock=_previewMouseUpEventBlock;

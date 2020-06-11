@@ -17,6 +17,7 @@
 @interface MMSessionChoosenView : NSViewController <NSTableViewDataSource, NSTableViewDelegate, MMTableViewDelegate, MMSessionListViewDelegate>
 {
     id <MMSessionChoosenViewDelegate> _delegate;
+    NSArray *_preSelectedUserNames;
     NSString *_confirmButtonText;
     NSString *_cancelButtonText;
     NSTextField *_headingTitleField;
@@ -45,6 +46,7 @@
 @property(retain, nonatomic) NSTextField *headingTitleField; // @synthesize headingTitleField=_headingTitleField;
 @property(retain, nonatomic) NSString *cancelButtonText; // @synthesize cancelButtonText=_cancelButtonText;
 @property(retain, nonatomic) NSString *confirmButtonText; // @synthesize confirmButtonText=_confirmButtonText;
+@property(retain, nonatomic) NSArray *preSelectedUserNames; // @synthesize preSelectedUserNames=_preSelectedUserNames;
 @property(nonatomic) __weak id <MMSessionChoosenViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
 - (id)tableView:(id)arg1 rowViewForRow:(long long)arg2;
@@ -65,6 +67,8 @@
 - (void)setupTableView;
 - (void)clearSelectedForNewAndForwardType;
 - (void)clearAllSelectedUsers;
+- (void)viewDidDisappear;
+- (void)viewWillAppear;
 - (void)viewDidLoad;
 - (id)init;
 

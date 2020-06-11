@@ -44,9 +44,9 @@
 - (void).cxx_destruct;
 - (void)startCdnDownloadFail:(id)arg1;
 - (void)messageFileService:(id)arg1 didFailDownloadWithMessage:(id)arg2;
-- (void)cdnDownloadMgrDidCancelledDownloadWithMessage:(id)arg1 type:(int)arg2;
-- (void)cdnDownloadMgrDidFailedDownloadWithMessage:(id)arg1 type:(int)arg2;
-- (void)cdnDownloadMgrDidFinishedDownloadWithMessage:(id)arg1 type:(int)arg2;
+- (void)cdnDownloadMgrDidCanceledDownloadWithCdnTask:(id)arg1;
+- (void)cdnDownloadMgrDidFailedDownloadWithCdnTask:(id)arg1;
+- (void)cdnDownloadMgrDidFinishedDownloadWithCdnTask:(id)arg1;
 - (void)doClear;
 - (void)exportFinishedWithMessage:(id)arg1 isSuccess:(BOOL)arg2 errMsg:(id)arg3;
 - (id)pathWithoutDuplicates:(id)arg1;

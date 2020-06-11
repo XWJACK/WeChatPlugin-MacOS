@@ -26,7 +26,7 @@
 - (void)deleteNotificationByID:(id)arg1;
 - (id)getNotificationContentWithMsgData:(id)arg1;
 - (BOOL)playNewMsgNotificationVoice;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (void)onNewMsgNotification:(id)arg1 msgData:(id)arg2;
 - (void)removeAllDeliveredNotifications;
 - (void)postNotificationWithTitle:(id)arg1 content:(id)arg2;

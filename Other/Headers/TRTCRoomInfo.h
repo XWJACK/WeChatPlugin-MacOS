@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSLock, NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue;
 
 @interface TRTCRoomInfo : NSObject
 {
-    NSLock *_userListLock;
+    NSObject<OS_dispatch_queue> *_queue;
     unsigned int _roomId;
     unsigned long long _tinyId;
     NSString *_userId;

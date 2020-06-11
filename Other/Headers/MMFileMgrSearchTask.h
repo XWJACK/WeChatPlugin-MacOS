@@ -14,6 +14,9 @@
 
 @property BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
 @property(nonatomic) double createDate; // @synthesize createDate=_createDate;
+- (id)_doSearchChatsWithKeyword:(id)arg1 chatList:(id)arg2;
+- (id)_doSearchSendersWithKeyword:(id)arg1 senderList:(id)arg2;
+- (id)_doSearchTitleWithKeyword:(id)arg1;
 - (void)doSearchWithKeyword:(id)arg1 complete:(CDUnknownBlockType)arg2;
 - (void)cancel;
 - (id)init;

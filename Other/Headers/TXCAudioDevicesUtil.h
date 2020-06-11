@@ -10,9 +10,12 @@
 {
 }
 
++ (unsigned int)getUInt32Property:(unsigned int)arg1 selector:(unsigned int)arg2 isInput:(BOOL)arg3;
++ (BOOL)isBestMatchedBuiltInDevicePair:(id)arg1 second:(id)arg2;
 + (id)defaultAudioDeviceInfo:(BOOL)arg1;
 + (id)defaultAudioOutputDeviceInfo;
 + (id)defaultAudioInputDeviceInfo;
++ (int)selectAudioDeviceToUse:(unsigned int)arg1 isInput:(BOOL)arg2;
 + (id)outputAudioDeviceInfoById:(unsigned int)arg1;
 + (id)inputAudioDeviceInfoById:(unsigned int)arg1;
 + (id)getAudioDeviceList:(BOOL)arg1;

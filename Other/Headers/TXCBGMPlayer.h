@@ -16,9 +16,11 @@
     NSMutableArray *_playPackets;
     struct TXCMutex _audioPlayLock;
     struct TXCResampleMixer *_resampler;
+    float _playoutVolume;
     id <TXIAudioPlayDelegate> _delegate;
 }
 
+@property(nonatomic) float playoutVolume; // @synthesize playoutVolume=_playoutVolume;
 @property(nonatomic) __weak id <TXIAudioPlayDelegate> delegate; // @synthesize delegate=_delegate;
 - (id).cxx_construct;
 - (void).cxx_destruct;

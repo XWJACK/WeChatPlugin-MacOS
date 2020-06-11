@@ -19,6 +19,8 @@
 - (void)onSetMixTranscodingConfig:(int)arg1 errMsg:(NSString *)arg2;
 - (void)onStopPublishCDNStream:(int)arg1 errMsg:(NSString *)arg2;
 - (void)onStartPublishCDNStream:(int)arg1 errMsg:(NSString *)arg2;
+- (void)onStopPublishing:(int)arg1 errMsg:(NSString *)arg2;
+- (void)onStartPublishing:(int)arg1 errMsg:(NSString *)arg2;
 - (void)onRecvSEIMsg:(NSString *)arg1 message:(NSData *)arg2;
 - (void)onMissCustomCmdMsgUserId:(NSString *)arg1 cmdID:(long long)arg2 errCode:(long long)arg3 missed:(long long)arg4;
 - (void)onRecvCustomCmdMsgUserId:(NSString *)arg1 cmdID:(long long)arg2 seq:(unsigned int)arg3 message:(NSData *)arg4;

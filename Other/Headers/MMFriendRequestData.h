@@ -42,7 +42,6 @@
 @property(retain, nonatomic) NSString *userName; // @synthesize userName;
 - (void).cxx_destruct;
 - (BOOL)shouldShowAcceptButton;
-- (BOOL)isLbsGreeting;
 - (id)initWithDictionary:(id)arg1;
 - (id)init;
 - (const map_24f1cf24 *)getValueTagIndexMap;

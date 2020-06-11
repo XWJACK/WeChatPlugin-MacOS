@@ -11,7 +11,7 @@
 #import "WKUIDelegate-Protocol.h"
 #import "YYWebViewInterface-Protocol.h"
 
-@class NSMutableDictionary, NSString, NSURLRequest, WAScrollView, YYWAWebViewScriptMessageHandler;
+@class NSMutableDictionary, NSScrollView, NSString, NSURLRequest, WAScrollView, YYWAWebViewScriptMessageHandler;
 @protocol YYWAWebViewDelegate, YYWebViewDelegate;
 
 @interface YYWAWebView : WKWebView <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, YYWebViewInterface>
@@ -26,6 +26,7 @@
     id <YYWAWebViewDelegate> _nativeDelegate;
     YYWAWebViewScriptMessageHandler *_scriptMessageHandler;
     WAScrollView *_scrollView;
+    WAScrollView *_backgroundScrollView;
     NSMutableDictionary *_innerScrollViews;
     struct CGPoint _clickPosition;
 }
@@ -33,6 +34,7 @@
 + (id)processPool;
 @property(nonatomic) BOOL hasDomObserverInjected; // @synthesize hasDomObserverInjected=_hasDomObserverInjected;
 @property(retain, nonatomic) NSMutableDictionary *innerScrollViews; // @synthesize innerScrollViews=_innerScrollViews;
+@property(retain, nonatomic) WAScrollView *backgroundScrollView; // @synthesize backgroundScrollView=_backgroundScrollView;
 @property(retain, nonatomic) WAScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property(nonatomic) BOOL isCloseUniversallink; // @synthesize isCloseUniversallink=_isCloseUniversallink;
 @property(retain, nonatomic) YYWAWebViewScriptMessageHandler *scriptMessageHandler; // @synthesize scriptMessageHandler=_scriptMessageHandler;
@@ -69,6 +71,7 @@
 @property(readonly, nonatomic) NSURLRequest *request;
 - (id)documentView;
 - (void)webContentScroll:(id)arg1;
+@property(readonly, nonatomic) NSScrollView *backgroundScorllView;
 - (void)updateCoverView;
 - (void)initCoverView;
 - (void)dealloc;

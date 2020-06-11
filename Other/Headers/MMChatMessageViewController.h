@@ -15,15 +15,16 @@
 #import "MMNetExt-Protocol.h"
 #import "MMTableViewDelegate-Protocol.h"
 #import "MMViewerWindowDelegate-Protocol.h"
+#import "MultiTalkMgrExt-Protocol.h"
 #import "NSTableViewDataSource-Protocol.h"
 #import "NSTableViewDelegate-Protocol.h"
 #import "OpenIMResourceMgrExt-Protocol.h"
 #import "VoipMessageCellViewDelegate-Protocol.h"
 
-@class CAShapeLayer, MMChatInfoView, MMChatMessageDataSource, MMChatsBannerCellView, MMMessageCellView, MMMessageScrollView, MMMessageTableItem, MMMessageUnreadTipsButton, MMTableView, MMTimer, NSMutableDictionary, NSString, NSView, WCContactData;
+@class CAShapeLayer, MMChatInfoView, MMChatMessageDataSource, MMChatsBannerCellView, MMMessageCellView, MMMessageScrollView, MMMessageTableItem, MMMessageUnreadTipsButton, MMTableView, MMTimer, MMVoIPInviteView, NSMutableDictionary, NSString, NSView, WCContactData;
 @protocol MMChatMemberListViewDelegate, MMComposeInputViewDelegate;
 
-@interface MMChatMessageViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, MMTableViewDelegate, MMMessageCellViewDelegate, MMViewerWindowDelegate, IContactMgrExt, IGroupMgrExt, MMNetExt, VoipMessageCellViewDelegate, MMMutipleSelectionDelegate, IChatSyncMgrExt, IMMFileReTransferExt, OpenIMResourceMgrExt>
+@interface MMChatMessageViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, MMTableViewDelegate, MMMessageCellViewDelegate, MMViewerWindowDelegate, IContactMgrExt, IGroupMgrExt, MMNetExt, VoipMessageCellViewDelegate, MMMutipleSelectionDelegate, IChatSyncMgrExt, IMMFileReTransferExt, OpenIMResourceMgrExt, MultiTalkMgrExt>
 {
     BOOL _isSettingChatContact;
     BOOL _isScrollToUnReadCount;
@@ -48,7 +49,6 @@
     MMTableView *_messageTableView;
     MMMessageUnreadTipsButton *_unreadTipsButton;
     MMMessageCellView *_currentMessageCellView;
-    MMChatsBannerCellView *_bannerCellView;
     MMChatMessageDataSource *_messageDataSource;
     MMMessageTableItem *_seletedMessageTableItem;
     MMTimer *_netStatusTimer;
@@ -61,11 +61,17 @@
     double _viewWidth;
     long long _readCountWhenUnReadTipShow;
     unsigned long long _unreadCountWhenSetContact;
+    MMVoIPInviteView *_voipInviteView;
+    MMChatsBannerCellView *_networkBannerView;
+    double _scrollDeltaVal;
     struct CGPoint _eventPoint;
     struct CGPoint _dragStartPoint;
     struct CGRect _draggedRect;
 }
 
+@property(nonatomic) double scrollDeltaVal; // @synthesize scrollDeltaVal=_scrollDeltaVal;
+@property(retain, nonatomic) MMChatsBannerCellView *networkBannerView; // @synthesize networkBannerView=_networkBannerView;
+@property(retain, nonatomic) MMVoIPInviteView *voipInviteView; // @synthesize voipInviteView=_voipInviteView;
 @property(nonatomic) unsigned long long unreadCountWhenSetContact; // @synthesize unreadCountWhenSetContact=_unreadCountWhenSetContact;
 @property(nonatomic) long long readCountWhenUnReadTipShow; // @synthesize readCountWhenUnReadTipShow=_readCountWhenUnReadTipShow;
 @property(nonatomic) double viewWidth; // @synthesize viewWidth=_viewWidth;
@@ -87,7 +93,6 @@
 @property(retain, nonatomic) MMTimer *netStatusTimer; // @synthesize netStatusTimer=_netStatusTimer;
 @property(retain, nonatomic) MMMessageTableItem *seletedMessageTableItem; // @synthesize seletedMessageTableItem=_seletedMessageTableItem;
 @property(retain, nonatomic) MMChatMessageDataSource *messageDataSource; // @synthesize messageDataSource=_messageDataSource;
-@property(retain, nonatomic) MMChatsBannerCellView *bannerCellView; // @synthesize bannerCellView=_bannerCellView;
 @property(retain, nonatomic) MMMessageCellView *currentMessageCellView; // @synthesize currentMessageCellView=_currentMessageCellView;
 @property(nonatomic) __weak MMMessageUnreadTipsButton *unreadTipsButton; // @synthesize unreadTipsButton=_unreadTipsButton;
 @property(nonatomic) __weak MMTableView *messageTableView; // @synthesize messageTableView=_messageTableView;
@@ -103,6 +108,7 @@
 @property(copy, nonatomic) CDUnknownBlockType showBrandListViewBlock; // @synthesize showBrandListViewBlock=_showBrandListViewBlock;
 @property(copy, nonatomic) CDUnknownBlockType viewDidLoadBlock; // @synthesize viewDidLoadBlock=_viewDidLoadBlock;
 - (void).cxx_destruct;
+- (unsigned char)isMoreThanLimitWith:(int)arg1;
 - (BOOL)shouldShowGroupChatNickName;
 - (id)getNextVoiceMsgToPlay:(unsigned int)arg1;
 - (long long)getVisibleUnreadMessageCount;
@@ -112,6 +118,8 @@
 - (void)showNetworkBanner;
 - (void)clearNetstatusTimer;
 - (void)onNetStatusChange:(int)arg1;
+- (void)onMultiTalkBannerChange:(id)arg1 status:(unsigned int)arg2;
+- (void)onQuitGroupAndEndMultiTalk:(id)arg1;
 - (BOOL)validateProposedFirstResponder:(id)arg1 forEvent:(id)arg2;
 - (id)title;
 - (void)_limitStickerPlay;
@@ -176,6 +184,8 @@
 - (void)adjustVisableHeightForResize;
 - (void)layoutForResize;
 - (void)setupUnreadTipsButton;
+- (void)layoutMultiTalkContentIfNeeded;
+- (void)setupMultiTalkView;
 - (void)setupChatInfoView;
 - (void)setupBannerCellView;
 - (void)setupTableView;
@@ -199,6 +209,7 @@
 - (void)mainViewResizeSubViews:(id)arg1;
 - (void)windowDidBecomeKeyAction:(id)arg1;
 - (void)voiceTranslateDidFinish:(id)arg1;
+- (void)autoTranslateVoiceToText:(id)arg1;
 - (void)playerDidFinishPlay:(id)arg1;
 - (void)addObservers;
 - (void)onUserActive;

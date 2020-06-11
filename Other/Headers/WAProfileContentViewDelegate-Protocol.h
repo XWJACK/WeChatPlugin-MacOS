@@ -6,9 +6,10 @@
 
 #import "NSObject-Protocol.h"
 
-@class NSString;
+@class CContact, NSString;
 
 @protocol WAProfileContentViewDelegate <NSObject>
+- (void)onHeaderViewClickWithContact:(CContact *)arg1;
 - (void)onPopoverContentCellClick:(NSString *)arg1;
 @end
 

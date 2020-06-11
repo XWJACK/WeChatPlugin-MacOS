@@ -36,7 +36,7 @@
 @property(retain, nonatomic) NSString *selectSession; // @synthesize selectSession=_selectSession;
 - (void).cxx_destruct;
 - (void)handleAppFontSize;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (id)getSearchKeyWordsByString:(id)arg1;
 - (void)tableViewSelectionDidChange:(id)arg1;
 - (BOOL)tableView:(id)arg1 shouldSelectRow:(long long)arg2;

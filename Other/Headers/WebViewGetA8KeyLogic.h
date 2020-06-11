@@ -16,6 +16,7 @@
     NSMutableDictionary *_dicMenuInfoTitle;
     NSMutableDictionary *_dicShareUrlForMainUrl;
     unsigned int _getA8KeyScene;
+    int _reason;
     id <WebViewGetA8KeyLogicDelegate> _delegate;
     NSString *_bundleID;
     NSString *_getA8KeyUserName;
@@ -35,7 +36,7 @@
 - (void)setMenuInfoTitle:(id)arg1 forUrl:(id)arg2;
 - (void)handleOnGetA8KeyOK:(int)arg1 req:(id)arg2 resp:(id)arg3;
 - (void)handleGetA8KeyResponse:(id)arg1 cgiWrap:(id)arg2 reason:(int)arg3;
-- (void)getA8KeyWithURLString:(id)arg1 reason:(int)arg2;
+- (void)getA8KeyWithURLString:(id)arg1 config:(id)arg2;
 - (id)init;
 
 @end

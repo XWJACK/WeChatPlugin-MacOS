@@ -6,7 +6,7 @@
 
 #import <AppKit/NSWindow.h>
 
-@class CAGradientLayer, MMAnimateButtonWrapper, MMAnimateTextFieldWrapper, MMAvatarImageView, MMScaleToFillNSImageView, MMStringToastView, MMTextView, MMTimerLabel, MMVoipRenderView, NSButton, NSImageView, NSTextField, NSView;
+@class CAGradientLayer, MMAnimateButtonWrapper, MMAnimateTextFieldWrapper, MMAvatarImageView, MMScaleToFillNSImageView, MMStringToastView, MMTextView, MMTimerLabel, MMVoipRenderView, NSButton, NSImageView, NSTextField, NSView, NSVisualEffectView, SVGButton;
 
 @interface MMVoipBaseWindow : NSWindow
 {
@@ -22,9 +22,11 @@
     unsigned long long _dotCountIncrement;
     NSView *_buttonContainer;
     MMAnimateButtonWrapper *_muteBtn;
-    NSButton *_hangUpBtn;
-    NSButton *_answerBtn;
-    NSButton *_switchToVoiceChatBtn;
+    SVGButton *_hangUpBtn;
+    MMAnimateTextFieldWrapper *_hangUpBtnTipsLabel;
+    SVGButton *_answerBtn;
+    MMAnimateTextFieldWrapper *_answerBtnTipsLabel;
+    SVGButton *_switchToVoiceChatBtn;
     NSButton *_rotateBtn;
     MMAnimateTextFieldWrapper *_muteBtnTipsLabel;
     NSTextField *_switchToVoiceBtnTipsLabel;
@@ -34,9 +36,23 @@
     MMScaleToFillNSImageView *_hdAvatarImgView;
     NSImageView *_voiceModeAnimateDotView;
     NSView *_effectiveViewAboveRenderView;
+    SVGButton *_stickButton;
+    NSView *_visualEffectView;
+    NSVisualEffectView *_toolVisualEffectView;
+    SVGButton *_openCameraBtn;
+    NSTextField *_openCameraTipLabel;
+    SVGButton *_addMemberBtn;
+    NSTextField *_addMemberTipLabel;
 }
 
 @property(nonatomic) BOOL renderLayerAspectRatioBeforeEnterFullScreen; // @synthesize renderLayerAspectRatioBeforeEnterFullScreen=_renderLayerAspectRatioBeforeEnterFullScreen;
+@property(retain, nonatomic) NSTextField *addMemberTipLabel; // @synthesize addMemberTipLabel=_addMemberTipLabel;
+@property(retain, nonatomic) SVGButton *addMemberBtn; // @synthesize addMemberBtn=_addMemberBtn;
+@property(retain, nonatomic) NSTextField *openCameraTipLabel; // @synthesize openCameraTipLabel=_openCameraTipLabel;
+@property(retain, nonatomic) SVGButton *openCameraBtn; // @synthesize openCameraBtn=_openCameraBtn;
+@property(retain, nonatomic) NSVisualEffectView *toolVisualEffectView; // @synthesize toolVisualEffectView=_toolVisualEffectView;
+@property(retain, nonatomic) NSView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
+@property(retain, nonatomic) SVGButton *stickButton; // @synthesize stickButton=_stickButton;
 @property(retain, nonatomic) NSView *effectiveViewAboveRenderView; // @synthesize effectiveViewAboveRenderView=_effectiveViewAboveRenderView;
 @property(retain, nonatomic) NSImageView *voiceModeAnimateDotView; // @synthesize voiceModeAnimateDotView=_voiceModeAnimateDotView;
 @property(retain, nonatomic) MMScaleToFillNSImageView *hdAvatarImgView; // @synthesize hdAvatarImgView=_hdAvatarImgView;
@@ -46,9 +62,11 @@
 @property(retain, nonatomic) NSTextField *switchToVoiceBtnTipsLabel; // @synthesize switchToVoiceBtnTipsLabel=_switchToVoiceBtnTipsLabel;
 @property(retain, nonatomic) MMAnimateTextFieldWrapper *muteBtnTipsLabel; // @synthesize muteBtnTipsLabel=_muteBtnTipsLabel;
 @property(retain, nonatomic) NSButton *rotateBtn; // @synthesize rotateBtn=_rotateBtn;
-@property(retain, nonatomic) NSButton *switchToVoiceChatBtn; // @synthesize switchToVoiceChatBtn=_switchToVoiceChatBtn;
-@property(retain, nonatomic) NSButton *answerBtn; // @synthesize answerBtn=_answerBtn;
-@property(retain, nonatomic) NSButton *hangUpBtn; // @synthesize hangUpBtn=_hangUpBtn;
+@property(retain, nonatomic) SVGButton *switchToVoiceChatBtn; // @synthesize switchToVoiceChatBtn=_switchToVoiceChatBtn;
+@property(retain, nonatomic) MMAnimateTextFieldWrapper *answerBtnTipsLabel; // @synthesize answerBtnTipsLabel=_answerBtnTipsLabel;
+@property(retain, nonatomic) SVGButton *answerBtn; // @synthesize answerBtn=_answerBtn;
+@property(retain, nonatomic) MMAnimateTextFieldWrapper *hangUpBtnTipsLabel; // @synthesize hangUpBtnTipsLabel=_hangUpBtnTipsLabel;
+@property(retain, nonatomic) SVGButton *hangUpBtn; // @synthesize hangUpBtn=_hangUpBtn;
 @property(retain, nonatomic) MMAnimateButtonWrapper *muteBtn; // @synthesize muteBtn=_muteBtn;
 @property(retain, nonatomic) NSView *buttonContainer; // @synthesize buttonContainer=_buttonContainer;
 @property(nonatomic) BOOL renderLayerAspectRatio; // @synthesize renderLayerAspectRatio=_renderLayerAspectRatio;

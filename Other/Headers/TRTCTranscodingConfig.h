@@ -17,6 +17,7 @@
     int _videoBitrate;
     int _videoFramerate;
     int _videoGOP;
+    int _backgroundColor;
     int _audioSampleRate;
     int _audioBitrate;
     int _audioChannels;
@@ -28,6 +29,7 @@
 @property(nonatomic) int audioChannels; // @synthesize audioChannels=_audioChannels;
 @property(nonatomic) int audioBitrate; // @synthesize audioBitrate=_audioBitrate;
 @property(nonatomic) int audioSampleRate; // @synthesize audioSampleRate=_audioSampleRate;
+@property(nonatomic) int backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property(nonatomic) int videoGOP; // @synthesize videoGOP=_videoGOP;
 @property(nonatomic) int videoFramerate; // @synthesize videoFramerate=_videoFramerate;
 @property(nonatomic) int videoBitrate; // @synthesize videoBitrate=_videoBitrate;

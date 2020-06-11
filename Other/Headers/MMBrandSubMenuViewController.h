@@ -17,12 +17,12 @@
 {
     id <MMBrandSubMenuViewControllerDelegate> _delegate;
     MMTableView *_tableView;
-    WCContactData *_contactData;
+    WCContactData *_currContactData;
     NSArray *_menuItemData;
 }
 
 @property(retain, nonatomic) NSArray *menuItemData; // @synthesize menuItemData=_menuItemData;
-@property(retain, nonatomic) WCContactData *contactData; // @synthesize contactData=_contactData;
+@property(retain, nonatomic) WCContactData *currContactData; // @synthesize currContactData=_currContactData;
 @property __weak MMTableView *tableView; // @synthesize tableView=_tableView;
 @property(nonatomic) __weak id <MMBrandSubMenuViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
@@ -38,7 +38,7 @@
 - (double)tableView:(id)arg1 heightOfRow:(long long)arg2;
 - (long long)numberOfRowsInTableView:(id)arg1;
 - (void)hide;
-- (void)setMenuItemData:(id)arg1 contact:(id)arg2;
+- (void)setMenuItemData:(id)arg1 withContactData:(id)arg2;
 - (void)viewDidLoad;
 
 // Remaining properties

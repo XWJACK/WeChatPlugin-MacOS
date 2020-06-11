@@ -60,7 +60,7 @@
 - (BOOL)exchangeEmotionPackWithProductId:(id)arg1;
 - (void)addExchangedEmoticon;
 - (void)addFavEmoticon:(id)arg1;
-- (void)EmoticonOperateCGIDidFailed:(id)arg1;
+- (void)EmoticonOperateCGIDidFailed:(id)arg1 md5List:(id)arg2;
 - (void)EmoticonOperateCGIDidFinished:(id)arg1 needUploadMD5List:(id)arg2;
 - (void)startOperateNextTask;
 - (void)emoticonDidFailedUpload:(id)arg1 md5:(id)arg2;
@@ -80,6 +80,7 @@
 - (id)getDataStorageList;
 - (id)getEmotionThumbWithPackageID:(id)arg1;
 - (id)getEmotionThumbWithMD5:(id)arg1;
+- (unsigned char)updateEmotionThumbCacheWithMD5:(id)arg1;
 - (id)getEmotionImgWithMD5:(id)arg1;
 - (id)getEmotionDataWithMD5:(id)arg1;
 - (unsigned char)removeFavEmoticonLocalCahceWithMD5:(id)arg1;

@@ -33,7 +33,7 @@
 @property(nonatomic) long long graphType; // @synthesize graphType=_graphType;
 @property(nonatomic) long long graphTypeShowed; // @synthesize graphTypeShowed=_graphTypeShowed;
 @property(nonatomic) double normalStrokeWidth; // @synthesize normalStrokeWidth=_normalStrokeWidth;
-@property(nonatomic) NSColor *normalStrokeColor; // @synthesize normalStrokeColor=_normalStrokeColor;
+@property(retain, nonatomic) NSColor *normalStrokeColor; // @synthesize normalStrokeColor=_normalStrokeColor;
 - (void).cxx_destruct;
 - (void)imageEditTailorComplete:(id)arg1;
 - (void)imageEditTailorCancel:(id)arg1;

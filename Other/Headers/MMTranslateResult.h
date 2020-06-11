@@ -22,6 +22,7 @@
     MessageData *_message;
 }
 
++ (id)messageContentForTranslate:(id)arg1;
 + (int)columnTypeForWCDB;
 + (id)unarchiveWithWCTValue:(id)arg1;
 + (id)failedResultWithReason:(id)arg1 message:(id)arg2;

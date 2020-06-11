@@ -13,13 +13,21 @@
     BOOL _m_isHD;
     BOOL _m_isForce;
     int _m_scene;
+    unsigned int _m_totalLen;
+    unsigned int _m_startOffset;
     NSString *_m_userName;
     NSString *_m_url;
     unsigned long long _m_retryTimes;
     unsigned long long _m_failTime;
     NSData *_m_imageData;
+    NSString *_m_tmpPath;
+    NSString *_m_savePath;
 }
 
+@property(retain, nonatomic) NSString *m_savePath; // @synthesize m_savePath=_m_savePath;
+@property(retain, nonatomic) NSString *m_tmpPath; // @synthesize m_tmpPath=_m_tmpPath;
+@property(nonatomic) unsigned int m_startOffset; // @synthesize m_startOffset=_m_startOffset;
+@property(nonatomic) unsigned int m_totalLen; // @synthesize m_totalLen=_m_totalLen;
 @property(retain, nonatomic) NSData *m_imageData; // @synthesize m_imageData=_m_imageData;
 @property(nonatomic) unsigned long long m_failTime; // @synthesize m_failTime=_m_failTime;
 @property(nonatomic) unsigned long long m_retryTimes; // @synthesize m_retryTimes=_m_retryTimes;

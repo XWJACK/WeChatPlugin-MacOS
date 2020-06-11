@@ -18,6 +18,7 @@
 @property(readonly, nonatomic, getter=canGoBack) BOOL canGoBack;
 @property(nonatomic) BOOL allowsBackForwardNavigationGestures;
 @property(readonly, nonatomic) NSURLRequest *request;
+@property(readonly, nonatomic) NSScrollView *backgroundScorllView;
 @property(readonly, nonatomic) NSScrollView *scrollView;
 @property(nonatomic) __weak id <YYWebViewDelegate> wvDelegate;
 - (void)enableJavaScriptPopup:(BOOL)arg1;

@@ -11,6 +11,7 @@
 }
 
 + (id)_genSenderAndContentString:(id)arg1 isLastOne:(BOOL)arg2;
++ (id)formattedChatLogContentWithDataField:(id)arg1;
 + (id)formattedChatLogContentWithMsg:(id)arg1;
 
 @end

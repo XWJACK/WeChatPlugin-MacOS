@@ -79,11 +79,17 @@
     NSString *m_nsCommentUrl;
     MessageData *m_refMessageData;
     OpenSDKAppBrandItem *m_openSDKAppBrandItem;
+    MessageData *_referingMessageWrap;
+    NSString *_referMessageSenderUsrname;
+    NSString *_referMessageSenderDisplayName;
 }
 
 + (void)CreateExtendInfoWithType:(unsigned int)arg1 retExtendInfo:(id *)arg2;
 @property(nonatomic) unsigned int m_uiWeAppVersion; // @synthesize m_uiWeAppVersion=_m_uiWeAppVersion;
 @property(nonatomic) unsigned int m_uiWeAppState; // @synthesize m_uiWeAppState=_m_uiWeAppState;
+@property(retain, nonatomic) NSString *referMessageSenderDisplayName; // @synthesize referMessageSenderDisplayName=_referMessageSenderDisplayName;
+@property(retain, nonatomic) NSString *referMessageSenderUsrname; // @synthesize referMessageSenderUsrname=_referMessageSenderUsrname;
+@property(retain, nonatomic) MessageData *referingMessageWrap; // @synthesize referingMessageWrap=_referingMessageWrap;
 @property(retain, nonatomic) OpenSDKAppBrandItem *m_openSDKAppBrandItem; // @synthesize m_openSDKAppBrandItem;
 @property(retain, nonatomic) WAAppMsgItem *m_oWAAppItem; // @synthesize m_oWAAppItem;
 @property(nonatomic) unsigned int m_realInnerType; // @synthesize m_realInnerType;
@@ -147,8 +153,20 @@
 @property(retain, nonatomic) NSString *m_nsAppAction; // @synthesize m_nsAppAction;
 @property(retain, nonatomic) NSString *m_nsAesKey; // @synthesize m_nsAesKey;
 - (void).cxx_destruct;
+- (id)msgReferSummary;
+- (id)referIcon;
+- (BOOL)hasReferIcon;
+- (BOOL)hasReferThumb;
+- (BOOL)msgCanBeRefered;
 - (id)getAppDataPath;
 - (BOOL)isAppMsgUseCdn;
+- (id)generateReferMsgXML;
+- (void)parseFromReferMsgXMLNode:(struct XmlReaderNode_t *)arg1;
+- (id)referingMsgSummary;
+- (id)referingMsgSender;
+- (id)referingMsgContent;
+- (id)getReferingMsg;
+- (BOOL)isAppReferMsg;
 - (int)getFileExpiredDays;
 - (BOOL)isAppFileExpired;
 - (BOOL)isFinishUploadOrDownload;
@@ -177,6 +195,7 @@
 - (BOOL)isAppC2CMsg;
 - (BOOL)isAppSyncMsg;
 - (BOOL)isAppRecordMsg;
+- (BOOL)isSolitaireTextAppMsg;
 - (BOOL)isTextAppMsg;
 - (BOOL)isEmojiAppMsg;
 - (BOOL)isImgAppMsg;

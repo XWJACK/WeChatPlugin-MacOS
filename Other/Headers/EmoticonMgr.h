@@ -78,6 +78,7 @@
 - (id)getEmotionThumbWithMD5:(id)arg1;
 - (id)getEmotionImgWithMD5:(id)arg1;
 - (id)getEmotionDataWithMD5:(id)arg1;
+- (unsigned char)updateEmotionThumbCacheWithMD5:(id)arg1;
 - (id)_localizedStickerCaption:(id)arg1;
 @property(readonly) NSArray *emoticonGroupsForStickerPicker;
 @property(readonly) NSArray *emoticonGroupsForEmojiPicker;

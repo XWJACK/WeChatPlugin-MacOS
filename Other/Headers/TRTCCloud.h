@@ -75,7 +75,6 @@
     unsigned long long _lastCaptureCalculateTS;
     struct TXCLocalAudioRecorder *_localAudioRecorder;
     struct TXCLocalAudioRecordListener *_localAudioRecordListener;
-    long long _dashboardDateFormatterOnceToken;
     NSDateFormatter *_dashboardDateFormatter;
     int _recvMode;
     BOOL _enableBlackStream;
@@ -84,6 +83,7 @@
     BOOL _enableCustomAudioCapture;
     BOOL _isAutoFaceFoucs;
     BOOL _isSystemVolumeTypeSetByPublicAPI;
+    BOOL _publishesScreenInBigStream;
     id <TRTCCloudDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     TXCCaptureAndEnc *_capture;
@@ -94,6 +94,9 @@
     long long _currentRole;
     long long _targetRole;
     long long _exitedRoomFlags;
+    long long _captureVolume;
+    long long _playoutVolume;
+    struct CGRect _screenFrame;
 }
 
 + (void)setLogDelegate:(id)arg1;
@@ -106,7 +109,11 @@
 + (id)sharedInstance;
 + (void)setNetEnv:(int)arg1;
 + (void)load;
+@property(nonatomic) struct CGRect screenFrame; // @synthesize screenFrame=_screenFrame;
+@property(nonatomic) BOOL publishesScreenInBigStream; // @synthesize publishesScreenInBigStream=_publishesScreenInBigStream;
 @property BOOL isSystemVolumeTypeSetByPublicAPI; // @synthesize isSystemVolumeTypeSetByPublicAPI=_isSystemVolumeTypeSetByPublicAPI;
+@property long long playoutVolume; // @synthesize playoutVolume=_playoutVolume;
+@property long long captureVolume; // @synthesize captureVolume=_captureVolume;
 @property BOOL isAutoFaceFoucs; // @synthesize isAutoFaceFoucs=_isAutoFaceFoucs;
 @property long long exitedRoomFlags; // @synthesize exitedRoomFlags=_exitedRoomFlags;
 @property(nonatomic) long long targetRole; // @synthesize targetRole=_targetRole;
@@ -132,6 +139,8 @@
 - (void)onSendFirstLocalAudioFrame;
 - (void)onSendFirstLocalVideoFrame:(int)arg1;
 - (void)onChangeRole:(int)arg1 msg:(basic_string_23d93216)arg2;
+- (void)onStopPublishing:(int)arg1 msg:(id)arg2;
+- (void)onStartPublishing:(int)arg1 msg:(id)arg2;
 - (void)onCancelTranscoding:(int)arg1 msg:(id)arg2;
 - (void)onTranscodingUpdated:(int)arg1 msg:(id)arg2;
 - (void)onStreamUnpublished:(int)arg1 msg:(id)arg2;
@@ -172,6 +181,7 @@
 - (BOOL)onCustomRender:(id)arg1 sampleBuffer:(struct opaqueCMSampleBuffer *)arg2 rotation:(long long)arg3 pts:(unsigned long long)arg4;
 - (id)_userIDFromTinyID:(id)arg1;
 - (void)onRequestKeyFrame:(id)arg1 streamType:(int)arg2;
+- (BOOL)isStreamForScreenShare:(int)arg1;
 - (void)handleStateChange:(id)arg1 newUserInfo:(id)arg2;
 - (void)onRecvFirstVideo:(const unsigned long long *)arg1 stream:(int)arg2;
 - (void)onRecvFirstAudio:(const unsigned long long *)arg1;
@@ -207,7 +217,7 @@
 - (void)runAfter:(int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)syncRun:(CDUnknownBlockType)arg1;
 - (void)asyncRun:(CDUnknownBlockType)arg1;
-- (void)configSystemVolumeTypeByScene:(long long)arg1;
+- (void)setSystemVolumeTypeByScene:(long long)arg1;
 - (void)setScreenVideoSizeWithParam:(id)arg1 customVideoSize:(struct CGSize)arg2;
 - (void)setScreenVideoSize:(long long)arg1;
 - (void)setEncVideoSizeWithParam:(id)arg1 customVideoSize:(struct CGSize)arg2;
@@ -224,14 +234,18 @@
 - (long long)convertRotation:(long long)arg1;
 - (void)setVoiceChangerType:(long long)arg1;
 - (void)setReverbType:(long long)arg1;
-- (void)setBGMVolume:(unsigned long long)arg1;
-- (void)setMicVolumeOnMixing:(unsigned long long)arg1;
+- (void)setBGMPublishVolume:(long long)arg1;
+- (void)setBGMPlayoutVolume:(long long)arg1;
+- (void)setBGMVolume:(long long)arg1;
+- (void)setMicVolumeOnMixing:(long long)arg1;
 - (int)setBGMPosition:(long long)arg1;
 - (long long)getBGMDuration:(id)arg1;
 - (void)resumeBGM;
 - (void)pauseBGM;
 - (void)stopBGM;
 - (void)playBGM:(id)arg1 withBeginNotify:(CDUnknownBlockType)arg2 withProgressNotify:(CDUnknownBlockType)arg3 andCompleteNotify:(CDUnknownBlockType)arg4;
+- (void)resumeAudioEffect:(int)arg1;
+- (void)pauseAudioEffect:(int)arg1;
 - (void)setAllAudioEffectsVolume:(int)arg1;
 - (void)setAudioEffectVolume:(int)arg1 volume:(int)arg2;
 - (void)stopAllAudioEffects;
@@ -240,8 +254,12 @@
 - (void)onAudioEffectFinished:(int)arg1 code:(int)arg2;
 - (void)audioSystem:(id)arg1 onEvent:(int)arg2 info:(id)arg3;
 - (void)setMixTranscodingConfig:(id)arg1;
+- (void)getScreenResolution:(struct TRTCTranscodingConfigInternal *)arg1;
+- (void)calcScreenResolutionWidth:(int *)arg1 height:(int *)arg2;
 - (void)stopPublishCDNStream;
 - (void)startPublishCDNStream:(id)arg1;
+- (void)stopPublishing;
+- (void)startPublishing:(id)arg1 type:(long long)arg2;
 - (void)onAudioSystemPlayTestFinished:(id)arg1;
 - (void)stopSpeakerDeviceTest;
 - (void)startSpeakerDeviceTest:(id)arg1 onVolumeChanged:(CDUnknownBlockType)arg2;
@@ -268,6 +286,10 @@
 - (void)stopAudioVolumeEvaluation;
 - (void)startAudioVolumeEvaluation;
 - (void)enableAudioVolumeEvaluation:(unsigned long long)arg1;
+- (long long)getAudioPlayoutVolume;
+- (void)setAudioPlayoutVolume:(long long)arg1;
+- (long long)getAudioCaptureVolume;
+- (void)setAudioCaptureVolume:(long long)arg1;
 - (void)setRemoteAudioVolume:(id)arg1 volume:(int)arg2;
 - (void)muteAllRemoteAudio:(BOOL)arg1;
 - (void)muteRemoteAudioInternal:(id)arg1 mute:(BOOL)arg2;
@@ -286,9 +308,12 @@
 - (int)resetScreenCaptureRect:(struct CGRect)arg1;
 - (int)resumeScreenCapture;
 - (int)pauseScreenCapture;
-- (int)stopScreenCaptureInternalWtihRemoveUpstream:(BOOL)arg1;
+- (int)stopScreenCaptureInternalWithRemoveUpstream:(BOOL)arg1;
 - (int)stopScreenCapture;
+- (void)startScreenCaptureInternal:(id)arg1 inBigStream:(BOOL)arg2;
+- (void)startScreenCapture:(id)arg1 streamType:(long long)arg2 encParam:(id)arg3;
 - (void)startScreenCapture:(id)arg1;
+- (void)flushScreenCaptureEncodeConfig;
 - (void)selectScreenCaptureTarget:(id)arg1 rect:(struct CGRect)arg2 capturesCursor:(BOOL)arg3 highlight:(BOOL)arg4;
 - (id)getScreenCaptureSourcesWithThumbnailSize:(struct CGSize)arg1 iconSize:(struct CGSize)arg2;
 - (int)setCurrentCameraDevice:(id)arg1;

@@ -24,9 +24,9 @@
 - (id)getUploadingMessageForUniqueID:(id)arg1;
 - (id)getDownloadingMessageForUniqueID:(id)arg1;
 - (void)onUpdateVideoStatus:(id)arg1 msgData:(id)arg2;
-- (void)cdnDownloadMgrDidCancelledDownloadWithMessage:(id)arg1 type:(int)arg2;
-- (void)cdnDownloadMgrDidFailedDownloadWithMessage:(id)arg1 type:(int)arg2;
-- (void)cdnDownloadMgrDidFinishedDownloadWithMessage:(id)arg1 type:(int)arg2;
+- (void)cdnDownloadMgrDidCanceledDownloadWithCdnTask:(id)arg1;
+- (void)cdnDownloadMgrDidFailedDownloadWithCdnTask:(id)arg1;
+- (void)cdnDownloadMgrDidFinishedDownloadWithCdnTask:(id)arg1;
 - (void)cdnDownloadMgrDownloaded:(int)arg1 of:(int)arg2 withMessage:(id)arg3 type:(int)arg4 tryShow:(BOOL)arg5;
 - (void)changeMessage:(id)arg1 downloadFileStatus:(unsigned int)arg2;
 - (void)cancelUploadVideoWithMessage:(id)arg1;

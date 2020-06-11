@@ -26,7 +26,7 @@
 @property(retain, nonatomic) ReaderWrap *readerWrap; // @synthesize readerWrap=_readerWrap;
 @property(retain) MessageData *message; // @synthesize message=_message;
 - (void).cxx_destruct;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (BOOL)useEscKeyForClose;
 - (BOOL)useSpaceKeyForClose;
 - (void)onUserLogout;

@@ -9,7 +9,7 @@
 #import "ICdnComMgrExt-Protocol.h"
 #import "MMService-Protocol.h"
 
-@class NSLock, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
+@class NSMutableArray, NSMutableDictionary, NSMutableSet, NSRecursiveLock, NSString;
 
 @interface MMCDNDownloadMgr : MMService <ICdnComMgrExt, MMService>
 {
@@ -17,10 +17,10 @@
     NSMutableArray *_favDownloadQueue;
     NSMutableSet *_favDownloadingSet;
     NSMutableArray *_favStartedSet;
-    NSLock *_m_lock;
+    NSRecursiveLock *_m_lock;
 }
 
-@property(retain, nonatomic) NSLock *m_lock; // @synthesize m_lock=_m_lock;
+@property(retain, nonatomic) NSRecursiveLock *m_lock; // @synthesize m_lock=_m_lock;
 @property(retain, nonatomic) NSMutableArray *favStartedSet; // @synthesize favStartedSet=_favStartedSet;
 @property(retain, nonatomic) NSMutableSet *favDownloadingSet; // @synthesize favDownloadingSet=_favDownloadingSet;
 @property(retain, nonatomic) NSMutableArray *favDownloadQueue; // @synthesize favDownloadQueue=_favDownloadQueue;
@@ -37,6 +37,7 @@
 - (id)thumbnailCDNDownloadParaWithMessage:(id)arg1;
 - (id)fileCDNDownloadParaWithMessage:(id)arg1 destinationPath:(id)arg2;
 - (id)AppMsgImageCDNDownloadParaWithMessage:(id)arg1;
+- (BOOL)startDownloadHeadAvatarImage:(id)arg1;
 - (id)downloadCDNFileWithChatName:(id)arg1 mesLocalID:(unsigned int)arg2 recordMsgData:(id)arg3 type:(int)arg4 isThumbnail:(BOOL)arg5;
 - (double)downloadProgressOfFaviItemData:(id)arg1;
 - (void)startFavDownloadQueue;

@@ -30,6 +30,7 @@
 - (id)searchGroupMembers;
 - (id)searchGroupName;
 - (id)search;
+- (id)initWithSimpleGroupContact:(id)arg1 keyword:(id)arg2 progress:(CDUnknownBlockType)arg3;
 - (id)initWithGroupContact:(id)arg1 keyword:(id)arg2 progress:(CDUnknownBlockType)arg3;
 - (id)initWithGroupContact:(id)arg1 keyword:(id)arg2;
 

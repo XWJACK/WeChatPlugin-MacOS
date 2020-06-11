@@ -11,6 +11,7 @@
 @protocol MMSessionChoosenViewDelegate <NSObject>
 - (void)scrollToTop;
 - (void)removeAssignedContact;
+- (void)removePreSelectedUserNames;
 - (void)removePreSelectedContact;
 - (void)reloadSessionListData;
 - (void)removeSearchQuery;

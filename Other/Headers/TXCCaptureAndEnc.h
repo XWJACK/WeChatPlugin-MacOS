@@ -209,6 +209,8 @@
 - (BOOL)canMixBGM;
 - (void)snapshot:(CDUnknownBlockType)arg1;
 - (void)lockOutput:(BOOL)arg1;
+- (BOOL)setBGMPlayoutVolume:(float)arg1;
+- (BOOL)setBGMPublishVolume:(float)arg1;
 - (BOOL)setBGMVolume:(float)arg1;
 - (BOOL)setMicVolume:(float)arg1;
 - (int)setBGMPosition:(long long)arg1;

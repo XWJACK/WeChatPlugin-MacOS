@@ -44,7 +44,7 @@
 - (void)_setupWithFav;
 - (void)_setupWithMessage;
 - (void)setupWithPreviewItem:(id)arg1;
-- (BOOL)startPlayVideoWith:(BOOL)arg1;
+- (BOOL)startPlayVideo;
 - (void)addPlayView;
 - (void)appendVideoPlayerView;
 - (void)_setupVideoPlayer;

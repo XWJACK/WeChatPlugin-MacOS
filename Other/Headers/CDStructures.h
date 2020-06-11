@@ -659,6 +659,10 @@ struct IMVQQEngine {
     CDUnknownFunctionPointerType *_field1;
 };
 
+struct IMultiTalkMgr {
+    struct MultiTalkMgrImpl *_field1;
+};
+
 struct ISink;
 
 struct ITXCVideoDecoder;
@@ -716,6 +720,8 @@ struct MMCGIItem {
     unsigned int _field8;
     unsigned int _field9;
 };
+
+struct MultiTalkMgrImpl;
 
 struct MxGifImage {
     struct GifDecoder *_field1;
@@ -1038,6 +1044,8 @@ struct RelayConnAttrInfo {
     struct vector<MultiMediaComponent::PointAddr, std::__1::allocator<MultiMediaComponent::PointAddr>> _field8;
     int _field9;
     unsigned short _field10;
+    unsigned int _field11;
+    unsigned short _field12;
 };
 
 struct RelayTcpReport {
@@ -1126,7 +1134,26 @@ struct TC_StatusReportRes {
 
 struct TRTCEngineAdapter;
 
+struct TRTCMixUserInternal;
+
 struct TRTCNetwork;
+
+struct TRTCTranscodingConfigInternal {
+    int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+    unsigned int _field10;
+    unsigned int _field11;
+    unsigned int _field12;
+    basic_string_23d93216 _field13;
+    struct vector<txliteav::TRTCMixUserInternal, std::__1::allocator<txliteav::TRTCMixUserInternal>> _field14;
+};
 
 struct TXBuffer;
 
@@ -1562,6 +1589,10 @@ struct WXAPkgInfo {
     struct vector<WeAppPkg::FileInfo, std::__1::allocator<WeAppPkg::FileInfo>> _field1;
 };
 
+struct WXTalkEngineAdapter {
+    CDUnknownFunctionPointerType *_field1;
+};
+
 struct XmlReaderAttr_t;
 
 struct XmlReaderNode_t {
@@ -1653,6 +1684,7 @@ struct _TXSAudioData {
     int channel;
     int bits;
     int nFrameLenInMs;
+    unsigned short nEnergy;
     unsigned int nTimeStampInMs;
     unsigned long long nTimeStamp64InMs;
     unsigned int nTimestampInSample;
@@ -1811,8 +1843,8 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long l
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<long long, const WCDBBackupMediaStr2IDObject *>, void *>*> *__next_;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*> *__next_;
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*> *__next_;
 };
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<TXLivePlayListener>>, void *>*> {
@@ -1963,35 +1995,6 @@ struct _xmlNode {
 };
 
 struct _xmlNs;
-
-struct _xtrace_arg {
-    char *_field1;
-    char *_field2;
-    int _field3;
-};
-
-struct _xtrace_info {
-    int _field1;
-    void *_field2;
-    void *_field3;
-    char *_field4;
-    CDUnknownFunctionPointerType _field5;
-    CDUnknownFunctionPointerType _field6;
-    CDUnknownFunctionPointerType _field7;
-    CDUnknownBlockType _field8;
-    CDUnknownBlockType _field9;
-    struct objc_method *_field10;
-    char *_field11;
-    char *_field12;
-    char *_field13;
-    struct _xtrace_arg _field14[11];
-    struct _stats {
-        double _field1;
-        double _field2;
-        unsigned int _field3;
-    } _field15;
-    char _field16;
-};
 
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
     struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
@@ -2177,8 +2180,6 @@ struct map<unsigned long, unsigned long, std::__1::less<unsigned long>, std::__1
 struct mutex {
     struct _opaque_pthread_mutex_t _field1;
 };
-
-struct objc_method;
 
 struct objc_method_description {
     SEL _field1;
@@ -2922,6 +2923,44 @@ struct tagAVQualityReportInfo {
     unsigned int _field573;
     unsigned int _field574;
     unsigned int _field575;
+    unsigned int _field576;
+    unsigned int _field577;
+    unsigned int _field578;
+    unsigned int _field579;
+    unsigned int _field580;
+    unsigned int _field581;
+    unsigned int _field582;
+    unsigned int _field583;
+    unsigned int _field584;
+    unsigned int _field585;
+    unsigned int _field586;
+    unsigned int _field587;
+    unsigned int _field588;
+    unsigned int _field589;
+    unsigned int _field590;
+    unsigned int _field591;
+    unsigned int _field592;
+    unsigned int _field593;
+    unsigned int _field594;
+    unsigned int _field595;
+    unsigned int _field596;
+    unsigned int _field597;
+    unsigned int _field598;
+    unsigned int _field599;
+    unsigned int _field600;
+    unsigned int _field601;
+    unsigned int _field602;
+    unsigned int _field603;
+    unsigned int _field604;
+    unsigned int _field605;
+    unsigned int _field606;
+    unsigned int _field607;
+    unsigned int _field608;
+    unsigned int _field609;
+    unsigned int _field610;
+    char _field611[256];
+    unsigned int _field612;
+    unsigned int _field613;
 };
 
 struct tagDecInfoParam {
@@ -3158,11 +3197,11 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__h
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*>*>> {
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
@@ -3265,16 +3304,16 @@ struct unordered_map<long long, const WCDBBackupMediaStr2IDObject *, std::__1::h
     } __table_;
 };
 
-struct unordered_map<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>>> {
-    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, void *>*> __value_;
+struct unordered_map<std::__1::basic_string<char>, AudioVolumeListener *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, AudioVolumeListener *>>> {
+    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, void *>*> __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, std::__1::hash<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, std::__1::hash<std::__1::basic_string<char>>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, AudioVolumeListener *>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
             float __value_;
         } __p3_;
     } __table_;
@@ -3470,6 +3509,14 @@ struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_
     struct __compressed_pair<std::__1::basic_string<char>*, std::__1::allocator<std::__1::basic_string<char>>> {
         basic_string_23d93216 *__value_;
     } __end_cap_;
+};
+
+struct vector<txliteav::TRTCMixUserInternal, std::__1::allocator<txliteav::TRTCMixUserInternal>> {
+    struct TRTCMixUserInternal *_field1;
+    struct TRTCMixUserInternal *_field2;
+    struct __compressed_pair<txliteav::TRTCMixUserInternal *, std::__1::allocator<txliteav::TRTCMixUserInternal>> {
+        struct TRTCMixUserInternal *_field1;
+    } _field3;
 };
 
 struct vector<unsigned int, std::__1::allocator<unsigned int>> {

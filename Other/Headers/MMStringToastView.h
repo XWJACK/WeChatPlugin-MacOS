@@ -16,8 +16,10 @@
     MMAnimateVerticallyCenteredTextFieldWrapper *m_currentLabel;
     MMAnimateVerticallyCenteredTextFieldWrapper *m_nextLabel;
     NSMutableArray *m_remainTimeList;
+    double _delayTime;
 }
 
+@property(nonatomic) double delayTime; // @synthesize delayTime=_delayTime;
 @property(retain, nonatomic) NSMutableArray *m_remainTimeList; // @synthesize m_remainTimeList;
 @property(nonatomic) BOOL m_animationDone; // @synthesize m_animationDone;
 @property(retain, nonatomic) MMAnimateVerticallyCenteredTextFieldWrapper *m_nextLabel; // @synthesize m_nextLabel;

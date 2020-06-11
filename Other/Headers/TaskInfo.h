@@ -22,12 +22,14 @@
     int _errCode;
     int _scene;
     int _reportId;
+    NSString *_portName;
     long long _timeStamp;
     NSString *_userName;
     NSString *_displayname;
     NSString *_taskAppId;
     NSString *_coverUrl;
     NSData *_sessionId;
+    NSData *_encryptKey;
     NSDictionary *_extendObject;
     id <NSSecureCoding> _context;
 }
@@ -38,12 +40,14 @@
 @property(nonatomic) int errCode; // @synthesize errCode=_errCode;
 @property(nonatomic) int code; // @synthesize code=_code;
 @property(retain, nonatomic) NSDictionary *extendObject; // @synthesize extendObject=_extendObject;
+@property(retain, nonatomic) NSData *encryptKey; // @synthesize encryptKey=_encryptKey;
 @property(retain, nonatomic) NSData *sessionId; // @synthesize sessionId=_sessionId;
 @property(copy, nonatomic) NSString *coverUrl; // @synthesize coverUrl=_coverUrl;
 @property(copy, nonatomic) NSString *taskAppId; // @synthesize taskAppId=_taskAppId;
 @property(copy, nonatomic) NSString *displayname; // @synthesize displayname=_displayname;
 @property(copy, nonatomic) NSString *userName; // @synthesize userName=_userName;
 @property(nonatomic) long long timeStamp; // @synthesize timeStamp=_timeStamp;
+@property(copy, nonatomic) NSString *portName; // @synthesize portName=_portName;
 @property(nonatomic) int pid; // @synthesize pid=_pid;
 @property(nonatomic) int seqNO; // @synthesize seqNO=_seqNO;
 - (void).cxx_destruct;
@@ -54,6 +58,7 @@
 - (void)start;
 - (void)cancel;
 - (id)getFilePath;
+- (id)description;
 - (id)init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithCoder:(id)arg1;

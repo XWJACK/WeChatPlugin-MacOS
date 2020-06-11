@@ -63,7 +63,7 @@
 - (void)onCurrentNetworkLockStateWillChange:(BOOL)arg1;
 - (void)onCurrentDeviceLockStateChanged:(BOOL)arg1;
 - (void)onModifyContacts:(id)arg1;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (void)_setupContentContainer;
 - (void)_setupHostLabel;
 - (void)_setupProgressView;

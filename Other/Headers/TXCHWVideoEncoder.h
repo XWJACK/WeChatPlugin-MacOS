@@ -35,6 +35,7 @@
     unsigned int _streamType;
     BOOL _bAnnexB;
     BOOL _enableEncodeCache;
+    long long _encoderInitGop;
     NSMutableArray *_sampleBuffers;
     NSObject<OS_dispatch_source> *_encodeTimer;
 }

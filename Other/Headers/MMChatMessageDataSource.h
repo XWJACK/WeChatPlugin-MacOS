@@ -71,7 +71,7 @@
 - (void)_debugPrintMsgList;
 - (void)onModMsg:(id)arg1 msgData:(id)arg2;
 - (void)onDelAllMsg:(id)arg1;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (void)onAddRevokePromptMsg:(id)arg1 msgData:(id)arg2;
 - (void)onAddMsg:(id)arg1 msgData:(id)arg2;
 - (BOOL)shouldInsertTimeStampWithNewMessage:(id)arg1 lastTimeStamp:(unsigned int)arg2;

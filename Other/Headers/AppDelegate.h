@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import "GSGPUDelegate-Protocol.h"
 #import "NSApplicationDelegate-Protocol.h"
 
 @class NSString;
 
-@interface AppDelegate : NSObject <NSApplicationDelegate>
+@interface AppDelegate : NSObject <NSApplicationDelegate, GSGPUDelegate>
 {
 }
 
+- (void)GPUDidChangeTo:(int)arg1;
 - (void)nslogToFile;
 - (void)applicationWillHide:(id)arg1;
 - (void)applicationWillResignActive:(id)arg1;

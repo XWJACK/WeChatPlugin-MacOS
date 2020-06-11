@@ -9,7 +9,7 @@
 @class EmoticonOperateCGI, NSArray;
 
 @protocol EmoticonOperateCGIDelegate <NSObject>
-- (void)EmoticonOperateCGIDidFailed:(EmoticonOperateCGI *)arg1;
+- (void)EmoticonOperateCGIDidFailed:(EmoticonOperateCGI *)arg1 md5List:(NSArray *)arg2;
 - (void)EmoticonOperateCGIDidFinished:(EmoticonOperateCGI *)arg1 needUploadMD5List:(NSArray *)arg2;
 @end
 

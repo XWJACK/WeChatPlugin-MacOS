@@ -20,7 +20,7 @@
 
 @property(retain, nonatomic) MMThreadSafeDictionary *windowControllerDict; // @synthesize windowControllerDict=_windowControllerDict;
 - (void).cxx_destruct;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (void)favoritesMgrDidRemoveItem:(id)arg1;
 - (void)onAddLocalNoteItem:(id)arg1 ErrCode:(int)arg2;
 - (unsigned int)identifierToLocalID:(id)arg1;

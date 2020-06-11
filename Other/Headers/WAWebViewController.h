@@ -161,6 +161,7 @@
 @property(retain, nonatomic) YYWAWebView<YYWebViewInterface> *webView; // @synthesize webView;
 @property(nonatomic) BOOL m_bIsStatusBarBlack; // @synthesize m_bIsStatusBarBlack=_bIsStatusBarBlack;
 - (void).cxx_destruct;
+- (void)onHeaderViewClickWithContact:(id)arg1;
 - (void)onPopoverContentCellClick:(id)arg1;
 - (void)pullDownRefreshFromLocal;
 - (void)setRecordSubTitleIfNeed;
@@ -189,6 +190,7 @@
 - (void)webView:(id)arg1 didFailLoadWithError:(id)arg2;
 - (void)finishLoadAction;
 - (void)webViewDidFinishLoad:(id)arg1;
+- (void)insertTransparentBackgroundTo:(id)arg1;
 - (void)showPublicJSSpendTime;
 - (void)checkJSBridgeObjects:(BOOL)arg1;
 - (void)webViewDidStartLoad:(id)arg1;
@@ -310,6 +312,7 @@
 - (void)injectWebViewConfigForPreload;
 - (void)loadPreloadAppTaskFrameData;
 - (void)loadIndexData;
+- (id)fixFrameContent:(id)arg1;
 - (id)getFrameContentWithURL:(id)arg1;
 - (void)loadFrameDataWithBaseURL:(id)arg1 pageRelativeURL:(id)arg2;
 - (void)bringTabBarToFront;
@@ -420,7 +423,8 @@
 - (void)onOpenBrandProfileWebView;
 - (void)onClosePerformance;
 - (void)onOpenPerformance;
-- (void)onOpenBrandProfile;
+- (void)onOpenBrandAbout:(id)arg1;
+- (void)onOpenBrandProfile:(id)arg1;
 - (void)onCloseVConsole;
 - (void)onOpenVConsole;
 - (void)onWAActionSheetDidDismiss;
@@ -462,6 +466,7 @@
 - (void)updateParentId:(unsigned int)arg1 forChild:(unsigned int)arg2 fixed:(BOOL)arg3;
 - (void)updateParentId:(unsigned int)arg1 forChild:(unsigned int)arg2;
 - (unsigned int)insertBaseView:(id)arg1 viewId:(unsigned int)arg2 parentId:(unsigned int)arg3;
+- (unsigned int)insertChildView:(id)arg1 viewId:(unsigned int)arg2 parentId:(unsigned int)arg3 toBackground:(BOOL)arg4;
 - (unsigned int)insertChildView:(id)arg1 viewId:(unsigned int)arg2 parentId:(unsigned int)arg3;
 
 // Remaining properties

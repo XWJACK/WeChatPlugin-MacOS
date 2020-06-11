@@ -40,8 +40,8 @@
 - (void)removeUnIndexMsgFromID:(unsigned int)arg1 toID:(unsigned int)arg2 forKey:(id)arg3;
 - (void)removeUnIndexMsg:(id)arg1 forKey:(id)arg2;
 - (void)cacheUnIndexMsg:(id)arg1 forKey:(id)arg2;
-- (void)OnDelMsg:(id)arg1 DelAll:(BOOL)arg2;
-- (void)OnDelMsg:(id)arg1 MsgWrap:(id)arg2;
+- (void)onDelAllMsg:(id)arg1;
+- (void)OnDelMsg:(id)arg1 MsgWrap:(id)arg2 isRevoke:(BOOL)arg3;
 - (void)onAddMsg:(id)arg1 msgData:(id)arg2;
 - (id)searchWithKeyword:(id)arg1 chatName:(id)arg2;
 - (id)safeCopyUnIndexMsgCache;

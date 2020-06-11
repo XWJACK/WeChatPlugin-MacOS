@@ -9,42 +9,36 @@
 #import "GetHeadImageDelegate-Protocol.h"
 #import "IContactMgrExt-Protocol.h"
 #import "IGroupMgrExt-Protocol.h"
+#import "MMCDNDownloadMgrExt-Protocol.h"
 #import "MMService-Protocol.h"
 #import "SyncExt-Protocol.h"
 
-@class AFHTTPSessionManager, GetHeadImage, MMCache, NSLock, NSMutableDictionary, NSObject, NSString;
+@class GetHDHeadImage, GetHeadImage, MMCache, NSLock, NSMutableDictionary, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface MMAvatarService : MMService <IContactMgrExt, GetHeadImageDelegate, IGroupMgrExt, SyncExt, MMService>
+@interface MMAvatarService : MMService <IContactMgrExt, GetHeadImageDelegate, IGroupMgrExt, SyncExt, MMCDNDownloadMgrExt, MMService>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    BOOL _isDownloadMgrValid;
     BOOL _isSendingDownloadCGI;
     MMCache *_avatarCache;
-    AFHTTPSessionManager *_downloadMgr;
     NSMutableDictionary *_downloadingUrlBlocks;
     GetHeadImage *_cgiGetter;
     NSMutableDictionary *_cgiTasks;
     NSLock *_m_lock;
     NSLock *_m_blocksLock;
+    GetHDHeadImage *_cgiHDGetter;
 }
 
+@property(retain, nonatomic) GetHDHeadImage *cgiHDGetter; // @synthesize cgiHDGetter=_cgiHDGetter;
 @property(retain, nonatomic) NSLock *m_blocksLock; // @synthesize m_blocksLock=_m_blocksLock;
 @property(retain, nonatomic) NSLock *m_lock; // @synthesize m_lock=_m_lock;
 @property(retain, nonatomic) NSMutableDictionary *cgiTasks; // @synthesize cgiTasks=_cgiTasks;
 @property(retain, nonatomic) GetHeadImage *cgiGetter; // @synthesize cgiGetter=_cgiGetter;
 @property(nonatomic) BOOL isSendingDownloadCGI; // @synthesize isSendingDownloadCGI=_isSendingDownloadCGI;
 @property(retain, nonatomic) NSMutableDictionary *downloadingUrlBlocks; // @synthesize downloadingUrlBlocks=_downloadingUrlBlocks;
-@property BOOL isDownloadMgrValid; // @synthesize isDownloadMgrValid=_isDownloadMgrValid;
-@property(retain, nonatomic) AFHTTPSessionManager *downloadMgr; // @synthesize downloadMgr=_downloadMgr;
 @property(retain, nonatomic) MMCache *avatarCache; // @synthesize avatarCache=_avatarCache;
 - (void).cxx_destruct;
-- (void)setupDownloadMgr;
-- (void)proxySettingsDidChange:(id)arg1;
 - (id)resizeToSquareAvatarImage:(id)arg1;
-- (void)onDownloadImage:(id)arg1 forScene:(int)arg2 isHD:(BOOL)arg3 imageData:(id)arg4;
-- (void)onDownloadImageFail:(id)arg1 forScene:(int)arg2 isHD:(BOOL)arg3;
-- (BOOL)isNeedGetImage:(id)arg1 forScene:(int)arg2 isHD:(BOOL)arg3 isForce:(BOOL)arg4;
 - (void)makeAvatarWithMemberList:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)generateGroupChatAvatarWithContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)signalWithContact:(id)arg1;
@@ -54,41 +48,46 @@
 - (void)onDeleteContacts:(id)arg1;
 - (void)onModifyStrangerContacts:(id)arg1;
 - (void)onModifyContacts:(id)arg1;
-- (void)downloadAvatarImageWithUsername:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)getAvatarImageWithUsername:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)downloadAvatarWithUrl:(id)arg1 userName:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)onDownloadImage:(id)arg1 forScene:(int)arg2 isHD:(BOOL)arg3 imageData:(id)arg4;
+- (void)onDownloadImageFail:(id)arg1 forScene:(int)arg2 isHD:(BOOL)arg3;
+- (BOOL)isNeedGetImage:(id)arg1 forScene:(int)arg2 isHD:(BOOL)arg3 isForce:(BOOL)arg4;
+- (void)cdnDownloadMgrFinishHTTPRequest:(id)arg1;
+- (void)cdnDownloadMgrFailedHTTPRequest:(id)arg1;
+- (void)downloadAvatarWithUrl:(id)arg1 userName:(id)arg2 isHD:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)checkIsDwonloadingAndAddCallback:(CDUnknownBlockType)arg1 forKey:(id)arg2;
 - (void)callBackForKey:(id)arg1 withImage:(id)arg2 userName:(id)arg3 url:(id)arg4 err:(id)arg5;
-- (void)callBackFailedForUserNames:(id)arg1 err:(id)arg2;
-- (void)getAvatarImageAfterAuthOKWithUrl:(id)arg1 userName:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)getAvatarImageBeforeAuthOKWithUrl:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)getAvatarHDImageWithContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)getAvatarImageWithContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_genAvatarKeyWithUrl:(id)arg1 userName:(id)arg2 isHD:(BOOL)arg3;
-- (void)forceSendRequestUpdateAvatarImageRemoteOutOfLimitTimeWithContact:(id)arg1;
-- (void)forceGetAvatarImageRemoteWithContact:(id)arg1 isHD:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)__removeAvatarFromStorageWithUrl:(id)arg1 userName:(id)arg2 isHD:(BOOL)arg3;
 - (void)_removeAvatarHDFromStorageWithUrl:(id)arg1 userName:(id)arg2;
 - (void)_removeAvatarFromStorageWithUrl:(id)arg1 userName:(id)arg2;
 - (void)_removeImageFromDiskWithMd5Key:(id)arg1 userName:(id)arg2;
 - (void)_removeImageFromCacheWithMd5Key:(id)arg1;
-- (void)_storeImageToDisk:(id)arg1 url:(id)arg2 userName:(id)arg3 isHD:(BOOL)arg4;
 - (void)_storeImageToCache:(id)arg1 url:(id)arg2 userName:(id)arg3 isHD:(BOOL)arg4;
 - (id)_getImageFromCacheWithMD5Key:(id)arg1;
 - (void)_storeImage:(id)arg1 url:(id)arg2 userName:(id)arg3 isHD:(BOOL)arg4;
-- (void)_fetchAvatarRemoteWithUrl:(id)arg1 secondWithUserName:(id)arg2 isHD:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_fetchAvatarFirstWithUrl:(id)arg1 secondWithUserName:(id)arg2 isHD:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (id)genAvatarKeyWithUrl:(id)arg1 userName:(id)arg2 isHD:(BOOL)arg3;
+- (id)avatarDownloadTmpPathWithFileName:(id)arg1 userName:(id)arg2;
+- (id)avatarSavePathWithFileName:(id)arg1 userName:(id)arg2;
+- (id)avatarBeforeAuthOKDownloadTmpPathWithFileName:(id)arg1;
+- (id)avatarBeforeAuthOKSavePathWithFileName:(id)arg1;
+- (void)_fetchAvatarFromRemote:(id)arg1 withUserName:(id)arg2 isHD:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_fetchAvatarFromLocal:(id)arg1 withUserName:(id)arg2 isHD:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_fetchAvatarWithUrl:(id)arg1 withUserName:(id)arg2 isHD:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)getAvatarImageAfterAuthOKWithUrl:(id)arg1 userName:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getAvatarImageBeforeAuthOKWithUrl:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getAvatarHDImageWithContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getAvatarImageWithContact:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)getSelfAvatarImageWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)hasSpecialAvatarWithUserName:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)clearCache;
+- (void)forceSendRequestUpdateAvatarImageRemoteOutOfLimitTimeWithContact:(id)arg1;
+- (void)forceGetAvatarImageRemoteWithContact:(id)arg1 isHD:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getAvatarImageWithUsername:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)getAvatarImageNativeWithContact:(id)arg1 isHD:(BOOL)arg2;
 - (void)getSelfAvatarHDImageWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getSelfAvatarImageWithCompletion:(CDUnknownBlockType)arg1;
 - (id)brandSessionHolderAvatar;
 - (id)defaultHDAvatar;
 - (id)defaultAvatarImage;
 - (id)qqmailAvatarImage;
-- (id)avatarSavePathWithFileName:(id)arg1 userName:(id)arg2;
-- (id)avatarBeforeAuthOKSavePathWithFileName:(id)arg1;
+- (void)clearCache;
 - (void)onServiceClearData;
 - (void)onServiceInit;
 - (void)onInitCancel;

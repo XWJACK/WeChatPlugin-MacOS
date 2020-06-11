@@ -17,8 +17,12 @@
     NSString *_m_nsTransInfo;
     NSString *_m_nsFileID;
     NSString *_m_nsExtInfo;
+    NSString *_m_httpResponseHeader;
+    NSString *_m_nsFileMd5;
 }
 
+@property(retain, nonatomic) NSString *m_nsFileMd5; // @synthesize m_nsFileMd5=_m_nsFileMd5;
+@property(retain, nonatomic) NSString *m_httpResponseHeader; // @synthesize m_httpResponseHeader=_m_httpResponseHeader;
 @property(retain, nonatomic) NSString *m_nsExtInfo; // @synthesize m_nsExtInfo=_m_nsExtInfo;
 @property(retain, nonatomic) NSString *m_nsFileID; // @synthesize m_nsFileID=_m_nsFileID;
 @property(nonatomic) unsigned int m_uiScene; // @synthesize m_uiScene=_m_uiScene;

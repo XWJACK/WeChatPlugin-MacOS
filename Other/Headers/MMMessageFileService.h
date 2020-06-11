@@ -28,9 +28,9 @@
 - (void)onAppMsgUploadProgress:(id)arg1 msgData:(id)arg2 uploadedBytes:(int)arg3 totalBytes:(int)arg4;
 - (void)onAppMsgDownloadFinish:(id)arg1 msgData:(id)arg2 isSuccess:(BOOL)arg3;
 - (void)onAppMsgDownloadProgress:(id)arg1 msgData:(id)arg2 downloadedBytes:(int)arg3 totalBytes:(int)arg4;
-- (void)cdnDownloadMgrDidCancelledDownloadWithMessage:(id)arg1 type:(int)arg2;
-- (void)cdnDownloadMgrDidFailedDownloadWithMessage:(id)arg1 type:(int)arg2;
-- (void)cdnDownloadMgrDidFinishedDownloadWithMessage:(id)arg1 type:(int)arg2;
+- (void)cdnDownloadMgrDidCanceledDownloadWithCdnTask:(id)arg1;
+- (void)cdnDownloadMgrDidFailedDownloadWithCdnTask:(id)arg1;
+- (void)cdnDownloadMgrDidFinishedDownloadWithCdnTask:(id)arg1;
 - (void)cdnDownloadMgrDownloaded:(int)arg1 of:(int)arg2 withMessage:(id)arg3 type:(int)arg4 tryShow:(BOOL)arg5;
 - (void)changeMessage:(id)arg1 downloadFileStatus:(unsigned int)arg2;
 - (void)failUploadFileWithMessage:(id)arg1;

@@ -10,14 +10,17 @@
 #import "TXLiveBaseDelegate-Protocol.h"
 
 @class NSString;
+@protocol WCAudioSessionProtocol;
 
 @interface TXLiveBaseAdapter : NSObject <TXLiveBaseDelegate, TXLiveAudioSessionDelegate>
 {
+    id <WCAudioSessionProtocol> _audioSession;
     BOOL _isLoging;
 }
 
 + (id)shareInstance;
 @property(nonatomic) BOOL isLoging; // @synthesize isLoging=_isLoging;
+- (void).cxx_destruct;
 - (BOOL)setCategory:(id)arg1 error:(id *)arg2;
 - (BOOL)setMode:(id)arg1 error:(id *)arg2;
 - (BOOL)setActive:(BOOL)arg1 error:(id *)arg2;

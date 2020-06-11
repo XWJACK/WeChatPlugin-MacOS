@@ -58,8 +58,10 @@
     NSString *_originalDeviceID;
     MMTimer *_backupTimer;
     MMTimer *_textDidChangeTimeOutTimer;
+    NSString *_dragImgPath;
 }
 
+@property(retain, nonatomic) NSString *dragImgPath; // @synthesize dragImgPath=_dragImgPath;
 @property(nonatomic) BOOL tagBarIsAnimating; // @synthesize tagBarIsAnimating=_tagBarIsAnimating;
 @property(retain, nonatomic) MMTimer *textDidChangeTimeOutTimer; // @synthesize textDidChangeTimeOutTimer=_textDidChangeTimeOutTimer;
 @property(nonatomic) BOOL waitingUserSelectedSyncActionFinish; // @synthesize waitingUserSelectedSyncActionFinish=_waitingUserSelectedSyncActionFinish;
@@ -109,6 +111,7 @@
 - (void)tokenFieldDidChange:(id)arg1;
 - (id)urlEncodeString:(id)arg1;
 - (void)updateTagField;
+- (void)textView:(id)arg1 draggedCell:(id)arg2 inRect:(struct CGRect)arg3 event:(id)arg4 atIndex:(unsigned long long)arg5;
 - (id)textView:(id)arg1 menu:(id)arg2 forEvent:(id)arg3 atIndex:(unsigned long long)arg4;
 - (id)textView:(id)arg1 shouldChangeTypingAttributes:(id)arg2 toAttributes:(id)arg3;
 - (BOOL)textView:(id)arg1 shouldChangeTextInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
@@ -136,6 +139,9 @@
 - (id)getPlayingObjectId;
 - (void)startPlayVoiceAnyway:(id)arg1 lastPlayTime:(double)arg2;
 - (void)startPlayVoice:(id)arg1 lastPlayTime:(double)arg2;
+- (void)cleanDragImgFolder;
+- (void)draggingEnded:(id)arg1;
+- (struct CGRect)draggingFrameForEvent:(id)arg1 withShowSize:(struct CGSize)arg2;
 - (id)getForwardFavItem;
 - (BOOL)operationOutOfSingleAttachmentSizeLimit:(unsigned long long)arg1;
 - (BOOL)operationOutOfTotalSizeLimit:(unsigned long long)arg1;

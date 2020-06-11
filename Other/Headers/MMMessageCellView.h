@@ -97,6 +97,7 @@
 - (void)resetChosenStyle;
 - (void)checkboxToggle;
 - (void)setIsLocateResultStyle:(BOOL)arg1;
+- (void)setIsChosenStyleBackground:(BOOL)arg1;
 - (void)setIsChosenStyle:(BOOL)arg1;
 - (BOOL)isChoosingMode;
 - (int)getChooseModeLeftPadding;
@@ -125,9 +126,9 @@
 - (void)itemAction;
 - (id)_makeAvatarMenuItem:(id)arg1 action:(SEL)arg2;
 - (id)contextAvatarMenu;
-- (id)contextMultipleSelectMenu;
+- (id)contextMultipleSelectMenu:(id)arg1;
 - (id)contextMenu;
-- (id)contextMenuOutsideFrame;
+- (id)contextMenuOutsideFrame:(id)arg1;
 - (id)menuForEvent:(id)arg1;
 - (id)validRequestorForSendType:(id)arg1 returnType:(id)arg2;
 - (BOOL)writeSelectionToPasteboard:(id)arg1 types:(id)arg2;
@@ -148,10 +149,12 @@
 - (id)draggablePasteboardTypes;
 - (BOOL)draggingEnabled;
 - (BOOL)shouldShowAvatarMenuForEvent:(id)arg1;
+- (BOOL)locationIsInsideUndraggableArea:(struct CGPoint)arg1;
 - (BOOL)locationIsInsideAvatarArea:(struct CGPoint)arg1;
 - (BOOL)locationIsInsideClickableArea:(struct CGPoint)arg1;
 - (BOOL)eventIsInsideAvatarArea:(id)arg1;
 - (BOOL)eventIsInsideClickableArea:(id)arg1;
+- (struct CGRect)undraggableArea;
 - (struct CGRect)clickableArea;
 - (void)setupLocateMsgLabel;
 - (void)setupMsgCreatetimeLabel;
@@ -192,6 +195,7 @@
 - (id)getMessageDataSourceFilePath:(id)arg1;
 - (void)updateFileMessageOpTime:(id)arg1;
 - (void)contextMenuShowSourceDebugTool;
+- (void)contextMenuMuteToPlay;
 - (void)contextMenuFavorites;
 - (void)contextMenuForward;
 - (void)contextMenuHideTranslation;
@@ -215,14 +219,17 @@
 - (void)contextMenuRecall;
 - (void)contextMenuResendMessage;
 - (void)contextMenuClearAllMessage;
+- (id)getReferMenuItem;
 - (id)getOpenMenuItem;
 - (id)getOperationMenuItem;
+- (id)contextMenuMenuExtendSection;
 - (id)contextMenuMenuDebugSection;
 - (id)contextMenuMenuSection4;
 - (id)contextMenuMenuSection3;
 - (id)contextMenuMenuSection2;
 - (id)contextMenuMenuSection1;
 - (id)contextMenuMenuSection0;
+- (BOOL)allowRefer;
 - (BOOL)allowMultipleSelect;
 - (BOOL)allowOpen;
 - (BOOL)allowDelete;

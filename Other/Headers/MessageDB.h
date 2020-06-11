@@ -46,6 +46,7 @@
 - (BOOL)deleteAllMsgInChat:(id)arg1;
 - (BOOL)deleteRowInChatWithLocalId:(unsigned int)arg1 svrId:(unsigned long long)arg2 chatName:(id)arg3;
 - (BOOL)updateCreateTimeWithMessage:(id)arg1 chatName:(id)arg2;
+- (BOOL)updateDataMd5WithMessage:(id)arg1 chatName:(id)arg2;
 - (BOOL)updateImageSizeWithMessage:(id)arg1 chatName:(id)arg2;
 - (BOOL)updateUploadAndDownloadStatusInDBWithMessage:(id)arg1 chatName:(id)arg2;
 - (BOOL)updateTranslateStatusInDBWithMessage:(id)arg1 chatName:(id)arg2;

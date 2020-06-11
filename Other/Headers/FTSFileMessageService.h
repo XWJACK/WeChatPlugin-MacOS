@@ -24,6 +24,7 @@
     NSObject<OS_dispatch_queue> *_m_ftsTaskCheckQueue;
     NSObject<OS_dispatch_queue> *_m_ftsTaskInitialQueue;
     long long _initialCount;
+    long long _initialAppCount;
     double _initialBegin;
     NSMutableArray *_initialTaskList;
     NSMutableArray *_initialSessionList;
@@ -36,6 +37,7 @@
 @property(retain, nonatomic) NSMutableArray *initialSessionList; // @synthesize initialSessionList=_initialSessionList;
 @property(retain, nonatomic) NSMutableArray *initialTaskList; // @synthesize initialTaskList=_initialTaskList;
 @property(nonatomic) double initialBegin; // @synthesize initialBegin=_initialBegin;
+@property(nonatomic) long long initialAppCount; // @synthesize initialAppCount=_initialAppCount;
 @property(nonatomic) long long initialCount; // @synthesize initialCount=_initialCount;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *m_ftsTaskInitialQueue; // @synthesize m_ftsTaskInitialQueue=_m_ftsTaskInitialQueue;
 @property(retain, nonatomic) NSObject<OS_dispatch_queue> *m_ftsTaskCheckQueue; // @synthesize m_ftsTaskCheckQueue=_m_ftsTaskCheckQueue;
@@ -60,7 +62,7 @@
 - (int)ABTestInitialBatch;
 - (int)ABTestInitialTotalCount;
 - (void)onDelAllMsg:(id)arg1;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (void)onAddMsg:(id)arg1 msgData:(id)arg2;
 - (void)onOperateMsgList:(id)arg1 opTime:(unsigned int)arg2;
 - (id)getFTSFileMessageForChats:(id)arg1;
@@ -73,7 +75,8 @@
 - (id)getAllFileMessageSenders;
 - (id)getAllRecentFileItemOnCount;
 - (id)getAllRecentFileItemOnDate;
-- (id)getAllFileMessageContacts;
+- (id)getAllFileMessageUnorderedSenders;
+- (id)getAllFileMessageUnorderedChats;
 - (id)getAllFileMessage;
 - (void)doUpdateIndex:(id)arg1;
 - (void)doClearIndex:(id)arg1;

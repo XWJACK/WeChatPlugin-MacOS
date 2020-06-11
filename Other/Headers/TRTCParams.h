@@ -15,12 +15,16 @@
     NSString *_userId;
     NSString *_userSig;
     long long _role;
+    NSString *_streamId;
+    NSString *_userDefineRecordId;
     NSString *_privateMapKey;
     NSString *_bussInfo;
 }
 
 @property(retain, nonatomic) NSString *bussInfo; // @synthesize bussInfo=_bussInfo;
 @property(retain, nonatomic) NSString *privateMapKey; // @synthesize privateMapKey=_privateMapKey;
+@property(retain, nonatomic) NSString *userDefineRecordId; // @synthesize userDefineRecordId=_userDefineRecordId;
+@property(retain, nonatomic) NSString *streamId; // @synthesize streamId=_streamId;
 @property(nonatomic) long long role; // @synthesize role=_role;
 @property(nonatomic) unsigned int roomId; // @synthesize roomId=_roomId;
 @property(retain, nonatomic) NSString *userSig; // @synthesize userSig=_userSig;

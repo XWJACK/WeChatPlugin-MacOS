@@ -20,6 +20,7 @@
 @property(retain, nonatomic) MessageData *originalMessage; // @synthesize originalMessage=_originalMessage;
 - (void).cxx_destruct;
 - (BOOL)allowMultipleSelect;
+- (BOOL)allowRefer;
 - (void)setChoosable:(BOOL)arg1;
 - (BOOL)allowChoose;
 - (struct CGRect)rectForContextMenuButton;

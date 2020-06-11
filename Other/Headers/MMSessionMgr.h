@@ -114,7 +114,7 @@
 - (void)updateMaxMsgCreateTime;
 - (unsigned int)sumUnreadCount;
 - (void)pushFrontSessionInfo:(id)arg1;
-- (void)FFDataSvrMgrSvrFavZZ;
+- (unsigned char)FFDataSvrMgrSvrFavZZ;
 - (void)syncSessionOrder:(id)arg1;
 - (void)removeSessionInfo:(id)arg1;
 - (void)updateSessionInfo:(id)arg1;

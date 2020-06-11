@@ -45,6 +45,7 @@
     BOOL m_bShouldShowAll;
     BOOL m_bIsMultiForwardMessage;
     BOOL m_shouldReloadOriginal;
+    BOOL m_bHasOriginalMessage;
     unsigned int IntRes1;
     unsigned int IntRes2;
     unsigned int m_uiFileUploadStatus;
@@ -64,6 +65,7 @@
     NSString *m_nsFilePath;
     NSString *m_nsVideoPath;
     NSString *m_nsVideoThumbPath;
+    NSString *dataMd5;
     MessageData *m_refMessageData;
     MessageDataPackedInfo *m_packedInfo;
     NSString *m_nsSrcUserName;
@@ -72,6 +74,7 @@
     NSString *_m_nsImgFileName;
     NSString *_m_nsBigFileErrMsg;
     SecondMsgNode *_secondMsgNode;
+    MessageData *_referHostMsg;
 }
 
 + (int)columnTypeForWCDB;
@@ -113,6 +116,7 @@
 + (void)GetPathOfAppData:(id)arg1 LocalID:(unsigned int)arg2 FileExt:(id)arg3 retStrPath:(id *)arg4;
 + (void)GetPathOfAppDir:(id)arg1 retStrPath:(id *)arg2;
 + (void)RegisterClsMethod_AppMsgPath;
+@property(nonatomic) __weak MessageData *referHostMsg; // @synthesize referHostMsg=_referHostMsg;
 @property(retain, nonatomic) SecondMsgNode *secondMsgNode; // @synthesize secondMsgNode=_secondMsgNode;
 @property(nonatomic) unsigned int m_uiResendMessageCount; // @synthesize m_uiResendMessageCount=_m_uiResendMessageCount;
 @property(nonatomic) int m_nCdnServerRetCode; // @synthesize m_nCdnServerRetCode=_m_nCdnServerRetCode;
@@ -122,6 +126,7 @@
 @property(nonatomic) unsigned int m_nsMsgCrc32; // @synthesize m_nsMsgCrc32=_m_nsMsgCrc32;
 @property(retain, nonatomic) NSString *m_nsBigFileErrMsg; // @synthesize m_nsBigFileErrMsg=_m_nsBigFileErrMsg;
 @property(retain, nonatomic) NSString *m_nsImgFileName; // @synthesize m_nsImgFileName=_m_nsImgFileName;
+@property(nonatomic) BOOL m_bHasOriginalMessage; // @synthesize m_bHasOriginalMessage;
 @property(nonatomic) BOOL m_shouldReloadOriginal; // @synthesize m_shouldReloadOriginal;
 @property(nonatomic) BOOL m_bIsMultiForwardMessage; // @synthesize m_bIsMultiForwardMessage;
 @property(retain, nonatomic) NSString *m_nsAtUserList; // @synthesize m_nsAtUserList;
@@ -133,6 +138,7 @@
 @property(retain, nonatomic) id <IMsgExtendOperation> extendInfoWithFromUsr; // @synthesize extendInfoWithFromUsr=m_extendInfoWithFromUsr;
 @property(retain, nonatomic) id <IMsgExtendOperation> extendInfoWithMsgType; // @synthesize extendInfoWithMsgType=m_extendInfoWithMsgType;
 @property(nonatomic) BOOL m_bShouldShowAll; // @synthesize m_bShouldShowAll;
+@property(retain, nonatomic) NSString *dataMd5; // @synthesize dataMd5;
 @property(nonatomic) unsigned int m_uiOriginalImgWidth; // @synthesize m_uiOriginalImgWidth;
 @property(nonatomic) unsigned int m_uiOriginalImgHeight; // @synthesize m_uiOriginalImgHeight;
 @property(retain, nonatomic) NSString *m_nsVideoThumbPath; // @synthesize m_nsVideoThumbPath;
@@ -169,6 +175,14 @@
 - (void).cxx_destruct;
 - (id)archivedWCTValue;
 @property(retain, nonatomic) MessageDataPackedInfo *m_packedInfo; // @synthesize m_packedInfo;
+- (id)referUniqueID;
+- (id)msgReferSummary;
+- (id)msgReferSender:(id)arg1;
+- (id)msgReferContent:(id)arg1;
+- (id)referIcon;
+- (BOOL)hasReferIcon;
+- (BOOL)hasReferThumb;
+- (BOOL)msgCanBeRefered;
 - (BOOL)isAppImgUseCdn;
 - (BOOL)isVideoUseCdn;
 - (BOOL)isImgUseCdn;
@@ -246,6 +260,7 @@
 - (id)generateMessageDisplayContent;
 - (id)chatSenderDisplayNameWithRemark:(BOOL)arg1;
 - (id)groupChatSenderDisplayName;
+- (id)referMsgSenderDisplayName;
 - (id)savingImageFileNameWithLocalID;
 - (id)savingImageFileName;
 - (BOOL)isOriginalImageDownload;
@@ -272,6 +287,7 @@
 - (id)mapsURLWithProvider:(unsigned long long)arg1;
 - (int)yoType;
 - (unsigned long long)yoCount;
+- (BOOL)isWideOrLongImg;
 
 // Remaining properties
 @property(retain, nonatomic) NSMutableArray *arrCCList; // @dynamic arrCCList;
@@ -401,6 +417,9 @@
 @property(retain, nonatomic) NSString *nsSenderAddress; // @dynamic nsSenderAddress;
 @property(retain, nonatomic) NSString *nsSubject; // @dynamic nsSubject;
 @property(retain, nonatomic) NSString *nsWapLink; // @dynamic nsWapLink;
+@property(retain, nonatomic) NSString *referMessageSenderDisplayName;
+@property(retain, nonatomic) NSString *referMessageSenderUsrname;
+@property(retain, nonatomic) MessageData *referingMessageWrap;
 @property(readonly) Class superclass;
 @property(nonatomic) unsigned long long uiUin; // @dynamic uiUin;
 

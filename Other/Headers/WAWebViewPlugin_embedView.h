@@ -21,6 +21,7 @@
 - (void)resizeView:(unsigned int)arg1 region:(struct CGRect)arg2;
 - (void)updateParentId:(unsigned int)arg1 forChild:(unsigned int)arg2;
 - (unsigned int)insertBaseView:(id)arg1 viewId:(unsigned int)arg2 parentId:(unsigned int)arg3;
+- (unsigned int)insertChildView:(id)arg1 viewId:(unsigned int)arg2 parentId:(unsigned int)arg3 toBackground:(BOOL)arg4;
 - (unsigned int)insertChildView:(id)arg1 viewId:(unsigned int)arg2 parentId:(unsigned int)arg3;
 
 @end

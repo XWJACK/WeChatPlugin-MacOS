@@ -6,12 +6,13 @@
 
 #import <AppKit/NSTableCellView.h>
 
+#import "IContactMgrExt-Protocol.h"
 #import "NSDraggingSource-Protocol.h"
 
 @class FavoritesItem, FavoritesItemDataField, MMAvatarImageView, MMBorderView, MMChatLogEventView, MMTextView, MessageData, NSImage, NSString;
 @protocol MMChatLogCellViewDelegate;
 
-@interface MMChatLogBaseCellView : NSTableCellView <NSDraggingSource>
+@interface MMChatLogBaseCellView : NSTableCellView <NSDraggingSource, IContactMgrExt>
 {
     BOOL _selected;
     FavoritesItemDataField *_currentDataField;
@@ -52,8 +53,9 @@
 - (BOOL)menuEventIsInClickableArea:(id)arg1;
 - (id)resizedDraggingImage;
 - (BOOL)isShouldDisplayAvatar;
+- (void)onModifyStrangerContacts:(id)arg1;
+- (void)layoutAvatarWithContact:(id)arg1;
 - (void)layoutAvatarWithCurrentDataField:(id)arg1;
-- (id)_getContactWithDataField:(id)arg1;
 - (id)_getRealChatNameWithDataField:(id)arg1;
 - (void)layoutAvatar;
 - (void)layoutSenderInfoView;
@@ -82,6 +84,7 @@
 - (id)draggingImage;
 - (BOOL)allowDraging;
 - (void)mouseDragged:(id)arg1;
+- (void)dealloc;
 - (void)mouseDown:(id)arg1;
 - (void)prepareForReuse;
 - (void)drawRect:(struct CGRect)arg1;

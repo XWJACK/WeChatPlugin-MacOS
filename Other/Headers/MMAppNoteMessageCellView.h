@@ -57,6 +57,7 @@
 - (id)imageWithImagePath:(id)arg1;
 - (void)setChoosable:(BOOL)arg1;
 - (BOOL)allowChoose;
+- (id)getReferMenuItem;
 - (id)getOperationMenuItem;
 - (void)writeIntoPasteboard:(id)arg1 orItem:(id)arg2 provideDataForType:(id)arg3;
 - (id)draggablePasteboardTypes;

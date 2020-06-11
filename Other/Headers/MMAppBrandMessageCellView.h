@@ -37,6 +37,7 @@
 @property(retain, nonatomic) NSImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property(retain, nonatomic) MMView *containerView; // @synthesize containerView=_containerView;
 - (void).cxx_destruct;
+- (id)getReferMenuItem;
 - (void)writeIntoPasteboard:(id)arg1 orItem:(id)arg2 provideDataForType:(id)arg3;
 - (id)draggingImage;
 - (BOOL)draggingEnabled;

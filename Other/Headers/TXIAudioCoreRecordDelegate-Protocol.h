@@ -11,6 +11,7 @@
 @protocol TXIAudioCoreRecordDelegate <NSObject>
 
 @optional
+- (void)onVOIPModeChanged:(BOOL)arg1;
 - (void)onRecordError:(long long)arg1 info:(NSString *)arg2;
 - (void)onCorePlayPCMDataToSoftAEC:(const struct _TXSAudioData *)arg1;
 - (void)onCoreRecordPCMData:(const struct _TXSAudioData *)arg1 count:(unsigned long long)arg2;

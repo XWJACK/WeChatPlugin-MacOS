@@ -36,6 +36,7 @@
 - (void)showToastViewWarningFavEmoticon:(id)arg1;
 - (void)showToastViewAddingFavEmoticon;
 - (void)contextMenuAddEmotion;
+- (id)getReferMenuItem;
 - (id)getOperationMenuItem;
 - (struct CGRect)clickableArea;
 - (void)updateStickerWithImage:(id)arg1;

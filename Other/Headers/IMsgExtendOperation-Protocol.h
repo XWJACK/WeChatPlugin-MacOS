@@ -6,13 +6,18 @@
 
 #import "NSObject-Protocol.h"
 
-@class MessageData, NSArray, NSString, SendVideoInfo;
+@class MessageData, NSArray, NSImage, NSString, SendVideoInfo;
 
 @protocol IMsgExtendOperation <NSObject>
 @property(nonatomic) __weak MessageData *m_refMessageData;
 - (id)copy;
 
 @optional
+- (NSImage *)referIcon;
+- (BOOL)hasReferIcon;
+- (BOOL)hasReferThumb;
+- (NSString *)msgReferSummary;
+- (BOOL)msgCanBeRefered;
 - (BOOL)isFinishUploadOrDownload;
 - (void)ChangeForBackup;
 - (BOOL)cleanupMediaRes;
@@ -36,6 +41,7 @@
 - (BOOL)isAppHongbaoMsg;
 - (BOOL)isAppC2CMsg;
 - (BOOL)isAppRecordMsg;
+- (BOOL)isSolitaireTextAppMsg;
 - (BOOL)isTextAppMsg;
 - (BOOL)isMultiReaderMsg;
 - (BOOL)isSingleReaderMsg;

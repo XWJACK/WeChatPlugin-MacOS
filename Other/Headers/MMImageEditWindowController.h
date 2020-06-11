@@ -21,7 +21,7 @@
     NSView *_containerView;
     NSImage *_backgroundImage;
     NSView *_titlebarContainerView;
-    NSButton *_selfCloseButton;
+    NSButton *_aCloseButton;
     MMImageEditToolbarView *_toolbarView;
     MMImageEditPalletWindowController *_popoverWindowController;
     struct CGRect _windowRect;
@@ -29,7 +29,7 @@
 
 @property(retain, nonatomic) MMImageEditPalletWindowController *popoverWindowController; // @synthesize popoverWindowController=_popoverWindowController;
 @property(retain, nonatomic) MMImageEditToolbarView *toolbarView; // @synthesize toolbarView=_toolbarView;
-@property __weak NSButton *selfCloseButton; // @synthesize selfCloseButton=_selfCloseButton;
+@property(retain, nonatomic) NSButton *aCloseButton; // @synthesize aCloseButton=_aCloseButton;
 @property __weak NSView *titlebarContainerView; // @synthesize titlebarContainerView=_titlebarContainerView;
 @property(retain, nonatomic) NSImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
 @property(nonatomic) BOOL isClosing; // @synthesize isClosing=_isClosing;
@@ -61,7 +61,7 @@
 - (void)undo;
 - (void)graphTypeDidChange:(long long)arg1;
 - (void)onDelAllMsg:(id)arg1;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (void)doSomethingWhenLocked;
 - (void)doSomethingWhenUserLogout;
 - (void)toggleEnableShrink:(BOOL)arg1;

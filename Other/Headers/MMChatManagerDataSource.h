@@ -12,7 +12,6 @@
 
 @interface MMChatManagerDataSource : MMTableDataSource <IMessageExt>
 {
-    NSMutableArray *messageTypes;
     BOOL _isFullyCached;
     BOOL _isSearchingResults;
     BOOL _ascendOrder;
@@ -21,6 +20,7 @@
     unsigned int _lastCreateTime;
     unsigned int _previousCreateTime;
     unsigned int _followingCreateTime;
+    NSMutableArray *_messageTypes;
     NSString *_chatName;
     NSMutableArray *_messages;
     NSArray *_searchKeyword;
@@ -53,8 +53,9 @@
 @property(nonatomic) unsigned int lastCreateTime; // @synthesize lastCreateTime=_lastCreateTime;
 @property(nonatomic) unsigned int msgPageSize; // @synthesize msgPageSize=_msgPageSize;
 @property(retain, nonatomic) NSString *chatName; // @synthesize chatName=_chatName;
+@property(retain, nonatomic) NSMutableArray *messageTypes; // @synthesize messageTypes=_messageTypes;
 - (void).cxx_destruct;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (long long)indexOfCreateTime:(unsigned int)arg1;
 - (void)loadMessageMessageUpwards;
 - (void)loadMessageMessageDownwards;

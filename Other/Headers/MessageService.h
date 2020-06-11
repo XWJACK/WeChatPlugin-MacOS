@@ -28,7 +28,6 @@
     AppMessageHandler *m_appMsgHandler;
     EmoticonMessageHandler *m_emoticonMsgHandler;
     ThumbDownloadMgr *m_thumbDownloadMgr;
-    NSRecursiveLock *m_oLockForVideoCompress;
     RecordMessageHandler *m_recordMsgHandler;
     NSLock *m_lock;
     BOOL _isMacHelperHasNewChanges;
@@ -104,6 +103,10 @@
 - (id)createNewMessage:(id)arg1 withUserName:(id)arg2;
 - (void)ResendMsg:(id)arg1 toUser:(id)arg2;
 - (void)onRecordMsgUploadCDNModMsgByBitSet:(id)arg1 MsgWrap:(id)arg2 BitSet:(unsigned int)arg3;
+- (void)updateReferMsgAsRevoked:(id)arg1 chatName:(id)arg2;
+- (id)forwardAppReferMsgMessage:(id)arg1 toUser:(id)arg2 errMsg:(id *)arg3;
+- (id)resendAppReferMessage:(id)arg1 toUser:(id)arg2;
+- (id)sendAppReferMessage:(id)arg1 withText:(id)arg2 fromUsrName:(id)arg3 toUsrName:(id)arg4 atUserList:(id)arg5;
 - (void)sendChatSyncAppMsg:(id)arg1;
 - (id)SendNoteAppMsgTo:(id)arg1 withFavoritesItem:(id)arg2;
 - (id)SendRecordAppMsgTo:(id)arg1 withFavoritesItem:(id)arg2;
@@ -117,15 +120,15 @@
 - (id)SendNamecardMsgFromUser:(id)arg1 toUser:(id)arg2 containingContact:(id)arg3;
 - (id)SendStickerStoreEmoticonMsgFromUsr:(id)arg1 toUsrName:(id)arg2 md5:(id)arg3 productID:(id)arg4;
 - (id)SendEmoticonMsgFromUsr:(id)arg1 toUsrName:(id)arg2 md5:(id)arg3 emoticonType:(unsigned int)arg4;
-- (void)AddShortVideoMsg:(id)arg1 ToUsr:(id)arg2 VideoInfo:(id)arg3;
-- (void)AddShortVideoMsg:(id)arg1 ToUsr:(id)arg2 VideoInfo:(id)arg3 isKFSession:(BOOL)arg4;
 - (id)SendImgMessage:(id)arg1 toUsrName:(id)arg2 thumbImgData:(id)arg3 midImgData:(id)arg4 imgData:(id)arg5 imgInfo:(id)arg6;
 - (id)SendTextMessage:(id)arg1 toUsrName:(id)arg2 msgText:(id)arg3 atUserList:(id)arg4;
 - (id)SendAppMusicMessageFromUser:(id)arg1 toUsrName:(id)arg2 withTitle:(id)arg3 url:(id)arg4 description:(id)arg5 thumbnailData:(id)arg6;
 - (id)SendAppURLMessageFromUser:(id)arg1 toUsrName:(id)arg2 withTitle:(id)arg3 url:(id)arg4 description:(id)arg5 thumbnailData:(id)arg6;
-- (id)SendAppURLMessageFromUser:(id)arg1 toUsrName:(id)arg2 withTitle:(id)arg3 url:(id)arg4 description:(id)arg5 thumbUrl:(id)arg6;
+- (id)SendAppURLMessageFromUser:(id)arg1 toUsrName:(id)arg2 withTitle:(id)arg3 url:(id)arg4 description:(id)arg5 thumbUrl:(id)arg6 sourceUserName:(id)arg7 sourceDisplayName:(id)arg8;
+- (BOOL)updateDataMd5WithMessage:(id)arg1;
 - (BOOL)updateImageSizeWithMessage:(id)arg1;
 - (void)DelMsg:(id)arg1 msgList:(id)arg2 isDelAll:(BOOL)arg3 isManual:(BOOL)arg4;
+- (void)DelRevokedMsg:(id)arg1 msgData:(id)arg2;
 - (void)cleanDownloadTask:(id)arg1;
 - (BOOL)ClearUnRead:(id)arg1 FromCreateTime:(unsigned int)arg2 ToCreateTime:(unsigned int)arg3;
 - (BOOL)RecallMsgWithChatName:(id)arg1 msgData:(id)arg2 erroHandler:(CDUnknownBlockType)arg3;
@@ -134,6 +137,7 @@
 - (void)checkDownloadStatus:(id)arg1;
 - (void)checkUploadStatus:(id)arg1;
 - (void)CheckMessageStatus:(id)arg1;
+- (void)CheckReferMessageAsRevoked:(id)arg1 chatName:(id)arg2;
 - (BOOL)hasMsgInChat:(id)arg1;
 - (unsigned int)GetUnReadCount:(id)arg1;
 - (id)GetMsgData:(id)arg1 svrId:(unsigned long long)arg2;
@@ -148,7 +152,7 @@
 - (void)setupMacHelperOnMainThread;
 - (void)onServiceInit;
 - (id)init;
-- (void)processAddMsg:(id)arg1 sessionMsgList:(id)arg2 isFirstSync:(BOOL)arg3;
+- (void)processAddMsg:(id)arg1 sessionMsgList:(id)arg2 isFirstSync:(BOOL)arg3 isFunctionMsg:(BOOL)arg4;
 - (void)addChatList:(id)arg1;
 - (void)addMarkRead:(id)arg1 createTime:(unsigned int)arg2;
 - (void)addQuitSession:(id)arg1;
@@ -219,7 +223,7 @@
 - (void)notifyAddMsgListForSessionOnMainThread:(id)arg1;
 - (void)notifyDelAllMsgOnMainThread:(id)arg1;
 - (void)notifyMsgDeletedForSessionOnMainThread:(id)arg1;
-- (void)notifyDelMsgOnMainThread:(id)arg1 msgData:(id)arg2;
+- (void)notifyDelMsgOnMainThread:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (void)notifyAddRevokePromptMsgOnMainThread:(id)arg1 msgData:(id)arg2;
 - (void)notifyModMsgOnMainThread:(id)arg1 msgData:(id)arg2;
 - (void)notifyChatSyncMessagesMergedOnMainThread:(id)arg1;

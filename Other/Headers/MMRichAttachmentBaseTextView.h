@@ -26,6 +26,7 @@
 @property(retain, nonatomic) NSMutableSet *attachmentViews; // @synthesize attachmentViews=_attachmentViews;
 @property(retain, nonatomic) NSMutableDictionary *registerViewDictionary; // @synthesize registerViewDictionary=_registerViewDictionary;
 - (void).cxx_destruct;
+- (BOOL)replaceTextInRange:(struct _NSRange)arg1 withReferAttributeText:(id)arg2;
 - (struct CGRect)cellFrameForAttachmentCell:(id)arg1 withWidthConstrain:(double)arg2;
 - (void)textAttachmentCell:(id)arg1 didLoadImage:(id)arg2;
 - (id)attachmentViewForAttachment:(id)arg1;

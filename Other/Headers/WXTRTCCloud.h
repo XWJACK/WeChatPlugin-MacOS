@@ -13,7 +13,7 @@
 {
     struct unordered_map<std::__1::basic_string<char>, int, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, int>>> _audioVolumeMap;
     struct unordered_map<std::__1::basic_string<char>, int, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, int>>> _lastVolumeNotifyMap;
-    struct unordered_map<std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, __weak id<IAudioVolumeEvaluationListener>>>> _audioVolumeListenerMap;
+    struct unordered_map<std::__1::basic_string<char>, AudioVolumeListener *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, AudioVolumeListener *>>> _audioVolumeListenerMap;
     struct unordered_map<std::__1::basic_string<char>, __weak id<TXLivePlayListener>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, __weak id<TXLivePlayListener>>>> _subPlayListenerMap;
     struct unordered_map<std::__1::basic_string<char>, __weak id<TXLivePlayListener>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, __weak id<TXLivePlayListener>>>> _mainPlayListenerMap;
     TRTCQualityInfo *_localQuality;
@@ -35,14 +35,13 @@
 - (void)onNotifyEvent:(int)arg1 withParams:(id)arg2;
 - (void)unregisterLivePlayListener:(id)arg1 subStream:(BOOL)arg2;
 - (void)registerLivePlayListener:(id)arg1 subStream:(BOOL)arg2 listener:(id)arg3;
-- (void)unregisterAudioVolumeEvaluationListener:(id)arg1;
-- (void)registerAudioVolumeEvaluationListener:(id)arg1 listener:(id)arg2;
+- (void)unregisterAudioVolumeEvaluationListener:(id)arg1 subStream:(BOOL)arg2;
+- (void)registerAudioVolumeEvaluationListener:(id)arg1 subStream:(BOOL)arg2 listener:(id)arg3;
 - (void)enableBlackStream:(BOOL)arg1;
 - (void)snapshotRemoteSubStreamView:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)snapshotRemoteView:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)snapshotLocalView:(CDUnknownBlockType)arg1;
 - (void)setDefaultStreamRecvMode:(int)arg1;
-- (void)setRemoteSubStreamViewRotation:(id)arg1 rotation:(long long)arg2;
 - (void)resetStatus;
 - (void)destroyClean;
 - (id)initInternal;

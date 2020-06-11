@@ -69,6 +69,7 @@
 - (void)StopUploadComMedia:(id)arg1;
 - (BOOL)StartUploadComMedia:(id)arg1;
 - (BOOL)StopDownloadComMedia:(id)arg1 CdnDownloadTaskInfo:(id)arg2;
+- (void)InitCdn;
 - (BOOL)IsCdnAvaible;
 - (void)UnInit;
 - (void)dealloc;

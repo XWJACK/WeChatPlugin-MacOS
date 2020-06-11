@@ -91,6 +91,7 @@
 - (void)updateCaptureState;
 @property(readonly, nonatomic) unsigned int volumeLevel;
 - (void)setEncFrameLenMsInternal:(int)arg1;
+- (void)onVOIPModeChanged:(BOOL)arg1;
 - (void)onRecordError:(long long)arg1 info:(id)arg2;
 - (void)onCorePlayPCMDataToSoftAEC:(const struct _TXSAudioData *)arg1;
 - (void)onCoreRecordPCMData:(const struct _TXSAudioData *)arg1 count:(unsigned long long)arg2;

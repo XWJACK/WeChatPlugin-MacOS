@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, TXCBeautyParams;
+@class TXCBeautyParams;
 @protocol TXBeautyManagerTraitControl, TXCBeautyParamSetter;
 
 @interface TXBeautyManager : NSObject
@@ -15,10 +15,8 @@
     long long _beautyStyle;
     id <TXCBeautyParamSetter> _preprocessor;
     TXCBeautyParams *_beautyParams;
-    NSString *_templatePath;
 }
 
-@property(copy, nonatomic) NSString *templatePath; // @synthesize templatePath=_templatePath;
 @property(retain, nonatomic) TXCBeautyParams *beautyParams; // @synthesize beautyParams=_beautyParams;
 @property(nonatomic) __weak id <TXCBeautyParamSetter> preprocessor; // @synthesize preprocessor=_preprocessor;
 @property(readonly, nonatomic) long long beautyStyle; // @synthesize beautyStyle=_beautyStyle;

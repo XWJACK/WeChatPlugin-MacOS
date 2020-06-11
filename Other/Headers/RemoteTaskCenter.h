@@ -13,6 +13,7 @@
 @interface RemoteTaskCenter : MMService <MMService>
 {
     struct __CFMessagePort *remotePortListenner;
+    BOOL _hasOpenApp;
     BOOL _isForwarding;
     int _parentPid;
     DBEncryptInfo *_m_dbEncryptInfo;
@@ -25,8 +26,10 @@
     NSString *_displayName;
     NSString *_coverUrl;
     NSMutableDictionary *_seqNOOfTnstance;
+    NSString *_portName;
 }
 
+@property(retain, nonatomic) NSString *portName; // @synthesize portName=_portName;
 @property(retain, nonatomic) NSMutableDictionary *seqNOOfTnstance; // @synthesize seqNOOfTnstance=_seqNOOfTnstance;
 @property(retain, nonatomic) NSString *coverUrl; // @synthesize coverUrl=_coverUrl;
 @property(retain, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
@@ -39,9 +42,12 @@
 @property(retain, nonatomic) NSMutableArray *waitForwardArr; // @synthesize waitForwardArr=_waitForwardArr;
 @property(nonatomic) BOOL isForwarding; // @synthesize isForwarding=_isForwarding;
 @property(retain, nonatomic) DBEncryptInfo *m_dbEncryptInfo; // @synthesize m_dbEncryptInfo=_m_dbEncryptInfo;
+@property(nonatomic) BOOL hasOpenApp; // @synthesize hasOpenApp=_hasOpenApp;
 - (void).cxx_destruct;
 - (void)startLocalListener;
 - (void)sendMessageToServer:(id)arg1;
+- (void)checkConnectionStatus;
+- (void)startConnectionWatchDog;
 - (void)doShowGlobalAlert:(id)arg1 message:(id)arg2 terminateAppTask:(BOOL)arg3;
 - (void)reportCostTime:(long long)arg1;
 - (void)doIDKeyReport:(int)arg1 key:(int)arg2;

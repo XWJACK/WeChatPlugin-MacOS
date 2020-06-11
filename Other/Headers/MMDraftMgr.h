@@ -6,17 +6,21 @@
 
 #import "MMService.h"
 
+#import "IMMSessionMgrExt-Protocol.h"
+#import "IMessageExt-Protocol.h"
 #import "MMService-Protocol.h"
 
 @class NSMutableDictionary, NSString;
 
-@interface MMDraftMgr : MMService <MMService>
+@interface MMDraftMgr : MMService <IMMSessionMgrExt, IMessageExt, MMService>
 {
     NSMutableDictionary *_draftCache;
 }
 
 @property(retain, nonatomic) NSMutableDictionary *draftCache; // @synthesize draftCache=_draftCache;
 - (void).cxx_destruct;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
+- (void)onSessionDeletedWithUserName:(id)arg1 atIndex:(long long)arg2;
 - (void)removeDraftForUserName:(id)arg1;
 - (BOOL)hasDraftWithUserName:(id)arg1;
 - (id)draftWithUserName:(id)arg1;

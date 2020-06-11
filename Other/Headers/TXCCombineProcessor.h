@@ -62,6 +62,7 @@
 - (void)initFilterParam;
 - (int)combineFrame:(id)arg1 outputFormat:(long long)arg2 useBiCubic:(BOOL)arg3;
 - (int)combineFrame:(id)arg1 outputFormat:(long long)arg2;
+- (void)dealloc;
 - (id)init;
 
 @end

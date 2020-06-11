@@ -10,12 +10,13 @@
 #import "IVOIPExt-Protocol.h"
 #import "IVOIPModeSwitchExt-Protocol.h"
 #import "IVOIPVideoDeviceDelegate-Protocol.h"
+#import "NSToolbarDelegate-Protocol.h"
 #import "NSWindowDelegate-Protocol.h"
 
-@class AVAudioPlayer, MMTimer, MMVoipBaseWindow, MessageData, NSString, WCContactData;
+@class AVAudioPlayer, MMTimer, MMVoipBaseWindow, MessageData, NSString, NSToolbar, WCContactData;
 @protocol MMVoipBaseWindowControllerDelegate;
 
-@interface MMVoipBaseWindowController : NSWindowController <NSWindowDelegate, CAAnimationDelegate, IVOIPExt, IVOIPModeSwitchExt, IVOIPVideoDeviceDelegate>
+@interface MMVoipBaseWindowController : NSWindowController <NSWindowDelegate, CAAnimationDelegate, NSToolbarDelegate, IVOIPExt, IVOIPModeSwitchExt, IVOIPVideoDeviceDelegate>
 {
     BOOL _hasHanguped;
     BOOL _isSelfSwitchToVoice;
@@ -23,7 +24,10 @@
     BOOL _forceToVoice;
     BOOL _isConnectOK;
     BOOL _isMute;
+    BOOL _isStick;
     BOOL _isEndCall;
+    BOOL _isFromUserNotification;
+    BOOL _isMultiTalk;
     BOOL _isCaller;
     int _status;
     int _viewInitMode;
@@ -38,15 +42,20 @@
     AVAudioPlayer *_player;
     double _forceToRotateDegrees;
     double _lastDegrees;
+    NSToolbar *_toolBar;
 }
 
+@property(retain, nonatomic) NSToolbar *toolBar; // @synthesize toolBar=_toolBar;
 @property(nonatomic) BOOL isCaller; // @synthesize isCaller=_isCaller;
 @property(nonatomic) int currentMode; // @synthesize currentMode=_currentMode;
 @property(nonatomic) double lastDegrees; // @synthesize lastDegrees=_lastDegrees;
 @property(nonatomic) int orienOffset; // @synthesize orienOffset=_orienOffset;
 @property(nonatomic) double forceToRotateDegrees; // @synthesize forceToRotateDegrees=_forceToRotateDegrees;
+@property(nonatomic) BOOL isMultiTalk; // @synthesize isMultiTalk=_isMultiTalk;
+@property(nonatomic) BOOL isFromUserNotification; // @synthesize isFromUserNotification=_isFromUserNotification;
 @property(nonatomic) unsigned int mStartTalkingTime; // @synthesize mStartTalkingTime=_mStartTalkingTime;
 @property(nonatomic) BOOL isEndCall; // @synthesize isEndCall=_isEndCall;
+@property(nonatomic) BOOL isStick; // @synthesize isStick=_isStick;
 @property(nonatomic) BOOL isMute; // @synthesize isMute=_isMute;
 @property(nonatomic) BOOL isConnectOK; // @synthesize isConnectOK=_isConnectOK;
 @property(nonatomic) BOOL forceToVoice; // @synthesize forceToVoice=_forceToVoice;
@@ -69,6 +78,7 @@
 - (void)rotateLayerToFillWindow;
 - (int)getVideoOrientationWithDegrees:(double)arg1;
 - (void)setAudioDeviceMute;
+- (void)setWindowStick:(id)arg1;
 - (void)autoUpdateMainStatusStringAndDotViewImage;
 - (void)acceptVoipInvite;
 - (void)switchToVoiceChat;
@@ -80,7 +90,6 @@
 - (void)mouseMoved:(id)arg1;
 - (BOOL)isInitVideoMode;
 - (BOOL)isVideoMode;
-- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)layoutButtonContainerAnimate;
 - (void)layoutVoiceModeAnimateDotViewWithMode:(int)arg1;
 - (void)layoutCallTimeLabelWithMode:(int)arg1;
@@ -121,6 +130,12 @@
 - (BOOL)windowShouldClose:(id)arg1;
 - (void)closeWindowAnimated:(BOOL)arg1;
 - (void)showWindowAnimated:(BOOL)arg1;
+- (id)toolbar:(id)arg1 itemForItemIdentifier:(id)arg2 willBeInsertedIntoToolbar:(BOOL)arg3;
+- (id)toolbarDefaultItemIdentifiers:(id)arg1;
+- (id)toolbarAllowedItemIdentifiers:(id)arg1;
+- (void)windowWillEnterFullScreenAction:(id)arg1;
+- (void)windowDidExitFullScreenAction:(id)arg1;
+- (void)setUpToolbar;
 - (void)loadContent;
 - (id)title;
 - (struct CGSize)minimumSize;

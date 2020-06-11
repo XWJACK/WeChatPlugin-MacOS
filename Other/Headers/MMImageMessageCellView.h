@@ -52,6 +52,7 @@
 - (void)mouseDown:(id)arg1;
 - (void)contextMenuExport;
 - (void)contextMenuOpen;
+- (id)getReferMenuItem;
 - (id)getOpenMenuItem;
 - (id)getOperationMenuItem;
 - (id)validRequestorForSendType:(id)arg1 returnType:(id)arg2;

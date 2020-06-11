@@ -39,6 +39,7 @@
 - (void)setAssignedContact:(id)arg1;
 - (void)setFilteredUserNames:(id)arg1;
 - (void)setForwardMessageData:(id)arg1;
+- (void)setPreSelectedUserNames:(id)arg1;
 - (void)setPreSelectedContact:(id)arg1;
 - (void)setCancelButtonText:(id)arg1;
 - (void)setConfirmButtonText:(id)arg1;

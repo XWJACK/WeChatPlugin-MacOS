@@ -54,12 +54,12 @@
     struct ComponentInstanceRecord *mVarispeedUnit;
     int mOutputNode;
     struct ComponentInstanceRecord *mOutputUnit;
-    NSMutableArray *_usedInputDevicesList;
-    NSMutableArray *_usedOutputDevicesList;
     struct TXCStatusModule _statusModule;
     unsigned long long _recordDelegateCountAfterRoutechange;
     void *_captureRingBuf;
+    struct _TXSAudioData _captureRingBufHelpReadBuffer;
     void *_playRingBuf;
+    struct _TXSAudioData _playRingBufHelpReadBuffer;
     BOOL _isVOIPMode;
     BOOL _enableReverb;
     BOOL _isAudioPreview;
@@ -73,6 +73,7 @@
     unsigned int _inputDeviceId;
     unsigned int _outputDeviceId;
     int _encFormat;
+    unsigned int _playoutVolume;
     long long _audioMode;
     long long _reverbType;
     id <TXIAudioCoreRecordDelegate> _recordDelegate;
@@ -90,7 +91,9 @@
     struct AudioStreamBasicDescription _outputFormat;
 }
 
++ (void)releaseAudioBufferList:(struct AudioBufferList **)arg1;
 + (id)sharedInstance;
+@property unsigned int playoutVolume; // @synthesize playoutVolume=_playoutVolume;
 @property(nonatomic) struct AudioStreamBasicDescription outputFormat; // @synthesize outputFormat=_outputFormat;
 @property(nonatomic) struct AudioStreamBasicDescription inputFormat; // @synthesize inputFormat=_inputFormat;
 @property(retain, nonatomic) NSArray *audioDevicesList; // @synthesize audioDevicesList=_audioDevicesList;
@@ -124,15 +127,17 @@
 @property(readonly, nonatomic) BOOL isVOIPMode; // @synthesize isVOIPMode=_isVOIPMode;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)restartAUGraphIfNewDeviceSelected:(id)arg1;
+- (BOOL)handleNewDeviceSelected:(id)arg1;
 - (void)notifyPlayPCMDataToSoftAEC:(char *)arg1 dataLen:(unsigned int)arg2;
 - (void)notifyRecordPCMData:(char *)arg1 dataLen:(unsigned int)arg2 timestamp:(unsigned long long)arg3;
 - (void)clean;
 - (void)setEnableAEC:(BOOL)arg1;
 - (void)checkSampleRateByDataSource:(BOOL)arg1;
+- (void)addInUseInputDeviceChangedListener:(BOOL)arg1;
+- (void)addInUseOutputDeviceChangedListener:(BOOL)arg1;
 - (void)checkMicByDataSource:(BOOL)arg1;
 - (unsigned int)getPairDevice:(BOOL)arg1 deviceId:(unsigned int)arg2;
-- (void)deviceListChange:(id)arg1 old:(id)arg2;
-- (id)uint32ToString:(unsigned int)arg1;
 - (void)calPlayVolumeLevel:(char *)arg1 len:(unsigned int)arg2 sampleRate:(unsigned int)arg3 channels:(unsigned int)arg4;
 - (void)sendEvent:(int)arg1 message:(id)arg2;
 @property(readonly) unsigned int corePlayVolumeLevel;
@@ -161,7 +166,7 @@
 - (void)setDeviceVolume:(float)arg1 isInput:(BOOL)arg2;
 - (BOOL)isVolumeSettableOnChannel:(int)arg1;
 - (void)removeDevicesListener;
-- (void)addDevicesListener;
+- (void)addDeviceListChangedListener;
 - (void)stopAUGraph;
 - (BOOL)IsRunning;
 - (void)startAUGraph;

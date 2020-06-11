@@ -46,8 +46,10 @@
 - (void)onRecvDownloadItem:(id)arg1;
 - (void)setChoosable:(BOOL)arg1;
 - (BOOL)allowChoose;
+- (void)contextMenuMuteToPlay;
 - (void)contextMenuExport;
 - (void)contextMenuOpen;
+- (id)getReferMenuItem;
 - (id)getOpenMenuItem;
 - (id)getOperationMenuItem;
 - (void)mouseUp:(id)arg1;

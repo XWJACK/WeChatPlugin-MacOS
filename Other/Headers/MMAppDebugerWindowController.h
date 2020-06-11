@@ -40,6 +40,7 @@
 - (id)queryParamDictFromFullUrl:(id)arg1;
 - (struct CGImage *)CGImage:(id)arg1;
 - (void)uploadQRCode:(id)arg1;
+- (void)generateLaunchInfo:(id)arg1;
 - (void)saveCustomPath:(id)arg1;
 - (void)onClickDefaultPath:(id)arg1;
 - (void)onClickChoosePath:(id)arg1;

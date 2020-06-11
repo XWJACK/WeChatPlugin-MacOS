@@ -19,7 +19,6 @@
 }
 
 + (id)_formattedChatLogContentWithMsg:(id)arg1;
-+ (id)_genSenderAndContentString:(id)arg1 isLastOne:(BOOL)arg2;
 + (double)cellHeightWithFavItemDataField:(id)arg1 parentMessage:(id)arg2 parentFavItem:(id)arg3 parentDataField:(id)arg4 constrainedToWidth:(double)arg5;
 @property(retain, nonatomic) NSTextField *tagLabel; // @synthesize tagLabel=_tagLabel;
 @property(retain, nonatomic) NSView *divider; // @synthesize divider=_divider;
@@ -33,6 +32,7 @@
 - (void)layoutDescTextView:(id)arg1;
 - (void)layoutTitleLabel:(id)arg1;
 - (void)populateRecord:(id)arg1;
+- (void)populateWithFavItemDataField:(id)arg1 parentFavItem:(id)arg2;
 - (void)populateWithFavItemDataField:(id)arg1 parentDataField:(id)arg2;
 - (void)populateWithFavItemDataField:(id)arg1 parentMessage:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;

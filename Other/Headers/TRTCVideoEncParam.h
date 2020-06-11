@@ -8,12 +8,14 @@
 
 @interface TRTCVideoEncParam : NSObject
 {
+    BOOL _enableAdjustRes;
     int _videoFps;
     int _videoBitrate;
     long long _videoResolution;
     long long _resMode;
 }
 
+@property(nonatomic) BOOL enableAdjustRes; // @synthesize enableAdjustRes=_enableAdjustRes;
 @property(nonatomic) int videoBitrate; // @synthesize videoBitrate=_videoBitrate;
 @property(nonatomic) int videoFps; // @synthesize videoFps=_videoFps;
 @property(nonatomic) long long resMode; // @synthesize resMode=_resMode;

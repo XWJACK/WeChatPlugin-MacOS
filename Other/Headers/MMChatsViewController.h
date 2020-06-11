@@ -61,7 +61,7 @@
 - (void)resumeFirstResponderIfNeeded:(BOOL)arg1;
 - (BOOL)reloadIfNeedUpdateTimeLabel;
 - (void)handleAppFontSize;
-- (void)newDocument:(id)arg1;
+- (void)newChat:(id)arg1;
 - (void)keyDown:(id)arg1;
 - (void)cellViewDidPerformRenameAction:(id)arg1;
 - (void)cellView:(id)arg1 showProfileWithUserName:(id)arg2;

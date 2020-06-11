@@ -15,6 +15,7 @@
 }
 
 - (void).cxx_destruct;
+- (void)scrollWheel:(id)arg1;
 - (id)initWithCornerRadius:(double)arg1 backgroundColor:(id)arg2 frameRect:(struct CGRect)arg3;
 
 @end

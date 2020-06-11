@@ -17,6 +17,7 @@
 @interface MMFileListViewController : NSViewController <JWCTableViewDataSource, MMFileItemOPHandlerDelegate, JWCTableViewDelegate, NSTableViewDelegate>
 {
     BOOL _isMultiSelectedMode;
+    int _totalSelectCount;
     id <MMFileSplitListViewDelegate> _delegate;
     NSArray *_keyWords;
     RFOverlayScrollView *_scrollView;
@@ -38,6 +39,7 @@
     MMIgnoreEventView *_loadingView;
 }
 
+@property(nonatomic) int totalSelectCount; // @synthesize totalSelectCount=_totalSelectCount;
 @property(retain, nonatomic) MMIgnoreEventView *loadingView; // @synthesize loadingView=_loadingView;
 @property(retain, nonatomic) id keyEventMonitor; // @synthesize keyEventMonitor=_keyEventMonitor;
 @property(nonatomic) long long lastSelectedRow; // @synthesize lastSelectedRow=_lastSelectedRow;
@@ -79,6 +81,7 @@
 - (void)onContextMenuClick:(id)arg1 withMsgData:(id)arg2;
 - (void)reportSortIDKey:(unsigned long long)arg1;
 - (void)handlePopButton:(id)arg1;
+- (BOOL)isMoreThanSelectMaxLimit:(int)arg1;
 - (void)addSelectedRowCell;
 - (void)removeSelectedRowCell;
 - (void)getKeyEvent;

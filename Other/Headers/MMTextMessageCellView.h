@@ -72,6 +72,7 @@
 - (void)contextMenuOpenInWebview;
 - (id)contentForSharing;
 - (id)getOperationMenuItem;
+- (id)getReferMenuItem;
 - (id)getOpenMenuItem;
 - (BOOL)alwaysDisableMessageTextViewSelectableProperty;
 - (BOOL)showsSaveToFavoritesButton;

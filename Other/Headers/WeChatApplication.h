@@ -6,23 +6,22 @@
 
 #import <AppKit/NSApplication.h>
 
-@class NSMenuItem, VoiceOver;
+@class NSMenuItem, VoiceOver, WeChat;
 
 @interface WeChatApplication : NSApplication
 {
-    BOOL _isTaskProcess;
+    WeChat *_wechat;
     NSMenuItem *_settingsMenuItem;
     VoiceOver *_status;
 }
 
 @property(retain, nonatomic) VoiceOver *status; // @synthesize status=_status;
 @property(nonatomic) __weak NSMenuItem *settingsMenuItem; // @synthesize settingsMenuItem=_settingsMenuItem;
-@property(nonatomic) BOOL isTaskProcess; // @synthesize isTaskProcess=_isTaskProcess;
+@property(retain) WeChat *wechat; // @synthesize wechat=_wechat;
 - (void).cxx_destruct;
 - (unsigned char)isUndoMangerException:(id)arg1;
 - (void)accessibilitySetValue:(id)arg1 forAttribute:(id)arg2;
 - (BOOL)isVoiceOverRunning;
-- (BOOL)isMiniProgramProcess;
 - (long long)requestUserAttention:(unsigned long long)arg1;
 - (void)reportException:(id)arg1;
 

@@ -61,8 +61,11 @@
     FavWeAppItem *_weAppItem;
 }
 
++ (void)parseStreamVideoNode:(struct XmlReaderNode_t *)arg1 dataField:(id)arg2;
++ (id)FavoritesDataFieldToXML:(id)arg1 item:(id)arg2;
 + (id)FavritesItemToXML:(id)arg1 autoIncreaseVersion:(BOOL)arg2;
 + (id)parseTagXml:(struct XmlReaderNode_t *)arg1;
++ (id)parseDataNodeFromXml:(struct XmlReaderNode_t *)arg1 deep:(int)arg2;
 + (BOOL)ParseItemXML:(id)arg1 ToItem:(id)arg2;
 + (id)getFavTextCellText:(id)arg1;
 + (id)GetRecordDataDesc:(id)arg1;
@@ -80,7 +83,7 @@
 + (id)favoritesItemsFromPasteboard:(id)arg1;
 + (id)createItemFromPasteboardItem:(id)arg1;
 + (id)sourceDataIDWithMessage:(id)arg1;
-+ (id)ConvertRecordMsg2FavData:(id)arg1;
++ (id)convertRecordMsg2FavData:(id)arg1 isFav:(BOOL)arg2;
 + (id)itemWithRecordMessageData:(id)arg1;
 + (id)urlItemWithURLMessage:(id)arg1 urlString:(id *)arg2;
 + (id)urlItemWithReaderWrap:(id)arg1 urlString:(id *)arg2;

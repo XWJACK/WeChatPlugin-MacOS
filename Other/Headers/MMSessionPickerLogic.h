@@ -28,16 +28,16 @@
     WCContactData *_preSelectedContact;
     WCContactData *_assignedContact;
     NSArray *_filteredUserNames;
+    NSArray *_preSelectedUserNames;
     unsigned long long _keyboardFocusedRow;
     MessageData *_messData;
-    NSArray *_preSelectedUserNames;
     NSArray *_assignedUserNames;
 }
 
 @property(retain, nonatomic) NSArray *assignedUserNames; // @synthesize assignedUserNames=_assignedUserNames;
-@property(retain, nonatomic) NSArray *preSelectedUserNames; // @synthesize preSelectedUserNames=_preSelectedUserNames;
 @property(retain, nonatomic) MessageData *messData; // @synthesize messData=_messData;
 @property(nonatomic) unsigned long long keyboardFocusedRow; // @synthesize keyboardFocusedRow=_keyboardFocusedRow;
+@property(retain, nonatomic) NSArray *preSelectedUserNames; // @synthesize preSelectedUserNames=_preSelectedUserNames;
 @property(nonatomic) BOOL showsOtherNonhumanChats; // @synthesize showsOtherNonhumanChats=_showsOtherNonhumanChats;
 @property(nonatomic) BOOL showsOfficialAccounts; // @synthesize showsOfficialAccounts=_showsOfficialAccounts;
 @property(nonatomic) BOOL showsGroupChats; // @synthesize showsGroupChats=_showsGroupChats;

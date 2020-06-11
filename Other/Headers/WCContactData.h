@@ -211,6 +211,7 @@
 - (id)getRemark;
 - (BOOL)isChatStatusNotifyOpen;
 - (BOOL)needShowUnreadCountOnSession;
+- (BOOL)IsMobile;
 - (BOOL)IsShake;
 - (BOOL)IsLbs;
 - (BOOL)isNeedUpdateUsrImg;

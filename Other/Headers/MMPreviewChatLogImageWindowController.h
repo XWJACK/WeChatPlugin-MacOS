@@ -18,7 +18,7 @@
 
 - (void).cxx_destruct;
 - (void)favoritesMgrDidRemoveItem:(id)arg1;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (void)pageController:(id)arg1 didTransitionToObject:(id)arg2;
 - (void)pageController:(id)arg1 prepareViewController:(id)arg2 withObject:(id)arg3;
 - (void)openWith;

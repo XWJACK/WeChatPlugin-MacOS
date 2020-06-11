@@ -65,6 +65,7 @@
 - (void)updateUI:(id)arg1 withKeywords:(id)arg2 isChoosenMode:(BOOL)arg3;
 - (void)updateUI:(id)arg1 isChoosenMode:(BOOL)arg2;
 - (id)getDragImage;
+- (void)removeMultiSelectedWithoutAnimated;
 - (void)showMultiSelectedWithoutAnimated;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (void)showSelected:(BOOL)arg1 WithFadeAnimated:(BOOL)arg2;

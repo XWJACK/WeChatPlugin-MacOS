@@ -6,17 +6,23 @@
 
 #import <AppKit/NSView.h>
 
-@class MMTextAttachmentCell;
+@class MMTextAttachmentCell, NSColor;
 
 @interface MMAttachmentReusableView : NSView
 {
     MMTextAttachmentCell *_attachmentCell;
     NSView *_containerView;
+    NSColor *_normalColor;
+    NSColor *_highlightColor;
 }
 
+@property(retain, nonatomic) NSColor *highlightColor; // @synthesize highlightColor=_highlightColor;
+@property(retain, nonatomic) NSColor *normalColor; // @synthesize normalColor=_normalColor;
 @property(retain, nonatomic) NSView *containerView; // @synthesize containerView=_containerView;
 @property(retain, nonatomic) MMTextAttachmentCell *attachmentCell; // @synthesize attachmentCell=_attachmentCell;
 - (void).cxx_destruct;
+- (void)highlightAttachmentView:(BOOL)arg1;
+- (id)initWithIdentifier:(id)arg1 normalColor:(id)arg2 highlightColor:(id)arg3;
 - (id)initWithIdentifier:(id)arg1;
 
 @end

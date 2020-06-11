@@ -21,6 +21,7 @@
     BOOL _m_hasSetupSession;
     int videoDevErrCode;
     int _mVideoInterruptEndFlag;
+    int _workMode;
     AVCaptureSession *session;
     AVCaptureDeviceInput *videoInput;
     AVCaptureVideoDataOutput *videoDataOutput;
@@ -40,6 +41,7 @@
 @property(nonatomic) BOOL m_hasSetupSession; // @synthesize m_hasSetupSession=_m_hasSetupSession;
 @property(retain, nonatomic) AVCaptureVideoPreviewLayer *m_previewLayer; // @synthesize m_previewLayer=_m_previewLayer;
 @property(retain, nonatomic) NSMutableArray *m_requestLayerBlocks; // @synthesize m_requestLayerBlocks=_m_requestLayerBlocks;
+@property(nonatomic) int workMode; // @synthesize workMode=_workMode;
 @property(nonatomic) int mVideoInterruptEndFlag; // @synthesize mVideoInterruptEndFlag=_mVideoInterruptEndFlag;
 @property(nonatomic) BOOL m_usingBackCamera; // @synthesize m_usingBackCamera=_m_usingBackCamera;
 @property(nonatomic) __weak id <AVVideoDeviceSetupSessionDelegate> m_setupDelegate; // @synthesize m_setupDelegate;

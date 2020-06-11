@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVAsset, AVAssetImageGenerator, AVAssetTrack, NSMutableArray, NSString, TXSAudioPacket;
+@class AVAsset, AVAssetImageGenerator, AVAssetTrack, NSMutableArray, NSString, TXCAudioFileExtensionRepairer, TXSAudioPacket;
 @protocol OS_dispatch_queue;
 
 @interface TXCAudioReader : NSObject
@@ -35,9 +35,11 @@
     long long _totalSampleDataLength;
     long long _videoCutType;
     TXSAudioPacket *_audioInfo;
+    TXCAudioFileExtensionRepairer *_pathRepairer;
     CDStruct_1b6d18a9 _duration;
 }
 
+@property(retain) TXCAudioFileExtensionRepairer *pathRepairer; // @synthesize pathRepairer=_pathRepairer;
 @property BOOL audioNeedRead; // @synthesize audioNeedRead=_audioNeedRead;
 @property BOOL audioCanRead; // @synthesize audioCanRead=_audioCanRead;
 @property(readonly) TXSAudioPacket *audioInfo; // @synthesize audioInfo=_audioInfo;
@@ -60,6 +62,7 @@
 - (void)cutAudioToPieces:(float)arg1;
 - (void)cutAudioFromTime:(float)arg1 toTime:(float)arg2;
 - (void)cutVideoFromTime:(float)arg1 toTime:(float)arg2;
+- (id)repairFilePath:(id)arg1;
 - (void)initAudioReader;
 - (id)initWithPathAsset:(id)arg1;
 - (id)initWithAsset:(id)arg1;

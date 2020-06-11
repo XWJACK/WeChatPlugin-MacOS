@@ -24,9 +24,9 @@
 @property(retain, nonatomic) MessageData *msgData; // @synthesize msgData=_msgData;
 @property(retain, nonatomic) NSString *clientMsgId; // @synthesize clientMsgId=_clientMsgId;
 - (void).cxx_destruct;
-- (void)cdnDownloadMgrDidCancelledDownloadWithMessage:(id)arg1 type:(int)arg2;
-- (void)cdnDownloadMgrDidFailedDownloadWithMessage:(id)arg1 type:(int)arg2;
-- (void)cdnDownloadMgrDidFinishedDownloadWithMessage:(id)arg1 type:(int)arg2;
+- (void)cdnDownloadMgrDidCanceledDownloadWithCdnTask:(id)arg1;
+- (void)cdnDownloadMgrDidFailedDownloadWithCdnTask:(id)arg1;
+- (void)cdnDownloadMgrDidFinishedDownloadWithCdnTask:(id)arg1;
 - (void)downloadOk;
 - (void)downloadFail;
 - (void)startDownloading;

@@ -13,13 +13,14 @@
 #import "NSTextViewDelegate-Protocol.h"
 
 @class MMMentionViewController, MMTimeChecker, NSMutableArray, NSPopover, NSString;
-@protocol MMComposeRichAttachmentTextViewDelegate, MMComposeTextEmotionProtDelegate, MMComposeTextViewDelegate;
+@protocol MMComposeRichAttachmentTextViewDelegate, MMComposeTextEmotionProtDelegate, MMComposeTextViewDelegate, MMComposeTextViewReferDelegate;
 
 @interface MMComposeTextView : MMRichAttachmentBaseTextView <NSTextViewDelegate, MMMentionViewControllerDelegate, NSTextStorageDelegate, NSMenuDelegate, NSFileManagerDelegate>
 {
     int _sendMsgShortCutType;
     id <MMComposeTextViewDelegate> _mmDelegate;
     id <MMComposeTextEmotionProtDelegate> _mmEmotionDelegate;
+    id <MMComposeTextViewReferDelegate> _referDelegate;
     CDUnknownBlockType _didClickSendBlock;
     CDUnknownBlockType _didPasteFilesBlock;
     CDUnknownBlockType _didPasteMessagesBlock;
@@ -62,6 +63,7 @@
 @property(copy, nonatomic) CDUnknownBlockType didPasteMessagesBlock; // @synthesize didPasteMessagesBlock=_didPasteMessagesBlock;
 @property(copy, nonatomic) CDUnknownBlockType didPasteFilesBlock; // @synthesize didPasteFilesBlock=_didPasteFilesBlock;
 @property(copy, nonatomic) CDUnknownBlockType didClickSendBlock; // @synthesize didClickSendBlock=_didClickSendBlock;
+@property(nonatomic) __weak id <MMComposeTextViewReferDelegate> referDelegate; // @synthesize referDelegate=_referDelegate;
 @property(nonatomic) __weak id <MMComposeTextEmotionProtDelegate> mmEmotionDelegate; // @synthesize mmEmotionDelegate=_mmEmotionDelegate;
 @property(nonatomic) __weak id <MMComposeTextViewDelegate> mmDelegate; // @synthesize mmDelegate=_mmDelegate;
 - (void).cxx_destruct;
@@ -117,6 +119,8 @@
 - (id)textView:(id)arg1 menu:(id)arg2 forEvent:(id)arg3 atIndex:(unsigned long long)arg4;
 - (void)textView:(id)arg1 clickedOnCell:(id)arg2 inRect:(struct CGRect)arg3 atIndex:(unsigned long long)arg4;
 - (void)draggingEnded:(id)arg1;
+- (void)setSelectedRange:(struct _NSRange)arg1 affinity:(unsigned long long)arg2 stillSelecting:(BOOL)arg3;
+- (struct _NSRange)textView:(id)arg1 willChangeSelectionFromCharacterRange:(struct _NSRange)arg2 toCharacterRange:(struct _NSRange)arg3;
 - (struct CGRect)draggingFrameForEvent:(id)arg1 withShowSize:(struct CGSize)arg2;
 - (void)textView:(id)arg1 draggedCell:(id)arg2 inRect:(struct CGRect)arg3 event:(id)arg4 atIndex:(unsigned long long)arg5;
 - (void)didChangeText;
@@ -142,6 +146,10 @@
 - (void)insertImageData:(id)arg1;
 - (id)_getMentionedUserDisplayName:(id)arg1;
 - (void)insertQuotedMessage:(id)arg1;
+- (void)resetReferMessage;
+- (BOOL)doReplaceReferMessage:(id)arg1 inRange:(struct _NSRange)arg2;
+- (void)insertReferAttachmentObj:(id)arg1;
+- (void)insertReferMessage:(id)arg1;
 - (void)insertEmoticon:(id)arg1;
 - (void)insertRichText:(id)arg1;
 - (void)setTypingAttributes:(id)arg1;

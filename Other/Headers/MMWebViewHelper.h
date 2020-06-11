@@ -21,7 +21,6 @@
 + (BOOL)hasWeChatScheme:(id)arg1;
 + (BOOL)isAppScheme:(id)arg1;
 + (BOOL)isDownloadMIMEType:(id)arg1;
-+ (id)getHostTextWithUrl:(id)arg1;
 + (void)handleWebViewDataItem:(id)arg1 windowId:(id)arg2;
 
 @end

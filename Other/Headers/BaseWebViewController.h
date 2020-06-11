@@ -19,10 +19,12 @@
 
 @interface BaseWebViewController : MMViewController <WKNavigationDelegate, WKUIDelegate, WKScriptMessageHandler, WebViewGetA8KeyLogicDelegate, WebViewJSLogicDelegate, WebViewJSApiVerifyMgrDelegate, BaseWebViewFontAdjustDelegate>
 {
+    BOOL m_openAllPermission;
     BOOL _isInitial;
     int _fontSize;
     MMWKWebView *_wkWebView;
     WebViewDataItem *_dataItem;
+    NSMutableDictionary *_extraInfo;
     id <BaseWebViewControllerDelegate> _delegate;
     NSView *_toolbarContanier;
     MMProgressView *_progressView;
@@ -63,9 +65,15 @@
 @property(retain, nonatomic) MMProgressView *progressView; // @synthesize progressView=_progressView;
 @property(retain, nonatomic) NSView *toolbarContanier; // @synthesize toolbarContanier=_toolbarContanier;
 @property(nonatomic) __weak id <BaseWebViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property(retain, nonatomic) NSMutableDictionary *extraInfo; // @synthesize extraInfo=_extraInfo;
 @property(retain, nonatomic) WebViewDataItem *dataItem; // @synthesize dataItem=_dataItem;
 @property(retain, nonatomic) MMWKWebView *wkWebView; // @synthesize wkWebView=_wkWebView;
 - (void).cxx_destruct;
+- (id)mpBizUrl:(id)arg1 inUrlList:(id)arg2;
+- (unsigned int)GetGeneralBitSetForUrl:(id)arg1;
+- (BOOL)IsBitsetSet:(unsigned int)arg1 forUrl:(id)arg2;
+- (BOOL)allowShowAppMsgTailName;
+- (void)handleOpenWeAppEvent;
 - (id)handleGetRouteUrls;
 - (void)handleHideOptionMenuEvent;
 - (void)handleShowOptionMenuEvent;
@@ -132,7 +140,7 @@
 - (void)forwardDataField:(id)arg1 toUserNames:(id)arg2;
 - (void)forwardFavoriteItem:(id)arg1 toUserNames:(id)arg2;
 - (void)forwardMessage:(id)arg1 toUserNames:(id)arg2;
-- (void)forwardMessageFromUserName:(id)arg1 toUserNames:(id)arg2 title:(id)arg3 url:(id)arg4 description:(id)arg5 thumbUrl:(id)arg6;
+- (void)forwardMessageFromUserName:(id)arg1 toUserNames:(id)arg2 withMsgInfo:(id)arg3;
 - (void)forwardContent;
 - (void)refreshContent;
 - (void)nextItem;
@@ -167,6 +175,7 @@
 - (void)recordArrRouteUrl:(id)arg1;
 - (void)openInWebView:(id)arg1;
 - (void)initJsInitInfo:(id)arg1;
+- (void)updateExtraInfo;
 - (void)showWebViewWithDataItem:(id)arg1 initialShowing:(BOOL)arg2;
 - (void)showAlertSheetWithMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resetWebView:(BOOL)arg1;

@@ -10,6 +10,8 @@
 {
 }
 
++ (void)reportDBFileSize;
++ (void)reportAddMsg:(id)arg1 chatName:(id)arg2;
 + (id)GetRecoverFilePath:(unsigned int)arg1;
 + (id)GetFilePath:(unsigned int)arg1;
 + (id)CipherKey;

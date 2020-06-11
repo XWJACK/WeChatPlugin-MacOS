@@ -72,6 +72,7 @@
 - (void)onForwardMsgCallBack:(id)arg1 withErrCode:(int)arg2;
 - (void)showSessionPicker:(id)arg1;
 - (void)takeSnapShotWithCompletion:(CDUnknownBlockType)arg1;
+- (void)writeThumbDataToFileForShare;
 - (void)downloadImageFrom:(id)arg1 forMessageData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)shareToFriend:(int)arg1 appInfo:(id)arg2;
 - (void)onCustomWeAppMessage:(id)arg1;

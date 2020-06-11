@@ -58,6 +58,8 @@
 + (id)getStringFromUrl:(id)arg1 needle:(id)arg2;
 + (id)HashData:(id)arg1;
 + (id)HashString:(id)arg1;
++ (id)filterStringForTextMessage:(id)arg1;
++ (BOOL)isValidStringForTextMessage:(id)arg1;
 + (id)filterControlChars:(id)arg1;
 + (id)ReplaceSingleQuote:(id)arg1;
 + (id)SafeUtf8WithCString:(const char *)arg1;
@@ -85,6 +87,7 @@
 + (BOOL)appleMapsAvailable;
 + (BOOL)isLongitudeValid:(double)arg1;
 + (BOOL)isLatitudeValid:(double)arg1;
++ (unsigned int)videoDuration:(id)arg1;
 + (id)specialUserNameList;
 + (unsigned int)genServerCurrentTime;
 + (void)updateDiffServerTime:(int)arg1;
@@ -156,6 +159,7 @@
 + (id)GetCurSystemLanguage;
 + (id)trimLanguage:(id)arg1;
 + (id)IsSupportedLanguage:(id)arg1;
++ (void)reportSettingsData;
 + (unsigned long long)getTotalDiskSpace;
 + (id)getCurUsrMd5;
 + (unsigned long long)getFreeDiskSpace;

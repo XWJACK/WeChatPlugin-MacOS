@@ -32,7 +32,7 @@
 @property(retain, nonatomic) NSTextField *senderLabel; // @synthesize senderLabel=_senderLabel;
 @property(retain, nonatomic) MMReaderWrapView *containerView; // @synthesize containerView=_containerView;
 - (void).cxx_destruct;
-- (id)contextMenuOutsideFrame;
+- (id)contextMenuOutsideFrame:(id)arg1;
 - (BOOL)allowMultipleSelect;
 - (BOOL)allowOpen;
 - (BOOL)allowDelete;

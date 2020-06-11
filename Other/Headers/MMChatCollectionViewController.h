@@ -69,8 +69,11 @@
 - (void)multiSelectMessageWithDragRect:(struct CGRect)arg1;
 - (id)getMultiSelectedMessages;
 - (void)reloadData;
+- (BOOL)flushLinks;
 - (BOOL)showLinks;
+- (BOOL)flushFiles;
 - (BOOL)showFiles;
+- (BOOL)flushPhotos;
 - (BOOL)showPhotos;
 - (void)showAll;
 - (void)setupCollectionViewLayout;

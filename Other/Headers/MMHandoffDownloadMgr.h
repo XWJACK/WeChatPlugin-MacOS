@@ -37,8 +37,8 @@
 - (void)favoriteFileService:(id)arg1 didFailDownloadWithFavItemData:(id)arg2 type:(int)arg3 taskID:(id)arg4;
 - (void)favoriteFileService:(id)arg1 didFinishDownloadWithFavItemData:(id)arg2 type:(int)arg3 filePath:(id)arg4 taskID:(id)arg5;
 - (void)favoriteFileService:(id)arg1 downloaded:(int)arg2 of:(int)arg3 WithFavItemData:(id)arg4 type:(int)arg5;
-- (void)cdnDownloadMgrDidFailedDownloadWithMessage:(id)arg1 type:(int)arg2;
-- (void)cdnDownloadMgrDidFinishedDownloadWithMessage:(id)arg1 type:(int)arg2;
+- (void)cdnDownloadMgrDidFailedDownloadWithCdnTask:(id)arg1;
+- (void)cdnDownloadMgrDidFinishedDownloadWithCdnTask:(id)arg1;
 - (void)cdnDownloadMgrDownloaded:(int)arg1 of:(int)arg2 withMessage:(id)arg3 type:(int)arg4 tryShow:(BOOL)arg5;
 - (void)cancelDownloadTaskByCdn:(id)arg1;
 - (void)sendDownloadTaskByCdn:(id)arg1;

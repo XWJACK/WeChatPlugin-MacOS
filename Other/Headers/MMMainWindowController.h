@@ -36,6 +36,7 @@
 - (void)updateWindowTitle;
 - (void)adjustMainTranfficLight;
 - (void)adjustLoginTranfficLight;
+- (void)onApplicationScreenUnlock;
 - (void)onApplicationWakeUpFromSleep;
 - (void)onApplicationDidResignActive:(id)arg1;
 - (void)onApplicationDidBecomeActive:(id)arg1;

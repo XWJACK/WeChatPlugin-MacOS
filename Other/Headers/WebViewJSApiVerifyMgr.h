@@ -58,6 +58,8 @@
 - (id)getPermissionForUrl:(id)arg1;
 - (void)setPermission:(id)arg1 ForUrl:(id)arg2;
 - (BOOL)hasPermissionForUrl:(id)arg1;
+- (id)getDefaultPermisson;
+- (unsigned int)getGeneralBitSetForUrl:(id)arg1;
 - (void)removeUrlPermissionForUrl:(id)arg1;
 - (void)saveUrlPermission:(id)arg1 url:(id)arg2;
 - (id)mutableArrayForUrl:(id)arg1 inNoFragmentDictionary:(id)arg2;

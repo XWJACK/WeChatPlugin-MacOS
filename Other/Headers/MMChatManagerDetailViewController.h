@@ -15,7 +15,7 @@
 #import "NSTableViewDataSource-Protocol.h"
 #import "NSTableViewDelegate-Protocol.h"
 
-@class CAShapeLayer, MMBatchExportViewWindow, MMButton, MMChatCollectionViewController, MMChatFTSSearchLogic, MMChatManagerDataSource, MMChatManagerEventView, MMMessageCellView, MMMessageScrollView, MMMessageSendLogic, MMMessageTableItem, MMOutlineButton, MMTableView, MMTextField, MMTimer, MMView, NSButton, NSImageView, NSMutableArray, NSProgressIndicator, NSString, NSTextField, NSView, WCContactData;
+@class CAShapeLayer, MMBatchExportViewWindow, MMButton, MMChatCollectionViewController, MMChatFTSSearchLogic, MMChatManagerDataSource, MMChatManagerEventView, MMMessageCellView, MMMessageScrollView, MMMessageSendLogic, MMMessageTableItem, MMOutlineButton, MMTableView, MMTextField, MMTimer, MMView, NSButton, NSImageView, NSMutableArray, NSMutableDictionary, NSProgressIndicator, NSString, NSTextField, NSView, WCContactData;
 
 @interface MMChatManagerDetailViewController : NSViewController <NSTableViewDataSource, NSTableViewDelegate, MMTableViewDelegate, MMMessageCellViewDelegate, MMViewerWindowDelegate, IContactMgrExt, MMCollectionDelegate, MessageBatchExportMgrExt>
 {
@@ -84,11 +84,13 @@
     id _mouseEvent;
     NSView *_searchDetailContainerView;
     MMMessageCellView *_lastShowLocateTipsCellView;
+    NSMutableDictionary *_viewerWindowDic;
     struct CGPoint _eventPoint;
     struct CGPoint _dragStartPoint;
     struct CGRect _draggedRect;
 }
 
+@property(retain, nonatomic) NSMutableDictionary *viewerWindowDic; // @synthesize viewerWindowDic=_viewerWindowDic;
 @property(nonatomic) __weak MMMessageCellView *lastShowLocateTipsCellView; // @synthesize lastShowLocateTipsCellView=_lastShowLocateTipsCellView;
 @property __weak NSView *searchDetailContainerView; // @synthesize searchDetailContainerView=_searchDetailContainerView;
 @property(retain, nonatomic) id mouseEvent; // @synthesize mouseEvent=_mouseEvent;
@@ -192,12 +194,14 @@
 - (void)SaveMutipleSelect;
 - (void)ForwardMutipleSelect:(BOOL)arg1;
 - (void)showSessionPickerWithSendMsgList:(id)arg1 isNeedMerge:(BOOL)arg2;
+- (BOOL)isMediaFileTotalSizeOverLimit:(id)arg1;
 - (void)CloseMultipleSelect:(id)arg1;
 - (void)DeleteByMultipleSelect:(id)arg1;
 - (void)SaveByMultipleSelect:(id)arg1;
 - (void)AddFavoritesByMultipleSelect:(id)arg1;
 - (void)ForwardByMergeMutipleSelect:(id)arg1;
 - (void)ForwardByMultipleSelect:(id)arg1;
+- (void)shouldShowNoRecordsView;
 - (void)toggleMultiSelectionView:(BOOL)arg1;
 - (id)searchDataSource;
 - (BOOL)isSearchingMode;
@@ -233,7 +237,6 @@
 - (void)setTabChosen:(id)arg1 label:(id)arg2;
 - (void)setTabChosen:(id)arg1;
 - (void)shouldShowRecordsCount;
-- (void)shouldShowNoRecordsView;
 - (void)showLinks;
 - (void)showFiles;
 - (void)showPhotos;

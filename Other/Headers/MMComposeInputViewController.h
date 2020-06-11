@@ -7,19 +7,22 @@
 #import <AppKit/NSViewController.h>
 
 #import "IContactMgrExt-Protocol.h"
+#import "IMessageExt-Protocol.h"
 #import "MMComposeInputViewDelegate-Protocol.h"
 #import "MMComposeRichAttachmentTextViewDelegate-Protocol.h"
 #import "MMComposeTextEmotionProtDelegate-Protocol.h"
+#import "MMComposeTextViewReferDelegate-Protocol.h"
 #import "MMNetExt-Protocol.h"
+#import "MMReferTextAttachmentViewDelegate-Protocol.h"
 #import "MMViewerWindowDelegate-Protocol.h"
 #import "MessageBatchExportMgrExt-Protocol.h"
 #import "MessageServiceExt-Protocol.h"
 #import "NSTextViewDelegate-Protocol.h"
 
-@class MMBatchExportViewWindow, MMBrandMenuPlugin, MMComposeInputScrollView, MMComposeTextStorage, MMComposeTextView, MMEmotionPromptWindowController, MMIgnoreEventView, MMMessageSendLogic, NSClipView, NSMutableDictionary, NSString, NSTextField, NSView, SVGButton, WCContactData;
+@class MMBatchExportViewWindow, MMBrandMenuPlugin, MMComposeInputScrollView, MMComposeTextStorage, MMComposeTextView, MMEmotionPromptWindowController, MMIgnoreEventView, MMMessageSendLogic, MessageData, NSClipView, NSMutableDictionary, NSString, NSTextField, NSView, SVGButton, WCContactData;
 @protocol MMChatDetailSplitViewPositionInterface><MMChatMemberListViewDelegate><MMAnimateVoipTipsDelegate, MMComposeTextViewDelegate, MMMutipleSelectionDelegate;
 
-@interface MMComposeInputViewController : NSViewController <MMNetExt, IContactMgrExt, MMComposeInputViewDelegate, MMComposeRichAttachmentTextViewDelegate, NSTextViewDelegate, MessageBatchExportMgrExt, MMViewerWindowDelegate, MessageServiceExt, MMComposeTextEmotionProtDelegate>
+@interface MMComposeInputViewController : NSViewController <MMNetExt, IContactMgrExt, MMComposeInputViewDelegate, MMComposeRichAttachmentTextViewDelegate, NSTextViewDelegate, MessageBatchExportMgrExt, MMViewerWindowDelegate, MessageServiceExt, MMComposeTextEmotionProtDelegate, MMComposeTextViewReferDelegate, IMessageExt, MMReferTextAttachmentViewDelegate>
 {
     BOOL isNoNetwork;
     MMComposeTextView *_composeTextView;
@@ -38,6 +41,7 @@
     SVGButton *_voiceButton;
     SVGButton *_chatManagerButton;
     SVGButton *_openBrandMenuButton;
+    SVGButton *_multiTalkButton;
     MMComposeInputScrollView *_scrollView;
     NSClipView *_clipView;
     MMIgnoreEventView *_multipleSelectView;
@@ -53,8 +57,10 @@
     MMBatchExportViewWindow *_exportViewWindow;
     NSMutableDictionary *_viewerWindowDic;
     MMBrandMenuPlugin *_brandMenuPlugin;
+    MessageData *_referingMsgWrap;
 }
 
+@property(retain, nonatomic) MessageData *referingMsgWrap; // @synthesize referingMsgWrap=_referingMsgWrap;
 @property(retain, nonatomic) MMBrandMenuPlugin *brandMenuPlugin; // @synthesize brandMenuPlugin=_brandMenuPlugin;
 @property(retain, nonatomic) NSMutableDictionary *viewerWindowDic; // @synthesize viewerWindowDic=_viewerWindowDic;
 @property(retain, nonatomic) MMBatchExportViewWindow *exportViewWindow; // @synthesize exportViewWindow=_exportViewWindow;
@@ -70,6 +76,7 @@
 @property(nonatomic) __weak MMIgnoreEventView *multipleSelectView; // @synthesize multipleSelectView=_multipleSelectView;
 @property(retain, nonatomic) NSClipView *clipView; // @synthesize clipView=_clipView;
 @property(retain, nonatomic) MMComposeInputScrollView *scrollView; // @synthesize scrollView=_scrollView;
+@property(nonatomic) __weak SVGButton *multiTalkButton; // @synthesize multiTalkButton=_multiTalkButton;
 @property(nonatomic) __weak SVGButton *openBrandMenuButton; // @synthesize openBrandMenuButton=_openBrandMenuButton;
 @property(nonatomic) __weak SVGButton *chatManagerButton; // @synthesize chatManagerButton=_chatManagerButton;
 @property(nonatomic) __weak SVGButton *voiceButton; // @synthesize voiceButton=_voiceButton;
@@ -87,13 +94,16 @@
 @property(retain, nonatomic) MMEmotionPromptWindowController *emotionPromptControl; // @synthesize emotionPromptControl=_emotionPromptControl;
 @property(retain, nonatomic) MMComposeTextView *composeTextView; // @synthesize composeTextView=_composeTextView;
 - (void).cxx_destruct;
+- (void)previewReferContentRelativeTo:(struct CGRect)arg1;
+- (void)clearReferContent;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
+- (void)updateReferingMessage:(id)arg1;
 - (void)windowDidColsed:(id)arg1;
 - (void)textView:(id)arg1 doubleClickedOnCell:(id)arg2 inRect:(struct CGRect)arg3 atIndex:(unsigned long long)arg4;
 - (id)textView:(id)arg1 attachmentViewWithAttachment:(id)arg2;
 - (void)SaveMutipleSelect;
 - (void)ForwardMutipleSelect:(BOOL)arg1;
 - (void)showSessionPickerWithSendMsgList:(id)arg1 isNeedMerge:(BOOL)arg2;
-- (BOOL)supportMergeForward:(id)arg1 shouldShowAlert:(BOOL)arg2;
 - (void)completeSendEmotion;
 - (void)pasteQuotedMessageToInputView:(id)arg1;
 - (void)insertMentionContactToInputView:(id)arg1;
@@ -123,6 +133,7 @@
 - (void)AddFavoritesByMultipleSelect:(id)arg1;
 - (void)ForwardByMergeMutipleSelect:(id)arg1;
 - (void)ForwardByMultipleSelect:(id)arg1;
+- (BOOL)isMediaFileTotalSizeOverLimit:(id)arg1;
 - (void)openChatManager:(id)arg1;
 - (void)addLocalTipsMsg:(id)arg1;
 - (void)setupPushMailMenuItemList;
@@ -132,6 +143,7 @@
 - (void)hideBrandMenu:(id)arg1;
 - (void)showPushMailMenu;
 - (void)showBrandMenu:(id)arg1;
+- (void)showMultiTalk:(id)arg1;
 - (void)showVoiceChat:(id)arg1;
 - (void)showVideoChat:(id)arg1;
 - (void)screenShotButtonPress:(id)arg1;

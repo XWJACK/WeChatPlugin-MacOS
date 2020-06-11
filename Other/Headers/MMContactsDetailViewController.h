@@ -101,6 +101,7 @@
 - (void)doOpemIMAction:(id)arg1;
 - (void)recvOAHistoryMsg:(id)arg1;
 - (void)deleteGroupChat:(id)arg1;
+- (void)sendRequest:(id)arg1;
 - (void)acceptRequest:(id)arg1;
 - (void)rejectRequest:(id)arg1;
 - (void)sendMsg:(id)arg1;

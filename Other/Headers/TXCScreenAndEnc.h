@@ -57,6 +57,7 @@
     BOOL _isPushing;
     _Bool _isAnnexB;
     BOOL _lockOutput;
+    BOOL _isRunning;
     BOOL _isStoped;
     int _reverbType;
     int _audioSampleRate;
@@ -116,6 +117,7 @@
 + (unsigned int)getAudioInputDeviceId;
 + (void)setAudioInputDeviceWithId:(unsigned int)arg1;
 @property(nonatomic) BOOL isStoped; // @synthesize isStoped=_isStoped;
+@property(nonatomic) BOOL isRunning; // @synthesize isRunning=_isRunning;
 @property struct CGRect currentShareWindowframe; // @synthesize currentShareWindowframe=_currentShareWindowframe;
 @property(retain, nonatomic) NSWindow *borderWindow; // @synthesize borderWindow=_borderWindow;
 @property(copy) CDUnknownBlockType snapshotCompletionBlock; // @synthesize snapshotCompletionBlock=_snapshotCompletionBlock;

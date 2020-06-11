@@ -26,7 +26,7 @@
 - (void)pageController:(id)arg1 didTransitionToObject:(id)arg2;
 - (void)pageController:(id)arg1 prepareViewController:(id)arg2 withObject:(id)arg3;
 - (void)onDelAllMsg:(id)arg1;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (void)onMsgImgDataLogicCheckedWithPre:(BOOL)arg1 Next:(BOOL)arg2;
 - (void)onMsgImgDataLogicLoadOKWithLast:(id)arg1 Next:(id)arg2;
 - (void)editWithToolbarFrame:(struct CGRect)arg1 chatName:(id)arg2 msgId:(id)arg3;
@@ -41,6 +41,7 @@
 - (void)_updatePreviewList;
 - (void)_initPreviewList;
 - (void)_initDataLogic;
+- (void)_initSingleDataLogic;
 - (void)_preloadVideoOfMessageData:(id)arg1;
 - (void)dealloc;
 - (id)initWithChatContact:(id)arg1 InitialSelectedMessage:(id)arg2 AndOrder:(unsigned long long)arg3;

@@ -6,14 +6,14 @@
 
 #import "MMAnimateView.h"
 
-@class NSButton;
+@class SVGButton;
 
 @interface MMAnimateButtonWrapper : MMAnimateView
 {
-    NSButton *_innerButton;
+    SVGButton *_innerButton;
 }
 
-@property(retain, nonatomic) NSButton *innerButton; // @synthesize innerButton=_innerButton;
+@property(retain, nonatomic) SVGButton *innerButton; // @synthesize innerButton=_innerButton;
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 

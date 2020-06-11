@@ -26,6 +26,7 @@
 @property(nonatomic) BOOL highlighted; // @synthesize highlighted=_highlighted;
 @property(retain, nonatomic) MMEmoticonData *emoticonData; // @synthesize emoticonData=_emoticonData;
 - (void).cxx_destruct;
+- (void)regenerateThumbImageWith:(id)arg1 realImage:(id)arg2;
 - (BOOL)allowsVibrancy;
 - (BOOL)acceptsFirstMouse:(id)arg1;
 - (struct CGRect)getStickerArea;

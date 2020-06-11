@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CContact, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSRecursiveLock, NSRunningApplication, NSString, TaskSetting;
+@class CContact, MMTimer, NSMutableArray, NSMutableDictionary, NSOperationQueue, NSRecursiveLock, NSRunningApplication, NSString, TaskSetting;
 @protocol TaskInstanceDelegate;
 
 @interface TaskInstance : NSObject
@@ -27,8 +27,12 @@
     NSMutableArray *_waitTasks;
     NSMutableDictionary *_confirmTask;
     NSRunningApplication *_runningApplication;
+    NSString *_portName;
+    MMTimer *_watchDogTimer;
 }
 
+@property(retain, nonatomic) MMTimer *watchDogTimer; // @synthesize watchDogTimer=_watchDogTimer;
+@property(retain, nonatomic) NSString *portName; // @synthesize portName=_portName;
 @property(retain, nonatomic) NSRunningApplication *runningApplication; // @synthesize runningApplication=_runningApplication;
 @property(retain, nonatomic) NSMutableDictionary *confirmTask; // @synthesize confirmTask=_confirmTask;
 @property(retain, nonatomic) NSMutableArray *waitTasks; // @synthesize waitTasks=_waitTasks;

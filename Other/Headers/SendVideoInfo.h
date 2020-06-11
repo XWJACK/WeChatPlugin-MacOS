@@ -4,11 +4,11 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2015 by Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import "SendInfo.h"
 
 @class NSString;
 
-@interface SendVideoInfo : NSObject
+@interface SendVideoInfo : SendInfo
 {
     BOOL _front_camera;
     BOOL _m_bForward;
@@ -17,10 +17,8 @@
     unsigned int _m_uiVideoSource;
     NSString *_thumb_path;
     NSString *_video_path;
-    NSString *_m_nsMsgSource;
 }
 
-@property(retain, nonatomic) NSString *m_nsMsgSource; // @synthesize m_nsMsgSource=_m_nsMsgSource;
 @property(nonatomic) BOOL m_bForward; // @synthesize m_bForward=_m_bForward;
 @property(nonatomic) unsigned int m_uiVideoSource; // @synthesize m_uiVideoSource=_m_uiVideoSource;
 @property(nonatomic) BOOL front_camera; // @synthesize front_camera=_front_camera;

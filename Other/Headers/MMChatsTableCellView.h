@@ -9,12 +9,13 @@
 #import "IContactMgrExt-Protocol.h"
 #import "IMMSessionMgrExt-Protocol.h"
 #import "MMEmoticonDescMgrExt-Protocol.h"
+#import "MultiTalkMgrExt-Protocol.h"
 #import "NSMenuDelegate-Protocol.h"
 
-@class CAShapeLayer, MMBadgeOverlayView, MMChatsCellAvatarView, MMImageView, MMSessionInfo, MMSidebarColorIconView, MMSidebarLabelTextField, MMTextField, MMView, NSString, NSView;
+@class CAShapeLayer, MMBadgeOverlayView, MMChatsCellAvatarView, MMImageView, MMSessionInfo, MMSidebarColorIconView, MMSidebarLabelTextField, MMTextField, MMView, NSString, NSView, SVGImageView;
 @protocol MMChatsTableCellViewDelegate;
 
-@interface MMChatsTableCellView : NSTableCellView <IContactMgrExt, NSMenuDelegate, MMEmoticonDescMgrExt, IMMSessionMgrExt>
+@interface MMChatsTableCellView : NSTableCellView <IContactMgrExt, NSMenuDelegate, MMEmoticonDescMgrExt, IMMSessionMgrExt, MultiTalkMgrExt>
 {
     BOOL _selected;
     BOOL _shouldRemoveHighlight;
@@ -35,10 +36,12 @@
     NSString *_userName;
     MMImageView *_sendFailedImg;
     MMImageView *_openimGroupFlag;
+    SVGImageView *_multiTalkFlag;
     CAShapeLayer *_shapeLayer;
 }
 
 @property(retain, nonatomic) CAShapeLayer *shapeLayer; // @synthesize shapeLayer=_shapeLayer;
+@property(retain, nonatomic) SVGImageView *multiTalkFlag; // @synthesize multiTalkFlag=_multiTalkFlag;
 @property(retain, nonatomic) MMImageView *openimGroupFlag; // @synthesize openimGroupFlag=_openimGroupFlag;
 @property(retain, nonatomic) MMImageView *sendFailedImg; // @synthesize sendFailedImg=_sendFailedImg;
 @property(nonatomic) BOOL shouldDrawFocusRing; // @synthesize shouldDrawFocusRing=_shouldDrawFocusRing;
@@ -59,6 +62,9 @@
 @property(retain, nonatomic) MMSessionInfo *sessionInfo; // @synthesize sessionInfo=_sessionInfo;
 @property(nonatomic) __weak id <MMChatsTableCellViewDelegate> delegate; // @synthesize delegate=_delegate;
 - (void).cxx_destruct;
+- (void)onQuitGroupAndEndMultiTalk:(id)arg1;
+- (void)onMultiTalkBannerChange:(id)arg1 status:(unsigned int)arg2;
+- (void)onMultiTalkMsgCellIconChange:(id)arg1;
 - (void)mouseDown:(id)arg1;
 - (void)updateStoreEmoticonDescSuccess;
 - (void)onSessionUpdated:(id)arg1 withType:(long long)arg2;
@@ -84,6 +90,7 @@
 - (void)updateSelectionBackground;
 - (void)layoutSummaryViews;
 - (void)updateSummary;
+- (void)updateMultiTalk;
 - (void)updateMuteIndicator;
 - (void)updateMsgStatus;
 - (void)layoutNickNameViews;
@@ -93,6 +100,7 @@
 - (void)updateBadgeView;
 - (void)updateAvatarImage;
 - (void)updateStickyBgView;
+- (BOOL)isMultiTalking;
 - (id)lastMessage;
 - (BOOL)isWxWorkSession;
 - (BOOL)isMentionedUnread;

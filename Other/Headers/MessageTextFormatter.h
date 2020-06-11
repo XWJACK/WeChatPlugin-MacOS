@@ -48,6 +48,7 @@
 - (id)allQQEmoticonWordsForLanguage:(id)arg1;
 - (void)setupScanner;
 - (id)_emoticonAttributeStringWith:(id)arg1 emojiSize:(id)arg2 useCoreText:(BOOL)arg3;
+- (id)referDataFromAttributedString:(id)arg1;
 - (id)dataArrayFromAttributedString:(id)arg1;
 - (id)stringFromAttributedString:(id)arg1;
 - (id)editHyperlinksWithAttributedString:(id)arg1 shouldFormatEmail:(BOOL)arg2;

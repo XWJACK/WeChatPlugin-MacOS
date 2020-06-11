@@ -7,6 +7,7 @@
 @class MMChatManagerDataSource;
 
 @protocol MMCollectionDelegate
+- (void)shouldShowNoRecordsView;
 - (void)toggleMultiSelectionView:(BOOL)arg1;
 - (MMChatManagerDataSource *)searchDataSource;
 - (BOOL)isSearchingMode;

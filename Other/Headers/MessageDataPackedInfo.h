@@ -29,12 +29,14 @@
     NSString *m_nsFilePath;
     NSString *m_nsVideoPath;
     NSString *m_nsVideoThumbPath;
+    NSString *dataMd5;
 }
 
 + (int)columnTypeForWCDB;
 + (id)unarchiveWithWCTValue:(id)arg1;
 + (void)initialize;
 + (void)_initPBTableOfMessageDataPackedInfo;
+@property(retain, nonatomic) NSString *dataMd5; // @synthesize dataMd5;
 @property(nonatomic) unsigned int m_uiOriginalImgWidth; // @synthesize m_uiOriginalImgWidth;
 @property(nonatomic) unsigned int m_uiOriginalImgHeight; // @synthesize m_uiOriginalImgHeight;
 @property(retain, nonatomic) NSString *m_nsVideoThumbPath; // @synthesize m_nsVideoThumbPath;

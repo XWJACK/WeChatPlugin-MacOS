@@ -27,7 +27,7 @@
 - (void).cxx_destruct;
 - (void)forwardContentToContactsWithUserNames:(id)arg1;
 - (void)closeWindowAnimated:(BOOL)arg1;
-- (void)reloadAllImageCell;
+- (void)reloadHeightReCalculateData;
 - (void)windowDidResize:(id)arg1;
 - (void)layoutMainTitleView:(id)arg1;
 - (void)setUpMainTitleView;

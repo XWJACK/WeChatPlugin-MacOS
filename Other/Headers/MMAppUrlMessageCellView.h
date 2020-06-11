@@ -20,7 +20,10 @@
     MMBorderView *_divider;
 }
 
++ (id)messageTableItemAppName:(id)arg1;
++ (id)messageTableItemDesc:(id)arg1;
 + (id)messageTableItemTitle:(id)arg1;
++ (double)containerHeightWithMessage:(id)arg1;
 + (double)cellHeightWithMessage:(id)arg1 constrainedToWidth:(double)arg2;
 @property(retain, nonatomic) MMBorderView *divider; // @synthesize divider=_divider;
 @property(retain, nonatomic) NSTextField *appName; // @synthesize appName=_appName;
@@ -36,6 +39,7 @@
 - (BOOL)allowChoose;
 - (void)mouseUp:(id)arg1;
 - (void)mouseDown:(id)arg1;
+- (id)getReferMenuItem;
 - (id)getOperationMenuItem;
 - (void)writeIntoPasteboard:(id)arg1 orItem:(id)arg2 provideDataForType:(id)arg3;
 - (id)draggingImage;
@@ -46,7 +50,6 @@
 - (id)defaultThumbnailImg;
 - (void)layoutDescriptionLabel;
 - (void)layoutThumbnail;
-- (double)titleAttributedString:(id)arg1;
 - (void)layoutTitleLabel;
 - (void)layoutContainerView;
 - (void)layoutBottomView;

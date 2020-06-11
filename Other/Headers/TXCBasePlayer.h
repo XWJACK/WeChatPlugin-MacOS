@@ -15,6 +15,7 @@
     int _volume;
 }
 
++ (void)setPlayoutVolume:(long long)arg1;
 + (void)enableCorePlayVolumeLevelCal:(BOOL)arg1;
 + (unsigned int)getCorePlayVolumeLevel;
 + (void)setAudioCorePlayDelegate:(id)arg1 callbackSampleNum:(unsigned int)arg2;

@@ -6,20 +6,22 @@
 
 #import "NSObject-Protocol.h"
 
-@class FavoritesItemDataField, MessageData, NSString;
+@class FavoritesItemDataField, MMCDNTask, MessageData, NSString;
 
 @protocol MMCDNDownloadMgrExt <NSObject>
 
 @optional
+- (void)cdnDownloadMgrFailedHTTPRequest:(MMCDNTask *)arg1;
+- (void)cdnDownloadMgrFinishHTTPRequest:(MMCDNTask *)arg1;
 - (void)cdnDownloadMgrDidFailedDownloadWithChatName:(NSString *)arg1 localID:(unsigned int)arg2 recordMsgData:(FavoritesItemDataField *)arg3 type:(int)arg4;
 - (void)cdnDownloadMgrDidFinishedDownloadWithChatName:(NSString *)arg1 localID:(unsigned int)arg2 recordMsgData:(FavoritesItemDataField *)arg3 type:(int)arg4;
 - (void)cdnDownloadMgrDownloaded:(int)arg1 of:(int)arg2 WithFavItemData:(FavoritesItemDataField *)arg3 type:(int)arg4;
 - (void)cdnDownloadMgrDidStartDownloadWithFavItemData:(FavoritesItemDataField *)arg1 type:(int)arg2 taskID:(NSString *)arg3;
 - (void)cdnDownloadMgrDidFailedDownloadWithFavItemData:(FavoritesItemDataField *)arg1 type:(int)arg2 taskID:(NSString *)arg3 errorCode:(long long)arg4;
 - (void)cdnDownloadMgrDidFinishedDownloadWithFavItemData:(FavoritesItemDataField *)arg1 type:(int)arg2 filePath:(NSString *)arg3 taskID:(NSString *)arg4;
-- (void)cdnDownloadMgrDidCancelledDownloadWithMessage:(MessageData *)arg1 type:(int)arg2;
-- (void)cdnDownloadMgrDidFailedDownloadWithMessage:(MessageData *)arg1 type:(int)arg2;
-- (void)cdnDownloadMgrDidFinishedDownloadWithMessage:(MessageData *)arg1 type:(int)arg2;
+- (void)cdnDownloadMgrDidCanceledDownloadWithCdnTask:(MMCDNTask *)arg1;
+- (void)cdnDownloadMgrDidFailedDownloadWithCdnTask:(MMCDNTask *)arg1;
+- (void)cdnDownloadMgrDidFinishedDownloadWithCdnTask:(MMCDNTask *)arg1;
 - (void)cdnDownloadMgrDownloaded:(int)arg1 of:(int)arg2 withFavItemData:(FavoritesItemDataField *)arg3 type:(int)arg4 tryShow:(BOOL)arg5;
 - (void)cdnDownloadMgrDownloaded:(int)arg1 of:(int)arg2 withMessage:(MessageData *)arg3 type:(int)arg4 tryShow:(BOOL)arg5;
 @end

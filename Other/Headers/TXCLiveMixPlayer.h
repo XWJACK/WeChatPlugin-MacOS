@@ -36,8 +36,9 @@
     float _musicDuration;
     BOOL _isStart;
     BOOL _isPause;
-    float _desVolume;
-    float _srcVolume;
+    float _playoutVolume;
+    float _publishVolume;
+    float _volume;
     float _desPitch;
     id <TXIMixPlayDelegate> _delegate;
     NSString *_filePath;
@@ -51,8 +52,9 @@
 @property(copy) CDUnknownBlockType beginNotify; // @synthesize beginNotify=_beginNotify;
 @property(copy, nonatomic) NSString *filePath; // @synthesize filePath=_filePath;
 @property(nonatomic) float desPitch; // @synthesize desPitch=_desPitch;
-@property(nonatomic) float srcVolume; // @synthesize srcVolume=_srcVolume;
-@property(nonatomic) float desVolume; // @synthesize desVolume=_desVolume;
+@property(nonatomic) float volume; // @synthesize volume=_volume;
+@property(nonatomic) float publishVolume; // @synthesize publishVolume=_publishVolume;
+@property(nonatomic) float playoutVolume; // @synthesize playoutVolume=_playoutVolume;
 @property(readonly, nonatomic) BOOL isPause; // @synthesize isPause=_isPause;
 @property(readonly, nonatomic) BOOL isStart; // @synthesize isStart=_isStart;
 @property(nonatomic) __weak id <TXIMixPlayDelegate> delegate; // @synthesize delegate=_delegate;
@@ -70,6 +72,8 @@
 - (BOOL)readAudioFromFile:(float)arg1 toTime:(float)arg2;
 - (BOOL)resumeMixPlay;
 - (BOOL)pauseMixPlay;
+- (BOOL)stopMixPlayInternal:(BOOL)arg1;
+- (BOOL)resetMixPlay;
 - (BOOL)stopMixPlay;
 - (BOOL)setDelegateBlock:(CDUnknownBlockType)arg1 withProgressNotify:(CDUnknownBlockType)arg2 andCompleteNotify:(CDUnknownBlockType)arg3;
 - (BOOL)startMixPlayForFile:(id)arg1 withDesInfo:(id)arg2 from:(float)arg3 to:(float)arg4 playMix:(BOOL)arg5;

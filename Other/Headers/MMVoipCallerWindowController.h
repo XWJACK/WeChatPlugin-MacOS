@@ -57,6 +57,7 @@
 - (void)addEffectiveViewAboveRenderView;
 - (void)layoutWithVoiceMode;
 - (void)layoutWithVideoMode:(BOOL)arg1;
+- (struct CGSize)windowWillResize:(id)arg1 toSize:(struct CGSize)arg2;
 - (void)loadContent;
 - (void)windowDidLoad;
 - (id)init;

@@ -4,14 +4,14 @@
 //     class-dump is Copyright (C) 1997-1998, 2000-2001, 2004-2015 by Steve Nygard.
 //
 
-#import "MMObject.h"
+#import <objc/NSObject.h>
 
 #import "MMCGIDelegate-Protocol.h"
 
 @class NSMutableDictionary, NSMutableSet, NSString, NSURL, NSView, SKBuiltinBuffer_t;
 @protocol WebViewA8KeyLogicDelegate, YYWebViewInterface;
 
-@interface WebViewA8KeyLogicImpl : MMObject <MMCGIDelegate>
+@interface WebViewA8KeyLogicImpl : NSObject <MMCGIDelegate>
 {
     unsigned int _firstGetA8KeyOpCode;
     NSString *_firstGetA8KeyAppId;

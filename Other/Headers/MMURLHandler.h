@@ -26,6 +26,8 @@
     CDUnknownBlockType _didOpenUrlBlock;
 }
 
++ (id)getHostTextWithUrl:(id)arg1;
++ (BOOL)hasMPHost:(id)arg1;
 + (id)getUrlWithoutFragment:(id)arg1;
 + (BOOL)isA8KeyCGI:(int)arg1;
 + (int)getA8keyCgiCmdIDByUrl:(id)arg1;
@@ -57,7 +59,7 @@
 - (void)OnResponseCGI:(BOOL)arg1 sessionId:(unsigned int)arg2 cgiWrap:(id)arg3;
 - (void)handleURL:(id)arg1 withExtraInfo:(id)arg2;
 - (void)openURL:(id)arg1 withA8KeyConfig:(id)arg2;
-- (void)openURLWithDefault:(id)arg1 useA8Key:(BOOL)arg2;
+- (void)openURLWithDefault:(id)arg1;
 - (BOOL)preHandleUrlStr:(id)arg1 withMessage:(id)arg2;
 - (id)filterUrlStr:(id)arg1;
 - (void)handleReceiveBrandMsgURL:(id)arg1 messageData:(id)arg2;
@@ -77,6 +79,7 @@
 - (BOOL)isShowAllURL:(id)arg1;
 - (BOOL)isContactProfileURL:(id)arg1;
 - (BOOL)isMacWeixinURL:(id)arg1;
+- (BOOL)isMPArticleByURL:(id)arg1;
 - (BOOL)isQQMailUrl:(id)arg1;
 - (BOOL)isGameCentreURL:(id)arg1;
 - (BOOL)isGroupChatInviteUrl:(id)arg1;

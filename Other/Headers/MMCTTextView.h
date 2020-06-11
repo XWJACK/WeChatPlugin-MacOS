@@ -98,6 +98,8 @@
 - (void)drawSelectionBackgroundWithLines:(struct __CFArray *)arg1 lineOrigins:(struct CGPoint *)arg2 count:(unsigned long long)arg3;
 - (void)drawLinesWithContext:(struct CGContext *)arg1 frame:(struct __CTFrame *)arg2;
 - (void)drawRect:(struct CGRect)arg1;
+- (void)commonInit;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

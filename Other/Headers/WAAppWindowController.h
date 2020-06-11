@@ -8,15 +8,19 @@
 
 #import "NSWindowDelegate-Protocol.h"
 
-@class NSString, WAAppWindow, WANavigationController;
+@class NSString, WAAppWindow, WANavigationController, WAProfileCardViewController;
 
 @interface WAAppWindowController : NSWindowController <NSWindowDelegate>
 {
     WANavigationController *_navigationController;
+    WAProfileCardViewController *_cardController;
 }
 
+@property(retain, nonatomic) WAProfileCardViewController *cardController; // @synthesize cardController=_cardController;
 @property(retain, nonatomic) WANavigationController *navigationController; // @synthesize navigationController=_navigationController;
 - (void).cxx_destruct;
+- (void)onOpenBrandProfile:(id)arg1;
+- (void)onOpenBrandAbout:(id)arg1;
 - (void)updateWindowFrame:(BOOL)arg1;
 - (void)beginWidesscreen:(id)arg1;
 - (void)showWindow:(id)arg1;

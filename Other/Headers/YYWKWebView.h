@@ -63,6 +63,7 @@
 
 // Remaining properties
 @property(nonatomic) BOOL allowsBackForwardNavigationGestures;
+@property(readonly, nonatomic) NSScrollView *backgroundScorllView;
 @property(readonly, nonatomic, getter=canGoBack) BOOL canGoBack;
 @property(readonly, nonatomic, getter=canGoForward) BOOL canGoForward;
 @property(readonly, copy) NSString *debugDescription;

@@ -10,6 +10,7 @@
 {
 }
 
++ (id)convertRecordMsg:(id)arg1 toFavDataListFromDataList:(id)arg2 withParentSourceId:(id)arg3;
 + (id)safeLocalStr:(id)arg1 defaultVal:(id)arg2;
 + (id)videoDurationWithDataField:(id)arg1;
 + (id)getDataSourceId:(id)arg1;

@@ -86,7 +86,7 @@
 - (void)chatDelete:(id)arg1;
 - (void)chatMuteOrUnmute:(id)arg1;
 - (void)chatStickyOrUnsticky:(id)arg1;
-- (void)newDocument:(id)arg1;
+- (void)newChat:(id)arg1;
 - (void)tabbarController:(id)arg1 willSelectViewControllerAtIndex:(unsigned long long)arg2;
 - (void)tabbarController:(id)arg1 didSelectViewController:(id)arg2;
 - (void)resumeUserLocalViewSize:(id)arg1;

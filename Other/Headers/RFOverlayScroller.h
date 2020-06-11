@@ -6,22 +6,28 @@
 
 #import <AppKit/NSScroller.h>
 
+@class NSTrackingArea;
+
 @interface RFOverlayScroller : NSScroller
 {
     BOOL _isOptiDisplay;
     double _preFloatValue;
+    NSTrackingArea *_trackingArea;
 }
 
 + (double)zeroWidth;
 + (BOOL)isCompatibleWithOverlayScrollers;
+@property(retain, nonatomic) NSTrackingArea *trackingArea; // @synthesize trackingArea=_trackingArea;
 @property(nonatomic) double preFloatValue; // @synthesize preFloatValue=_preFloatValue;
 @property(nonatomic) BOOL isOptiDisplay; // @synthesize isOptiDisplay=_isOptiDisplay;
+- (void).cxx_destruct;
 - (void)fadeOut;
 - (void)mouseMoved:(id)arg1;
 - (void)mouseEntered:(id)arg1;
 - (void)mouseExited:(id)arg1;
 - (void)setFloatValue:(float)arg1;
 - (void)drawKnobSlotInRect:(struct CGRect)arg1 highlight:(BOOL)arg2;
+- (void)updateTrackingAreas;
 - (void)commonInitializer;
 - (void)awakeFromNib;
 - (id)initWithFrame:(struct CGRect)arg1;

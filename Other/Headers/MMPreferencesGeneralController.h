@@ -19,6 +19,8 @@
     NSTextField *_nickNameLabel;
     NSTextField *_msgRecordLabel;
     NSButton *_saveChatLog;
+    NSTextField *_voiceToTextLabel;
+    NSButton *_voiceToText;
     NSTextField *_textSizeLabel;
     NSSlider *_textSize;
     NSTextField *_textSizeExampleGlyphSmall;
@@ -55,6 +57,8 @@
 @property(nonatomic) __weak NSTextField *textSizeExampleGlyphSmall; // @synthesize textSizeExampleGlyphSmall=_textSizeExampleGlyphSmall;
 @property(nonatomic) __weak NSSlider *textSize; // @synthesize textSize=_textSize;
 @property(nonatomic) __weak NSTextField *textSizeLabel; // @synthesize textSizeLabel=_textSizeLabel;
+@property(nonatomic) __weak NSButton *voiceToText; // @synthesize voiceToText=_voiceToText;
+@property(nonatomic) __weak NSTextField *voiceToTextLabel; // @synthesize voiceToTextLabel=_voiceToTextLabel;
 @property(nonatomic) __weak NSButton *saveChatLog; // @synthesize saveChatLog=_saveChatLog;
 @property __weak NSTextField *msgRecordLabel; // @synthesize msgRecordLabel=_msgRecordLabel;
 @property __weak NSTextField *nickNameLabel; // @synthesize nickNameLabel=_nickNameLabel;
@@ -83,6 +87,7 @@
 @property(readonly, nonatomic) NSString *identifier;
 - (void)viewWillAppear;
 - (void)dealloc;
+- (void)loadVoiceToTextConfig;
 - (void)viewDidLoad;
 
 // Remaining properties

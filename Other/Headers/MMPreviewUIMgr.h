@@ -15,18 +15,21 @@
     BOOL _shouldShowMainWindow;
     BOOL _useAnimationImage;
     BOOL _shouldOrderFrontWindow;
+    BOOL _bMuteToPlay;
     NSWindow *_prevWindow;
     MMPreviewWindowController *_previewPanelWindowController;
     struct CGRect _mouseDownRect;
 }
 
 @property(retain, nonatomic) MMPreviewWindowController *previewPanelWindowController; // @synthesize previewPanelWindowController=_previewPanelWindowController;
+@property(nonatomic) BOOL bMuteToPlay; // @synthesize bMuteToPlay=_bMuteToPlay;
 @property(nonatomic) BOOL shouldOrderFrontWindow; // @synthesize shouldOrderFrontWindow=_shouldOrderFrontWindow;
 @property(nonatomic) __weak NSWindow *prevWindow; // @synthesize prevWindow=_prevWindow;
 @property(nonatomic) BOOL useAnimationImage; // @synthesize useAnimationImage=_useAnimationImage;
 @property(nonatomic) BOOL shouldShowMainWindow; // @synthesize shouldShowMainWindow=_shouldShowMainWindow;
 @property(nonatomic) struct CGRect mouseDownRect; // @synthesize mouseDownRect=_mouseDownRect;
 - (void).cxx_destruct;
+- (void)showPreviewErrorHint:(id)arg1;
 - (void)_ensureClosePreviewWindow;
 - (void)setupVideoPlayerView;
 - (void)resetVideoStatus;
@@ -46,6 +49,7 @@
 - (void)openWithCurrentDataField:(id)arg1 parentMessage:(id)arg2 orParentFavItem:(id)arg3;
 - (void)openWithFavItemList:(id)arg1 AndInitialSelectedFavItem:(id)arg2;
 - (void)openWithChatContact:(id)arg1 InitialSelectedMessage:(id)arg2 AndOrder:(unsigned long long)arg3;
+- (void)openWithChatContact:(id)arg1 ReferMessage:(id)arg2 AndOrder:(unsigned long long)arg3;
 - (BOOL)isPreviewCanHandleCurrentFavItem:(id)arg1;
 - (BOOL)isPreviewCanHandleCurrentMessage:(id)arg1;
 - (void)closePreviewWindow;

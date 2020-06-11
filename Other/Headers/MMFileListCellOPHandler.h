@@ -31,6 +31,7 @@
 - (void)sessionPickWindowDidConfirmed:(id)arg1;
 - (void)showSessionPickerWithSendMsgList:(id)arg1 isNeedMerge:(BOOL)arg2;
 - (void)forwardMutipleSelect:(BOOL)arg1 withMsgList:(id)arg2;
+- (BOOL)isMediaFileTotalSizeOverLimit:(id)arg1;
 - (void)contextMenuLocation:(id)arg1;
 - (void)contextMenuCancleDownload:(id)arg1;
 - (void)contextMenuDownload:(id)arg1;

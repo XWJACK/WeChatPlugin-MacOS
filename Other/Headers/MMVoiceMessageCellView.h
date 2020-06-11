@@ -48,9 +48,9 @@
 @property(retain, nonatomic) MMRoundedRectangleView *unreadTip; // @synthesize unreadTip=_unreadTip;
 @property(nonatomic) BOOL isTranslatingVoiceToText; // @synthesize isTranslatingVoiceToText=_isTranslatingVoiceToText;
 - (void).cxx_destruct;
-- (void)onVoiceTranslateEnd:(id)arg1;
+- (void)onVoiceTranslateEnd:(id)arg1 voiceText:(id)arg2 voiceToTextStatus:(unsigned int)arg3;
 - (void)onVoiceTranslateStart:(id)arg1;
-- (void)translate;
+- (void)translateWithAuto:(BOOL)arg1;
 - (void)playerDidStopPlay:(id)arg1;
 - (void)playerDidStartPlay:(id)arg1;
 - (void)setChoosable:(BOOL)arg1;

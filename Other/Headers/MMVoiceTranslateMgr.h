@@ -8,28 +8,29 @@
 
 #import "MMService-Protocol.h"
 
-@class NSMutableArray, NSRecursiveLock, NSString;
+@class NSMutableArray, NSMutableDictionary, NSRecursiveLock, NSString;
 
 @interface MMVoiceTranslateMgr : MMService <MMService>
 {
     BOOL _m_isStop;
-    NSMutableArray *_m_taskArray;
+    BOOL _m_isTranslating;
     NSRecursiveLock *_m_lock;
     NSMutableArray *_m_msgWrapArray;
-    NSMutableArray *_m_cgiArray;
+    NSMutableDictionary *_m_cgiDic;
 }
 
-@property(retain, nonatomic) NSMutableArray *m_cgiArray; // @synthesize m_cgiArray=_m_cgiArray;
+@property(retain, nonatomic) NSMutableDictionary *m_cgiDic; // @synthesize m_cgiDic=_m_cgiDic;
 @property(retain, nonatomic) NSMutableArray *m_msgWrapArray; // @synthesize m_msgWrapArray=_m_msgWrapArray;
+@property(nonatomic) BOOL m_isTranslating; // @synthesize m_isTranslating=_m_isTranslating;
 @property(nonatomic) BOOL m_isStop; // @synthesize m_isStop=_m_isStop;
 @property(retain, nonatomic) NSRecursiveLock *m_lock; // @synthesize m_lock=_m_lock;
-@property(retain, nonatomic) NSMutableArray *m_taskArray; // @synthesize m_taskArray=_m_taskArray;
 - (void).cxx_destruct;
 - (void)updateTranscribeVoiceMessage:(id)arg1 voiceText:(id)arg2 voiceToTextStatus:(unsigned int)arg3;
 - (void)tryNextMsgWrap:(id)arg1;
 - (void)stopTranslate;
-- (void)removeTask:(id)arg1;
-- (void)doTranslate:(id)arg1;
+- (void)stopTranslateTask:(id)arg1 isCancel:(BOOL)arg2;
+- (void)sendTranslateRequest;
+- (void)doTranslate:(id)arg1 isAuto:(BOOL)arg2;
 - (void)onServiceClearData;
 - (void)onServiceInit;
 

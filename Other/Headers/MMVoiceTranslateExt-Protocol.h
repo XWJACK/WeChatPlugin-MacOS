@@ -6,10 +6,10 @@
 
 #import "NSObject-Protocol.h"
 
-@class MessageData;
+@class MessageData, NSString;
 
 @protocol MMVoiceTranslateExt <NSObject>
-- (void)onVoiceTranslateEnd:(MessageData *)arg1;
+- (void)onVoiceTranslateEnd:(MessageData *)arg1 voiceText:(NSString *)arg2 voiceToTextStatus:(unsigned int)arg3;
 - (void)onVoiceTranslateStart:(MessageData *)arg1;
 @end
 

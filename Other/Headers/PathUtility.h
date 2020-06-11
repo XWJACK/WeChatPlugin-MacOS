@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)GetLagFolder;
 + (BOOL)setDoNotBackupForPath:(id)arg1;
 + (id)getSysDocumentPath;
 + (id)getSysCachePath;
@@ -101,6 +100,7 @@
 + (id)getMsgVideoDirWithUserName:(id)arg1;
 + (id)getMsgSilkAudioPath:(id)arg1;
 + (id)getMsgAMRAudioPath:(id)arg1;
++ (id)getUniqueMsgAudioPath:(id)arg1;
 + (id)getMsgAudioPath:(id)arg1;
 + (id)getMsgAudioDir:(id)arg1;
 + (id)getMsgTmpHDImgPath:(id)arg1 localId:(unsigned int)arg2;
@@ -111,6 +111,7 @@
 + (id)getMsgImgThumbPath:(id)arg1 imgURLString:(id)arg2;
 + (id)getMsgImgThumbPathWithMessage:(id)arg1;
 + (id)getMsgImgPreviewThumbPathWithMessage:(id)arg1;
++ (id)getMsgImgPathWithMessage:(id)arg1 isSend:(int)arg2;
 + (id)getMsgImgPathWithMessage:(id)arg1;
 + (id)getMsgImgDir:(id)arg1;
 + (id)getMsgTempDirOfUser:(id)arg1;

@@ -60,6 +60,7 @@
     NSArray *_dataList;
     NSString *_breadPathWhenNested;
     FavWeAppItem *_weAppItem;
+    NSString *_messageUUID;
     double _imageWidth;
     double _imageHeight;
     NSString *_statExtStr;
@@ -75,6 +76,7 @@
 @property(retain, nonatomic) NSString *statExtStr; // @synthesize statExtStr=_statExtStr;
 @property(nonatomic) double imageHeight; // @synthesize imageHeight=_imageHeight;
 @property(nonatomic) double imageWidth; // @synthesize imageWidth=_imageWidth;
+@property(retain, nonatomic) NSString *messageUUID; // @synthesize messageUUID=_messageUUID;
 @property(retain, nonatomic) FavWeAppItem *weAppItem; // @synthesize weAppItem=_weAppItem;
 @property(retain, nonatomic) NSString *breadPathWhenNested; // @synthesize breadPathWhenNested=_breadPathWhenNested;
 @property(retain, nonatomic) NSArray *dataList; // @synthesize dataList=_dataList;

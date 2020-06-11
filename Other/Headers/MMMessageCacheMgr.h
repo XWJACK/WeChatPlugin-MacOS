@@ -18,6 +18,7 @@
 {
     MMCache *_textMessageCache;
     MMCache *_translationCache;
+    MMCache *_referCache;
     MMCache *_thumbImgCache;
     MMCache *_originImgCache;
     AFHTTPSessionManager *_downloadMgr;
@@ -36,6 +37,7 @@
 @property(retain, nonatomic) AFHTTPSessionManager *downloadMgr; // @synthesize downloadMgr=_downloadMgr;
 @property(retain, nonatomic) MMCache *originImgCache; // @synthesize originImgCache=_originImgCache;
 @property(retain, nonatomic) MMCache *thumbImgCache; // @synthesize thumbImgCache=_thumbImgCache;
+@property(retain, nonatomic) MMCache *referCache; // @synthesize referCache=_referCache;
 @property(retain, nonatomic) MMCache *translationCache; // @synthesize translationCache=_translationCache;
 @property(retain, nonatomic) MMCache *textMessageCache; // @synthesize textMessageCache=_textMessageCache;
 - (void).cxx_destruct;
@@ -47,8 +49,8 @@
 - (void)cdnDownloadMgrDidFinishedDownloadWithChatName:(id)arg1 localID:(unsigned int)arg2 recordMsgData:(id)arg3 type:(int)arg4;
 - (void)downloadImageFinishedWithMessage:(id)arg1 type:(int)arg2 isSuccess:(BOOL)arg3;
 - (void)startDownloadImageWithMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)cdnDownloadMgrDidFailedDownloadWithMessage:(id)arg1 type:(int)arg2;
-- (void)cdnDownloadMgrDidFinishedDownloadWithMessage:(id)arg1 type:(int)arg2;
+- (void)cdnDownloadMgrDidFailedDownloadWithCdnTask:(id)arg1;
+- (void)cdnDownloadMgrDidFinishedDownloadWithCdnTask:(id)arg1;
 - (void)downloadSightFileWithChatName:(id)arg1 mesLocalID:(unsigned int)arg2 recordMsgData:(id)arg3 isFavorite:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)cachedFileDataWithFilePath:(id)arg1;
 - (BOOL)saveImageSizeForMessage:(id)arg1 size:(struct CGSize)arg2;
@@ -65,11 +67,15 @@
 - (id)cachedImageWithFilePath:(id)arg1 isThumbnail:(BOOL)arg2;
 - (unsigned char)cacheOriginImageWithImageData:(id)arg1 FilePath:(id)arg2;
 - (void)clearTextMessageCache;
+- (void)clearReferCacheForMessage:(id)arg1;
+- (void)clearReferStringForKey:(id)arg1;
+- (void)setReferString:(id)arg1 forKey:(id)arg2;
 - (void)setTranslationString:(id)arg1 forKey:(id)arg2;
+- (id)cachedReferStringForKey:(id)arg1;
 - (id)cachedTranslationStringForKey:(id)arg1;
 - (void)setTextMessageString:(id)arg1 forKey:(id)arg2;
 - (id)cachedTextMessageStringForKey:(id)arg1;
-- (void)onDelMsg:(id)arg1 msgData:(id)arg2;
+- (void)onDelMsg:(id)arg1 msgData:(id)arg2 isRevoke:(BOOL)arg3;
 - (void)onDelAllMsg:(id)arg1;
 - (void)onSessionDeletedWithUserName:(id)arg1 atIndex:(long long)arg2;
 - (void)clearAllCache;

@@ -55,6 +55,7 @@
 - (void)fireLoginFailedEvent;
 - (void)onAuthFailedWithReason:(id)arg1 errorMsg:(id)arg2;
 - (void)onAuthFailedWithAplphaApplyUrl:(id)arg1;
+- (void)showAlertViewIfNeeded;
 - (void)onInitProcessed:(unsigned int)arg1;
 - (void)onInitFail;
 - (void)onInitFinish;

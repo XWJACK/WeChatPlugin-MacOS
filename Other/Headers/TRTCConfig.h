@@ -10,6 +10,7 @@
 
 @interface TRTCConfig : NSObject
 {
+    BOOL _enableAdjustRes;
     int _videoFps;
     int _videoBitrate;
     int _audioChannels;
@@ -40,6 +41,7 @@
 @property(nonatomic) int audioChannels; // @synthesize audioChannels=_audioChannels;
 @property(nonatomic) long long audioSampleRate; // @synthesize audioSampleRate=_audioSampleRate;
 @property(nonatomic) long long videoResolution; // @synthesize videoResolution=_videoResolution;
+@property(nonatomic) BOOL enableAdjustRes; // @synthesize enableAdjustRes=_enableAdjustRes;
 @property(nonatomic) struct CGSize videoSize; // @synthesize videoSize=_videoSize;
 @property(nonatomic) int videoBitrate; // @synthesize videoBitrate=_videoBitrate;
 @property(nonatomic) int videoFps; // @synthesize videoFps=_videoFps;

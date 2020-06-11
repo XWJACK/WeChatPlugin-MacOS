@@ -33,6 +33,7 @@
 - (void)writeIntoPasteboard:(id)arg1 orItem:(id)arg2 provideDataForType:(id)arg3;
 - (id)draggablePasteboardTypes;
 - (void)contextMenuOpen;
+- (id)getReferMenuItem;
 - (id)getOpenMenuItem;
 - (id)getOperationMenuItem;
 - (id)_fullStringDescription;

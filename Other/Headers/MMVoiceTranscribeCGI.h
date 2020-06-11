@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MMTimer, NSString;
+@class MMCGIRequester, MMTimer, NSString;
 
 @interface MMVoiceTranscribeCGI : NSObject
 {
@@ -21,8 +21,10 @@
     NSString *_msgUniqueID;
     double _timerInterval;
     CDUnknownBlockType _didGetTranscribeResultBlock;
+    MMCGIRequester *_requester;
 }
 
+@property(retain, nonatomic) MMCGIRequester *requester; // @synthesize requester=_requester;
 @property(copy, nonatomic) CDUnknownBlockType didGetTranscribeResultBlock; // @synthesize didGetTranscribeResultBlock=_didGetTranscribeResultBlock;
 @property(nonatomic) unsigned int getResultSeq; // @synthesize getResultSeq=_getResultSeq;
 @property(nonatomic) double timerInterval; // @synthesize timerInterval=_timerInterval;
@@ -44,6 +46,7 @@
 - (unsigned int)voiceFileLengthWithFile:(id)arg1;
 - (id)voiceFilePathWithMessage:(id)arg1;
 - (id)voiceIDWithMessage:(id)arg1;
+- (void)stopTranscribe;
 - (void)transcribeVoiceMessage:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end

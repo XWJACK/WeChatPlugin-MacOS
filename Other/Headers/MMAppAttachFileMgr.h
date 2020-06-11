@@ -28,7 +28,7 @@
 - (void)checkUpload:(id)arg1 scene:(unsigned int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)checkIfFileExistInSvrInternal:(id)arg1 IsLargeFile:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)checkIfFileExistInSvr:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)isGBLargeFileMessage:(id)arg1 isNormalLarge:(BOOL)arg2;
+- (BOOL)isGBLargeFileMessage:(id)arg1;
 - (BOOL)isLargeFileMessage:(id)arg1;
 - (unsigned long long)getShareChatRoomMemberMaxCount;
 - (void)onServiceClearData;

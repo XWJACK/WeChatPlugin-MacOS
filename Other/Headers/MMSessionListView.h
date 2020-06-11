@@ -68,6 +68,7 @@
 - (void)scrollToTop;
 - (void)reloadSessionListData;
 - (void)removeAssignedContact;
+- (void)removePreSelectedUserNames;
 - (void)removePreSelectedContact;
 - (void)removeSearchQuery;
 - (void)removeChoosenContact:(id)arg1;
@@ -78,6 +79,7 @@
 - (void)setAllowsMultipleSelection:(BOOL)arg1;
 - (void)setFilteredUserNames:(id)arg1;
 - (void)setAssignedContact:(id)arg1;
+- (void)setPreSelectedUserNames:(id)arg1;
 - (void)setPreSelectedContact:(id)arg1;
 - (void)setType:(unsigned long long)arg1;
 - (unsigned long long)pickerType;
